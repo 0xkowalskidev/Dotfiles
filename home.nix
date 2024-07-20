@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
   	htop
 	xclip
+	dmenu
   ];
 
   home.file = {
@@ -22,8 +23,6 @@
 	userEmail = "0xkowalskiaudit@gmail.com";
 	userName = "0xkowalski1";
   };
-
-  programs.ssh.enable = true;
 
   programs.home-manager.enable = true;
 }
