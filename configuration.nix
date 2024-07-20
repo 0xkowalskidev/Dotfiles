@@ -19,12 +19,10 @@
 
   services.xserver = {
   	enable = true;
-  	windowManager.i3 = {
-  		enable = true;
-		extraPackages = with pkgs; [
-			dmenu
-		];
-  	};
+	windowManager.i3 = {
+		enable = true;
+		configFile = "/home/kowalski/Dotfiles/i3/config";
+	};
   };
   
   # Autologin
@@ -64,6 +62,11 @@
        spotify
        discord
      ];
+   };
+
+   # Ssh
+   programs.ssh = {
+	startAgent = true;
    };
 
    home-manager = {
