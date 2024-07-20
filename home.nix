@@ -34,6 +34,7 @@
   	enable = true;
 	initExtra = ''
 		ssh-add ~/.ssh/github_rsa
+		clear
 	'';
   };
 
@@ -52,6 +53,10 @@
 			size = 12.0;
 		};
 	};
+  };
+
+  programs.starship = {
+  	enable = true;
   };
 
   programs.home-manager.enable = true;
