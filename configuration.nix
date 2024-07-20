@@ -5,8 +5,7 @@
     [
       ./hardware-configuration.nix
     ];
-   
-  
+     
   nixpkgs.config.allowUnfree = true;
 
   boot.loader.systemd-boot.enable = true;
@@ -54,15 +53,7 @@
    users.users.kowalski = {
      isNormalUser = true;
      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-     packages = with pkgs; [
-       brave
-       acpi
-       neovim
-       alacritty
-       spotify
-       discord
-     ];
-   };
+     };
 
    # Ssh
    programs.ssh = {
