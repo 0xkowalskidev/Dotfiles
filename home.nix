@@ -22,10 +22,19 @@
 	(nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 
+  # Git
   programs.git = {
   	enable = true;
 	userEmail = "0xkowalskiaudit@gmail.com";
 	userName = "0xkowalski1";
+  };
+
+  # Bash
+  programs.bash = {
+  	enable = true;
+	initExtra = ''
+		ssh-add ~/.ssh/github_rsa
+	'';
   };
 
   # Font
