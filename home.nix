@@ -23,5 +23,7 @@
 	userName = "0xkowalski1";
   };
 
+  programs.ssh.enable = true;
+
   programs.home-manager.enable = true;
 }
