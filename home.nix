@@ -8,10 +8,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  home.packages = with pkgs; [
-  	# Editor
-	neovim
-	
+  home.packages = with pkgs; [	
 	# Browser
 	brave
 
@@ -25,7 +22,7 @@
 
 	# Utils
   	htop
-	acpi
+	acpi # Battery viewer
 	
 	# Font
 	(nerdfonts.override { fonts = [ "FiraCode" ]; })
@@ -66,6 +63,16 @@
 
   programs.starship = {
   	enable = true;
+  };
+
+  # Editor
+  programs.neovim = {
+  	enable = true;
+	plugins = [ pkgs.vimPlugins.packer-nvim ];
+	extraConfig = ''
+		set runtimepath^=~/Dotfiles/Neovim
+		luafile ~/Dotfiles/Neovim/init.lua
+	'';
   };
 
   programs.home-manager.enable = true;
