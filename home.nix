@@ -9,15 +9,24 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-  	htop
-	xclip
-	dmenu
-	brave
-	acpi
+  	# Editor
 	neovim
+	
+	# Browser
+	brave
+
+	# Apps
 	spotify
 	discord
 
+  	# System
+	dmenu
+	xclip
+
+	# Utils
+  	htop
+	acpi
+	
 	# Font
 	(nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
