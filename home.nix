@@ -23,6 +23,9 @@
 	# Utils
   	htop
 	acpi # Battery viewer
+
+        # Languages/LSPs
+        lua-language-server
 	
 	# Font
 	(nerdfonts.override { fonts = [ "FiraCode" ]; })
