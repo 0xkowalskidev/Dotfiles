@@ -35,6 +35,8 @@
         go
         gopls # Lsp
         air # Dev Server
+        # Java
+        openjdk21
 
 	# Font
 	(nerdfonts.override { fonts = [ "FiraCode" ]; })
