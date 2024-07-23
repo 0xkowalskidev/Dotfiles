@@ -10,27 +10,36 @@
 
   home.packages = with pkgs; [	
 	# Browser
-	brave
+        brave
 
-	# Apps
+        # Apps
 	spotify
 	discord
+        prismlauncher # Minecraft
 
   	# System
 	dmenu
 	xclip
+        mdcat # Markdown cat
+        feh # Image viewer
+        cloc # Count lines of code
 
 	# Utils
   	htop
 	acpi # Battery viewer
 
         # Languages/LSPs
+        ## Lua
         lua-language-server
-	
+        ## Go
+        go
+        gopls # Lsp
+        air # Dev Server
+
 	# Font
 	(nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
-
+ 
   # Git
   programs.git = {
   	enable = true;

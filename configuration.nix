@@ -35,6 +35,23 @@
 
   time.timeZone = "Europe/London";
 
+  # Garbage Collection
+  nix.gc = {
+    automatic = true;
+    persistent = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+
+    extraPackages = with pkgs; [
+        libGL
+    ];
+  };
+
   # Audio
   security.rtkit.enable = true;
 
@@ -60,6 +77,7 @@
 	startAgent = true;
    };
 
+   # Home Manager
    home-manager = {
    	extraSpecialArgs = { inherit inputs; };
 	users = {
