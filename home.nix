@@ -18,6 +18,7 @@
 	dmenu
 	xclip
         mdcat # Markdown cat
+        jq # Command Line Json Proccesor
         feh # Image viewer
         cloc # Count lines of code
 
