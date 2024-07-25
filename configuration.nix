@@ -6,15 +6,20 @@
       ./hardware-configuration.nix
     ];
      
-  nixpkgs.config.allowUnfree = true;
-
+  # Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Networking
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
+  # System
+  nixpkgs.config.allowUnfree = true;
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  time.timeZone = "Europe/London";
 
   services.xserver = {
   	enable = true;
@@ -30,8 +35,6 @@
   	autoLogin.user = "kowalski";
   };
 
-  time.timeZone = "Europe/London";
-
   # Garbage Collection
   nix.gc = {
     automatic = true;
@@ -40,6 +43,7 @@
     options = "--delete-older-than 7d";
   };
 
+  # Graphics
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -64,7 +68,8 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-   users.users.kowalski = {
+  #Users
+  users.users.kowalski = {
      isNormalUser = true;
      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
      };
