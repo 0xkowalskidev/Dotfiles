@@ -30,9 +30,6 @@
   	autoLogin.user = "kowalski";
   };
 
-  # Enables touchpad
-  services.libinput.enable = true;
-
   time.timeZone = "Europe/London";
 
   # Garbage Collection
