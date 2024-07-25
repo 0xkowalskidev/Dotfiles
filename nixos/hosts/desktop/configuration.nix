@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   imports =
@@ -12,7 +12,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.useOSProber = true;
 
-  services.xserver.videoDrivers = [ "nvidia" "intel" ];
+  # GPU
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -27,6 +27,15 @@
 
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+  # Enable multi monitor
+  services.xserver = {
+  enable = true;
+  videoDrivers = [ "nvidia" "intel" ];
+   displayManager.sessionCommands = ''
+    xrandr --output HDMI2 --primary --mode 1920x1080 --left-of HDMI-1-0 --output HDMI-1-0 --mode 1920x1080
+  '';
+};
 
 
 
