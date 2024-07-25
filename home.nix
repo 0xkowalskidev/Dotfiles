@@ -35,6 +35,12 @@
         air # Dev Server
         # Java
         openjdk21
+        # Html, CSS, JSON
+        vscode-langservers-extracted
+        # Javascript/Typescript
+        nodejs
+        typescript
+        typescript-language-server
 
 	# Font
 	(nerdfonts.override { fonts = [ "FiraCode" ]; })
