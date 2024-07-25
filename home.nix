@@ -91,10 +91,6 @@
 	};
   };
 
-  programs.starship = {
-  	enable = true;
-  };
-
   # Editor
   programs.neovim = {
   	enable = true;
