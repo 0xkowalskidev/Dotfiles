@@ -10,8 +10,8 @@
 
   home.packages = with pkgs; [	
         # Apps
-	spotify
 	discord
+        spotify-player # CLI Spotify
         prismlauncher # Minecraft
 
   	# System
@@ -45,6 +45,22 @@
 	# Font
 	(nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
+
+  # Notifications ( Required by some apps such as spotify-player ) 
+  # Don't actually want notifications so will hide them
+services.dunst = {
+  enable = true;
+  settings = {
+          global = {
+                  width = 0;
+                  height = 0;
+                  transparency = 100;
+                  geometry = "0x0";
+                  padding = 0;
+                  frame_width = 0;
+          }; 
+  };
+};
 
   # Browser
   programs.chromium = {
