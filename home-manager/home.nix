@@ -118,8 +118,8 @@ services.dunst = {
   	enable = true;
 	plugins = [ pkgs.vimPlugins.packer-nvim ];
 	extraConfig = ''
-		set runtimepath^=~/Dotfiles/Neovim
-		luafile ~/Dotfiles/Neovim/init.lua
+		set runtimepath^=~/Dotfiles/neovim
+		luafile ~/Dotfiles/neovim/init.lua
 	'';
   };
 
