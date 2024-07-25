@@ -1,15 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
-     
-  # Boot
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   # Networking
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -64,10 +55,6 @@
 	jack.enable = false;
   };
 
-  # Bluetooth 
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-
   #Users
   users.users.kowalski = {
      isNormalUser = true;
@@ -83,10 +70,8 @@
    home-manager = {
    	extraSpecialArgs = { inherit inputs; };
 	users = {
-		"kowalski" = import ./home.nix;
+		"kowalski" = import ../home-manager/home.nix;
 	};
    };
-
-  system.stateVersion = "24.05"; # DO NOT CHANGE
 }
 
