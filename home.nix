@@ -9,9 +9,6 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [	
-	# Browser
-        brave
-
         # Apps
 	spotify
 	discord
@@ -41,6 +38,24 @@
 	# Font
 	(nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
+
+  # Browser
+  programs.chromium = {
+          enable = true;
+          package = pkgs.brave;
+          extensions = [
+                # Vimium
+                { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; }
+                # Video Speed Controller
+                { id = "nffaoalbilbmmfgbnbgppjihopabppdk"; }
+                # Remove Youtube Shorts
+                { id = "mgngbgbhliflggkamjnpdmegbkidiapm"; }
+                # UBlock Origin
+                { id = "epcnnfbjfcgphgdmggkamkmgojdagdnn"; }
+                # Sponsor Block
+                { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; }
+          ];
+  };
  
   # Git
   programs.git = {
