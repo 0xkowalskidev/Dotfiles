@@ -15,8 +15,10 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  # Trackpad
-  services.libinput.touchpad.disableWhileTyping = true;
+  # Disable Trackpad
+  services.xserver.displayManager.sessionCommands = ''
+    xinput disable "bcm5974"
+  '';
 
 
 
