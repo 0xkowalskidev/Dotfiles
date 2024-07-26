@@ -21,6 +21,7 @@
         jq # Command Line Json Proccesor
         feh # Image viewer
         cloc # Count lines of code
+        ripgrep # Used by nvim telescope
 
 	# Utils
   	htop
