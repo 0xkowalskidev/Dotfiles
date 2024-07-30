@@ -42,6 +42,8 @@
         nodejs
         typescript
         typescript-language-server
+        # Nix
+        nixd # Lsp
 
 	# Font
 	(nerdfonts.override { fonts = [ "FiraCode" ]; })

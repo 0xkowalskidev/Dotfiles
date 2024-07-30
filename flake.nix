@@ -20,7 +20,7 @@
       ];
     };
 
-        nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
         ./nixos/hosts/desktop/configuration.nix
