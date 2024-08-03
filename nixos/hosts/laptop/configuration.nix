@@ -11,6 +11,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Power
+  powerManagement = {
+    enable = true;
+  };
+
   # Bluetooth 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
