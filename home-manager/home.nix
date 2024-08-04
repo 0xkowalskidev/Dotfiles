@@ -27,6 +27,7 @@
         feh # Image viewer
         cloc # Count lines of code
         dust # Disk usage analysis
+        gnumake 
 
         # Languages/LSPs
         ## Lua
