@@ -14,6 +14,7 @@
   # Power
   powerManagement = {
     enable = true;
+    powertop.enable = true;
   };
 
   # Bluetooth 
