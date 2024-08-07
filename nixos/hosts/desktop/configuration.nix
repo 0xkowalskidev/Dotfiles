@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
@@ -21,6 +21,8 @@
 
     powerManagement.finegrained = false;
 
+    nvidiaPersistenced = true;
+
     open = false;
 
     nvidiaSettings = true;
@@ -35,7 +37,16 @@
    displayManager.sessionCommands = ''
     xrandr --output HDMI2 --primary --mode 1920x1080 --left-of HDMI-1-0 --output HDMI-1-0 --mode 1920x1080
   '';
+
+   # Coolbits needed for gwe to underclock
+   deviceSection = ''
+    Option "Coolbits" "28"
+  '';
 };
+
+  environment.systemPackages = with pkgs; [
+        gwe # Underclock/overclock gpu
+  ];
 
 
 
