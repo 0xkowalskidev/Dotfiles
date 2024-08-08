@@ -12,8 +12,20 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.useOSProber = true;
 
-  # GPU
+  # Drives
+  fileSystems = {
+          "/mnt/secondary" = {
+                  device = "/dev/disk/by-uuid/4309d554-ce7d-4225-be36-9f7618418310";
+                  fsType = "ext4";
+          };
 
+         "/mnt/tertiary" = {
+                  device = "/dev/disk/by-uuid/89f9e5df-e79e-4695-a9f3-f67a8bb49cf4";
+                  fsType = "ext4";
+          };
+  };
+
+  # GPU
   hardware.nvidia = {
     modesetting.enable = true;
 
