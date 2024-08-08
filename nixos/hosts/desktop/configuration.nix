@@ -42,15 +42,17 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  # Steam
+  programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
+
   # Enable multi monitor
   services.xserver = {
   enable = true;
-  videoDrivers = [ "nvidia" "intel" ];
-   displayManager.sessionCommands = ''
-    xrandr --output HDMI2 --primary --mode 1920x1080 --left-of HDMI-1-0 --output HDMI-1-0 --mode 1920x1080
-  '';
+  videoDrivers = [ "nvidia" ];
 
-   # Coolbits needed for gwe to underclock
+# Coolbits needed for gwe to underclock
    deviceSection = ''
     Option "Coolbits" "28"
   '';
@@ -58,6 +60,7 @@
 
   environment.systemPackages = with pkgs; [
         gwe # Underclock/overclock gpu
+        mangohud # Fps viewer
   ];
 
 
