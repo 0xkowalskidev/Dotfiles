@@ -13,7 +13,6 @@
 	discord
         spotify-player # CLI Spotify
         prismlauncher # Minecraft
-        steam
 
   	# System
 	dmenu

@@ -55,6 +55,10 @@
 	jack.enable = false;
   };
 
+  environment.systemPackages = with pkgs; [
+        pulsemixer # TUI Audio Mixer
+  ];
+
   #Users
   users.users.kowalski = {
      isNormalUser = true;
