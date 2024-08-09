@@ -57,6 +57,8 @@
 
   environment.systemPackages = with pkgs; [
         pulsemixer # TUI Audio Mixer
+	dmenu
+	xclip
   ];
 
   #Users
