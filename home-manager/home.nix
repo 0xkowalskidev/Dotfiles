@@ -80,6 +80,8 @@ services.dunst = {
                 { id = "epcnnfbjfcgphgdmggkamkmgojdagdnn"; }
                 # Sponsor Block
                 { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; }
+                # Return Youtube Dislikes
+                { id  = "gebbhagfogifgggkldgodflihgfeippi"; }
         ];
   };
  
