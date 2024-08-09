@@ -14,12 +14,7 @@
         spotify-player # CLI Spotify
         prismlauncher # Minecraft
 
-  	# System
-	dmenu
-	xclip
-        ripgrep # Used by nvim telescope
-
-	# Utils
+        # Utils
   	btop
 	acpi # Battery viewer
         bat # Better Cat
@@ -27,7 +22,9 @@
         feh # Image viewer
         cloc # Count lines of code
         dust # Disk usage analysis
-        gnumake 
+        gnumake
+        sloc 
+        ripgrep # Used by nvim telescope
 
         # Languages/LSPs
         ## Lua
@@ -82,7 +79,7 @@ services.dunst = {
                 { id = "epcnnfbjfcgphgdmggkamkmgojdagdnn"; }
                 # Sponsor Block
                 { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; }
-          ];
+        ];
   };
  
   # Git
