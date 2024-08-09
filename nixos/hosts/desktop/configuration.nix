@@ -47,19 +47,25 @@
     trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
   };
 
-  # Enable multi monitor
-  services.xserver = {
-  enable = true;
-  videoDrivers = [ "nvidia" ];
 
-# Coolbits needed for gwe to underclock
-   deviceSection = ''
-    Option "Coolbits" "28"
-  '';
-};
+  services.xserver = {
+        enable = true;
+        videoDrivers = [ "nvidia" ];
+  };
+
+  # Gpu or Psu is broken, lower power limit
+   systemd.services.setGpuPowerLimit = {
+    description = "Set NVIDIA GPU Power Limit to 160W";
+    after = [ "nvidia-persistenced.service" "display-manager.service" ]; # Run after NVIDIA persistence daemon and X server start
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "/run/current-system/sw/bin/nvidia-smi -pl 160";
+    };
+  };
 
   environment.systemPackages = with pkgs; [
-        gwe # Underclock/overclock gpu
         mangohud # Fps viewer
         inputs.nix-citizen.packages.${system}.star-citizen
   ];
