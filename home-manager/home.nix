@@ -13,6 +13,7 @@
 	discord
         spotify-player # CLI Spotify
         prismlauncher # Minecraft
+        r2modman # Unoffocial thunderstore mod manager
 
         # Utils
   	btop
