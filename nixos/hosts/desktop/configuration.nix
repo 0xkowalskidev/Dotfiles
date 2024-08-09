@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -29,13 +29,7 @@
   hardware.nvidia = {
     modesetting.enable = true;
 
-    powerManagement.enable = false;
-
-    powerManagement.finegrained = false;
-
     nvidiaPersistenced = true;
-
-    open = false;
 
     nvidiaSettings = true;
 
@@ -46,6 +40,12 @@
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
+
+  # Nix-gaming cache
+  nix.settings = {
+    substituters = ["https://nix-gaming.cachix.org"];
+    trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
+  };
 
   # Enable multi monitor
   services.xserver = {
@@ -61,6 +61,7 @@
   environment.systemPackages = with pkgs; [
         gwe # Underclock/overclock gpu
         mangohud # Fps viewer
+        inputs.nix-citizen.packages.${system}.star-citizen
   ];
 
 
