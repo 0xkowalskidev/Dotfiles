@@ -55,6 +55,9 @@
 	jack.enable = false;
   };
 
+  # Virtualisation
+  virtualisation.docker.enable = true;
+
   environment.systemPackages = with pkgs; [
         pulsemixer # TUI Audio Mixer
 	dmenu
