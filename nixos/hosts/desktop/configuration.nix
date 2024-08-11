@@ -51,6 +51,18 @@
   services.xserver = {
         enable = true;
         videoDrivers = [ "nvidia" ];
+
+        # Disable unwanted mouse settings
+        displayManager.sessionCommands = ''
+      mouse_id=$(xinput list --id-only "pointer:Razer Razer DeathAdder Essential")
+      if [ -n "$mouse_id" ]; then
+        # Disable middle mouse button emulation
+        xinput set-prop "$mouse_id" "libinput Middle Emulation Enabled" 0
+
+        # Set acceleration profile
+        xinput set-prop "$mouse_id" "libinput Accel Profile Enabled" 0 0 0
+      fi
+    '';
   };
 
   # Gpu or Psu is broken, lower power limit
