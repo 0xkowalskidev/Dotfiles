@@ -5,6 +5,12 @@ return require('packer').startup(function(use)
         -- Theme
         use "navarasu/onedark.nvim"
 
+        -- TreeSitter
+        use {
+                'nvim-treesitter/nvim-treesitter',
+                run = ':TSUpdate'
+        }
+
         -- Telescope
         use {
                 "nvim-telescope/telescope.nvim", tag = "0.1.5",

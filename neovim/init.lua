@@ -11,6 +11,8 @@ require("plugins.lsp_config")
 
 require("plugins.cmp")
 
+require("plugins.treesitter")
+
 -- Core Settings
 require("core.settings")
 require("core.keymappings")

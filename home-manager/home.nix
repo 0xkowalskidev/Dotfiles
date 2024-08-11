@@ -28,12 +28,21 @@
         ripgrep # Used by nvim telescope
 
         # Languages/LSPs
+        # C
+        gcc
+        # HTMX
+        htmx-lsp
+        # Tailwind
+        tailwindcss
+        tailwindcss-language-server
         ## Lua
         lua-language-server
         ## Go
         go
         gopls # Lsp
         air # Dev Server
+        templ # Templating
+
         # Java
         openjdk21
         # Html, CSS, JSON
