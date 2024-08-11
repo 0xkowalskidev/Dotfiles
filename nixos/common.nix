@@ -18,6 +18,7 @@
 		enable = true;
 		configFile = "/home/kowalski/Dotfiles/i3/config";
 	};
+
   };
   
   # Autologin
@@ -97,7 +98,7 @@
         pulsemixer # TUI Audio Mixer
 	dmenu
 	xclip
-        
+
         # For container orchestrator project
         cni
         cni-plugins
