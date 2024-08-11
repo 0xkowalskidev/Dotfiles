@@ -57,11 +57,50 @@
 
   # Virtualisation
   virtualisation.docker.enable = true;
+  virtualisation.containerd.enable = true;
+
+  # For container orchestrator project
+  # Etcd
+  services.etcd.enable = true;
+
+  # CNI
+  environment.etc."cni/net.d/10-mynet.conflist".text = ''
+ {
+  "cniVersion": "1.0.0",
+  "name": "mynet",
+  "plugins": [
+    {
+      "type": "bridge",
+      "bridge": "cni0",
+      "isGateway": true,
+      "ipMasq": true,
+      "ipam": {
+        "type": "host-local",
+        "subnet": "10.22.0.0/16",
+        "routes": [
+          { "dst": "0.0.0.0/0" }
+        ]
+      }
+    },
+    {
+      "type": "portmap",
+      "capabilities": {
+        "portMappings": true
+      },
+      "snat": true
+    }
+  ]
+}
+  '';
 
   environment.systemPackages = with pkgs; [
         pulsemixer # TUI Audio Mixer
 	dmenu
 	xclip
+        
+        # For container orchestrator project
+        cni
+        cni-plugins
   ];
 
   #Users
