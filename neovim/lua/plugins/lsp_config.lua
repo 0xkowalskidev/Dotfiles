@@ -23,10 +23,38 @@ lspconfig.gopls.setup({
         capabilities = capabilities
 })
 
+-- Templ
+lspconfig.templ.setup({
+        on_attach = on_attach,
+        capabilities = capabilities
+})
+
+-- Htmx
+lspconfig.htmx.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { "html", "templ" },
+})
+
+-- Tailwind
+lspconfig.tailwindcss.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+        settings = {
+                tailwindCSS = {
+                        includeLanguages = {
+                                templ = "html",
+                        },
+                },
+        },
+})
+
 -- Html
 lspconfig.html.setup({
         on_attach = on_attach,
-        capabilities = capabilities
+        capabilities = capabilities,
+        filetypes = { "html", "templ" },
 })
 
 -- Css
