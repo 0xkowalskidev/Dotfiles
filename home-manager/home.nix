@@ -93,7 +93,8 @@ services.dunst = {
                 { id  = "gebbhagfogifgggkldgodflihgfeippi"; }
         ];
   };
- 
+
+
   # Git
   programs.git = {
   	enable = true;
@@ -109,6 +110,13 @@ services.dunst = {
 		clear
 	'';
   };
+
+    # Direnv
+  programs.direnv = {
+      enable = true;
+      enableBashIntegration = true; 
+      nix-direnv.enable = true;
+    };
 
   # Font
   fonts.fontconfig.enable = true;

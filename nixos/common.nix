@@ -94,6 +94,18 @@
 }
   '';
 
+  # Databases
+  services.postgresql = {
+    enable = true;  
+    ensureDatabases = [ "serverhosting" ];  
+    authentication = pkgs.lib.mkOverride 10 ''
+      #type database  DBuser  auth-method
+      local all       all     trust
+      host    serverhosting  postgres        127.0.0.1/32            md5
+      host    serverhosting  postgres        ::1/128                 md5
+    '';
+  };
+
   environment.systemPackages = with pkgs; [
         pulsemixer # TUI Audio Mixer
 	dmenu
