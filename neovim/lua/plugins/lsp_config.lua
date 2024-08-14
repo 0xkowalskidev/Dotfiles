@@ -3,6 +3,7 @@ local lspconfig = require("lspconfig")
 local on_attach = function(client, bufnr)
         -- Setup format on save
         vim.api.nvim_create_autocmd('BufWritePre', {
+                buffer = bufnr,
                 callback = function()
                         vim.lsp.buf.format({ async = false })
                 end,
@@ -70,7 +71,14 @@ lspconfig.jsonls.setup({
 })
 
 -- Nix
-lspconfig.nixd.setup({
+lspconfig.nil_ls.setup({
         on_attach = on_attach,
-        capabilities = capabilities
+        capabilities = capabilities,
+        settings = {
+                ['nil'] = {
+                        formatting = {
+                                command = { "nixpkgs-fmt" },
+                        },
+                },
+        },
 })
