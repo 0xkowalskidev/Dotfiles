@@ -13,18 +13,18 @@
   time.timeZone = "Europe/London";
 
   services.xserver = {
-  	enable = true;
-	windowManager.i3 = {
-		enable = true;
-		configFile = "/home/kowalski/Dotfiles/i3/config";
-	};
+    enable = true;
+    windowManager.i3 = {
+      enable = true;
+      configFile = "/home/kowalski/Dotfiles/i3/config";
+    };
 
   };
-  
+
   # Autologin
   services.displayManager = {
-  	autoLogin.enable = true;
-  	autoLogin.user = "kowalski";
+    autoLogin.enable = true;
+    autoLogin.user = "kowalski";
   };
 
   # Garbage Collection
@@ -41,7 +41,7 @@
     enable32Bit = true;
 
     extraPackages = with pkgs; [
-        libGL
+      libGL
     ];
   };
 
@@ -49,11 +49,11 @@
   security.rtkit.enable = true;
 
   services.pipewire = {
-  	enable = true;
-	alsa.enable = true;
-	alsa.support32Bit = true;
-	pulse.enable = true;
-	jack.enable = false;
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = false;
   };
 
   # Virtualisation
@@ -66,38 +66,38 @@
 
   # CNI
   environment.etc."cni/net.d/10-mynet.conflist".text = ''
- {
-  "cniVersion": "1.0.0",
-  "name": "mynet",
-  "plugins": [
-    {
-      "type": "bridge",
-      "bridge": "cni0",
-      "isGateway": true,
-      "ipMasq": true,
-      "ipam": {
-        "type": "host-local",
-        "subnet": "10.22.0.0/16",
-        "routes": [
-          { "dst": "0.0.0.0/0" }
-        ]
-      }
-    },
-    {
-      "type": "portmap",
-      "capabilities": {
-        "portMappings": true
-      },
-      "snat": true
+     {
+      "cniVersion": "1.0.0",
+      "name": "mynet",
+      "plugins": [
+        {
+          "type": "bridge",
+          "bridge": "cni0",
+          "isGateway": true,
+          "ipMasq": true,
+          "ipam": {
+            "type": "host-local",
+            "subnet": "10.22.0.0/16",
+            "routes": [
+              { "dst": "0.0.0.0/0" }
+            ]
+          }
+        },
+        {
+          "type": "portmap",
+          "capabilities": {
+            "portMappings": true
+          },
+          "snat": true
+        }
+      ]
     }
-  ]
-}
   '';
 
   # Databases
   services.postgresql = {
-    enable = true;  
-    ensureDatabases = [ "serverhosting" ];  
+    enable = true;
+    ensureDatabases = [ "serverhosting" ];
     authentication = pkgs.lib.mkOverride 10 ''
       #type database  DBuser  auth-method
       local all       all     trust
@@ -107,32 +107,34 @@
   };
 
   environment.systemPackages = with pkgs; [
-        pulsemixer # TUI Audio Mixer
-	dmenu
-	xclip
+    pulsemixer # TUI Audio Mixer
+    dmenu
+    xclip
 
-        # For container orchestrator project
-        cni
-        cni-plugins
+    qemu
+
+    # For container orchestrator project
+    cni
+    cni-plugins
   ];
 
   #Users
   users.users.kowalski = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-     };
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  };
 
-   # Ssh
-   programs.ssh = {
-	startAgent = true;
-   };
+  # Ssh
+  programs.ssh = {
+    startAgent = true;
+  };
 
-   # Home Manager
-   home-manager = {
-   	extraSpecialArgs = { inherit inputs; };
-	users = {
-		"kowalski" = import ../home-manager/home.nix;
-	};
-   };
+  # Home Manager
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "kowalski" = import ../home-manager/home.nix;
+    };
+  };
 }
 
