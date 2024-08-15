@@ -32,6 +32,14 @@
       ];
     };
 
+    nixosConfigurations.dopey = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./nixos/hosts/server-dopey/configuration.nix
+        inputs.home-manager.nixosModules.default
+      ];
+    };
+
     homeManagerModules.default = ./home-manager;
   };
 }
