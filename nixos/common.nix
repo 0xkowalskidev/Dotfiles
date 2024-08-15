@@ -129,12 +129,5 @@
     startAgent = true;
   };
 
-  # Home Manager
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "kowalski" = import ../home-manager/home.nix;
-    };
-  };
 }
 

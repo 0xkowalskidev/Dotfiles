@@ -32,5 +32,6 @@
       ];
     };
 
+    homeManagerModules.default = ./home-manager;
   };
 }
