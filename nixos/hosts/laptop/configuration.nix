@@ -11,6 +11,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Networking
+  networking.hostName = "laptop";
+  networking.networkmanager.enable = true;
+
   # Power
   powerManagement = {
     enable = true;

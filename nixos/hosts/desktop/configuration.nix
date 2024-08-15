@@ -12,6 +12,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.useOSProber = true;
 
+  # Networking
+  networking.hostName = "desktop";
+  networking.networkmanager.enable = true;
+
   # Drives
   fileSystems = {
     "/mnt/secondary" = {
