@@ -1,9 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  # Networking
-  networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
 
   # System
   nixpkgs.config.allowUnfree = true;
