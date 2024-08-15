@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports =
@@ -45,6 +45,21 @@
       fi
     '')
   ];
+
+  # Home Manager
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+
+    users = {
+      "kowalski" = { ... }: {
+        imports = [
+          ./home.nix
+          inputs.self.outputs.homeManagerModules.default
+        ];
+      };
+    };
+  };
+
 
   system.stateVersion = "24.05"; # DO NOT CHANGE
 }

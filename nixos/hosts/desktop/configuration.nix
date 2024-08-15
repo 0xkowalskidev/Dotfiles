@@ -14,15 +14,15 @@
 
   # Drives
   fileSystems = {
-          "/mnt/secondary" = {
-                  device = "/dev/disk/by-uuid/4309d554-ce7d-4225-be36-9f7618418310";
-                  fsType = "ext4";
-          };
+    "/mnt/secondary" = {
+      device = "/dev/disk/by-uuid/4309d554-ce7d-4225-be36-9f7618418310";
+      fsType = "ext4";
+    };
 
-         "/mnt/tertiary" = {
-                  device = "/dev/disk/by-uuid/89f9e5df-e79e-4695-a9f3-f67a8bb49cf4";
-                  fsType = "ext4";
-          };
+    "/mnt/tertiary" = {
+      device = "/dev/disk/by-uuid/89f9e5df-e79e-4695-a9f3-f67a8bb49cf4";
+      fsType = "ext4";
+    };
   };
 
   # GPU
@@ -43,17 +43,17 @@
 
   # Nix-gaming cache
   nix.settings = {
-    substituters = ["https://nix-gaming.cachix.org"];
-    trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
+    substituters = [ "https://nix-gaming.cachix.org" ];
+    trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
   };
 
 
   services.xserver = {
-        enable = true;
-        videoDrivers = [ "nvidia" ];
+    enable = true;
+    videoDrivers = [ "nvidia" ];
 
-        # Disable unwanted mouse settings
-        displayManager.sessionCommands = ''
+    # Disable unwanted mouse settings
+    displayManager.sessionCommands = ''
       mouse_id=$(xinput list --id-only "pointer:Razer Razer DeathAdder Essential")
       if [ -n "$mouse_id" ]; then
         # Disable middle mouse button emulation
@@ -66,7 +66,7 @@
   };
 
   # Gpu or Psu is broken, lower power limit
-   systemd.services.setGpuPowerLimit = {
+  systemd.services.setGpuPowerLimit = {
     description = "Set NVIDIA GPU Power Limit to 160W";
     after = [ "nvidia-persistenced.service" "display-manager.service" ]; # Run after NVIDIA persistence daemon and X server start
     wantedBy = [ "multi-user.target" ];
@@ -78,9 +78,23 @@
   };
 
   environment.systemPackages = with pkgs; [
-        mangohud # Fps viewer
-        inputs.nix-citizen.packages.${system}.star-citizen
+    mangohud # Fps viewer
+    inputs.nix-citizen.packages.${system}.star-citizen
   ];
+
+  # Home Manager
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+
+    users = {
+      "kowalski" = { ... }: {
+        imports = [
+          ./home.nix
+          inputs.self.outputs.homeManagerModules.default
+        ];
+      };
+    };
+  };
 
 
 
