@@ -33,5 +33,17 @@
     };
   };
 
+  services.minecraft-server = {
+    enable = true;
+    eula = true;
+    openFirewall = true;
+    jvmOpts = "-Xmx8G -Xms8G";
+    declarative = true;
+    serverProperties = {
+      motd = "Big Wickes!";
+      difficulty = 3;
+    };
+  };
+
   system.stateVersion = "24.05"; # DO NOT CHANGE
 }
