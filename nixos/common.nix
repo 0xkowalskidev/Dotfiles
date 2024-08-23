@@ -1,6 +1,9 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
+  imports = [
+    ./services
+  ];
 
   # System
   nixpkgs.config.allowUnfree = true;
