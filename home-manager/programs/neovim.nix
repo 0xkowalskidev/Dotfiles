@@ -42,6 +42,8 @@
       # Nix
       nil # Lsp
       nixpkgs-fmt # Formatting
+      # Python
+      python310
     ];
 
     programs.neovim = {
