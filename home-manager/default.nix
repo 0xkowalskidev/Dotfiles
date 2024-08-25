@@ -26,7 +26,7 @@
     acpi # Battery viewer
     bat # Better Cat
     jq # Command Line Json Proccesor
-    feh # Image viewer
+    geeqie # Image viewer
     cloc # Count lines of code
     dust # Disk usage analysis
     sloc
