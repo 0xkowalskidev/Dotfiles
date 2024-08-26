@@ -1,5 +1,5 @@
 {
   imports = [
-    ./satisfactory.nix
+    ./i3.nix
   ];
 }

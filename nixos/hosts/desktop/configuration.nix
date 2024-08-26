@@ -16,6 +16,9 @@
   networking.hostName = "desktop";
   networking.networkmanager.enable = true;
 
+  # Display Manager
+  window-managers.i3.enable = true;
+
   # Drives
   fileSystems = {
     "/mnt/secondary" = {

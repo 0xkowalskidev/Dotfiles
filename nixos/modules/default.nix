@@ -1,5 +1,5 @@
 {
   imports = [
-    ./satisfactory.nix
+    ./window-managers
   ];
 }
