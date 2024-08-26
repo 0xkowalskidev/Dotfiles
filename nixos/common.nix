@@ -1,8 +1,9 @@
-{ config, lib, pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
     ./services
+    ./modules
   ];
 
   # System
@@ -11,15 +12,6 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   time.timeZone = "Europe/London";
-
-  services.xserver = {
-    enable = true;
-    windowManager.i3 = {
-      enable = true;
-      configFile = "/home/kowalski/Dotfiles/i3/config";
-    };
-
-  };
 
   # Autologin
   services.displayManager = {
