@@ -29,7 +29,6 @@
     geeqie # Image viewer
     cloc # Count lines of code
     dust # Disk usage analysis
-    sloc
     gnumake
   ];
 
