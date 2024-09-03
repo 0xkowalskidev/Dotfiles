@@ -8,6 +8,7 @@
     ./programs/alacritty.nix
     ./programs/bash.nix
     ./programs/git.nix
+    ./programs/discord.nix
   ];
 
   programs.home-manager.enable = true;
@@ -16,9 +17,6 @@
   home.homeDirectory = "/home/kowalski";
 
   home.packages = with pkgs; [
-    # Apps
-    discord
-
     # Utils
     btop
     acpi # Battery viewer
