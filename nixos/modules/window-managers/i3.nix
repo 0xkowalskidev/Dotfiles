@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   options.window-managers.i3.enable = lib.mkOption {
@@ -16,6 +16,12 @@
       };
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    dmenu
+  ];
+
+
 }
 
 

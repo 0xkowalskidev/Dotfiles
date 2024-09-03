@@ -13,12 +13,6 @@
 
   time.timeZone = "Europe/London";
 
-  # Autologin
-  services.displayManager = {
-    autoLogin.enable = true;
-    autoLogin.user = "kowalski";
-  };
-
   # Garbage Collection
   nix.gc = {
     automatic = true;
@@ -100,7 +94,6 @@
 
   environment.systemPackages = with pkgs; [
     pulsemixer # TUI Audio Mixer
-    dmenu
     xclip
 
     qemu
