@@ -18,8 +18,6 @@
   home.packages = with pkgs; [
     # Apps
     discord
-    prismlauncher # Minecraft
-    r2modman # Unoffocial thunderstore mod manager
 
     # Utils
     btop

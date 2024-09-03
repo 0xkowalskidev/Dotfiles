@@ -3,7 +3,8 @@
 {
   imports = [
     ./services
-    ./modules
+    ./window-managers
+    ./games
   ];
 
   # System

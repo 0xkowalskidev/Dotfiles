@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, inputs, ... }:
 
 {
   imports =
@@ -18,6 +18,12 @@
 
   # Window Manager
   window-managers.i3.enable = true;
+
+  # Games
+  games.minecraft.enable = true;
+  games.steam.enable = true;
+  games.star-citizen.enable = true;
+  games.r2modman.enable = true;
 
   # Autologin
   services.displayManager = {
@@ -49,18 +55,6 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  # Steam
-  programs.steam.enable = true;
-  programs.steam.gamescopeSession.enable = true;
-  programs.gamemode.enable = true;
-
-  # Nix-gaming cache
-  nix.settings = {
-    substituters = [ "https://nix-gaming.cachix.org" ];
-    trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
-  };
-
-
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
@@ -89,11 +83,6 @@
       ExecStart = "/run/current-system/sw/bin/nvidia-smi -pl 160";
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    mangohud # Fps viewer
-    inputs.nix-citizen.packages.${system}.star-citizen
-  ];
 
   # Home Manager
   home-manager = {
