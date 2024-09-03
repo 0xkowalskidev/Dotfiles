@@ -9,4 +9,5 @@
   alacritty.enable = true;
   bash.enable = true;
   git.enable = true;
+  discord.enable = true;
 }
