@@ -25,11 +25,16 @@
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
+  programs.sway.enable = true;
+  programs.sway.extraOptions = [
+    "--config=/home/kowalski/Dotfiles/sway/config"
+  ];
+
   # Disable trackpad by default
-  services.xserver.displayManager.sessionCommands = ''
-    xinput disable "bcm5974"
-    unclutter &
-  '';
+  #  services.xserver.displayManager.sessionCommands = ''
+  #   xinput disable "bcm5974"
+  #   unclutter &
+  # '';
 
   # Script for toggling trackpad
   environment.systemPackages = with pkgs; [
