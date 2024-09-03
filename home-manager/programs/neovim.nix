@@ -30,9 +30,7 @@
       go
       gopls # Lsp
       air # Dev Server
-      templ # Templating
-      # Java
-      openjdk21
+      templ # Templating 
       # Html, CSS, JSON
       vscode-langservers-extracted
       # Javascript/Typescript
