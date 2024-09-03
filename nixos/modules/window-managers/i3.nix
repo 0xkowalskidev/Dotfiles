@@ -15,13 +15,11 @@
         configFile = "/home/kowalski/Dotfiles/i3/config";
       };
     };
+
+    environment.systemPackages = with pkgs; [
+      dmenu
+    ];
   };
-
-  environment.systemPackages = with pkgs; [
-    dmenu
-  ];
-
-
 }
 
 
