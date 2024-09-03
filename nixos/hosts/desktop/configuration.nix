@@ -25,6 +25,9 @@
   games.star-citizen.enable = true;
   games.r2modman.enable = true;
 
+  # Projects
+  projects.container-orchestrator.enable = true;
+
   # Autologin
   services.displayManager = {
     autoLogin.enable = true;
