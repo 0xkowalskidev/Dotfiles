@@ -16,8 +16,14 @@
   networking.hostName = "desktop";
   networking.networkmanager.enable = true;
 
-  # Display Manager
+  # Window Manager
   window-managers.i3.enable = true;
+
+  # Autologin
+  services.displayManager = {
+    autoLogin.enable = true;
+    autoLogin.user = "kowalski";
+  };
 
   # Drives
   fileSystems = {
