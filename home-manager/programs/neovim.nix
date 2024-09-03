@@ -15,6 +15,7 @@
   config = lib.mkIf config.neovim.enable {
     home.packages = with pkgs; [
       ripgrep # Used by nvim telescope
+      xclip
 
       # Languages/LSPs
       # C
