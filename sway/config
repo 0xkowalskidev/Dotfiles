@@ -11,7 +11,7 @@
       bindsym $mod+Return exec $terminal
       bindsym $mod+Escape kill
       bindsym $mod+space exec dmenu_run
-      bindsym $mod+r exec "sway reload"
+      bindsym $mod+r exec swaymsg reload
 
       # Startup apps
       exec $terminal
