@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, config, ... }:
 
 {
   imports =
@@ -10,6 +10,7 @@
   # Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
   # Networking
   networking.hostName = "laptop";
