@@ -23,8 +23,6 @@
         { id = "nffaoalbilbmmfgbnbgppjihopabppdk"; }
         # Remove Youtube Shorts
         { id = "mgngbgbhliflggkamjnpdmegbkidiapm"; }
-        # UBlock Origin
-        { id = "epcnnfbjfcgphgdmggkamkmgojdagdnn"; }
         # Sponsor Block
         { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; }
         # Return Youtube Dislikes
