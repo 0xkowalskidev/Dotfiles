@@ -31,6 +31,8 @@
     "--config=/home/kowalski/Dotfiles/sway/config"
   ];
 
+  projects.container-orchestrator.enable = true;
+
   # Disable trackpad by default
   #  services.xserver.displayManager.sessionCommands = ''
   #   xinput disable "bcm5974"
