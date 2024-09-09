@@ -30,7 +30,6 @@
       ## Go
       go
       gopls # Lsp
-      air # Dev Server
       templ # Templating 
       # Html, CSS, JSON
       vscode-langservers-extracted
@@ -43,6 +42,8 @@
       nixpkgs-fmt # Formatting
       # Python
       python310
+      # Dev Tools
+      reflex
     ];
 
     programs.neovim = {
