@@ -7,6 +7,9 @@
       output * bg #000000 solid_color
       output eDP-1 scale 1.5
 
+      bindsym $mod+t exec swaymsg input type:touchpad events toggle
+      seat * hide_cursor 2000 
+
       # Core commands
       bindsym $mod+Return exec $terminal
       bindsym $mod+Escape kill
