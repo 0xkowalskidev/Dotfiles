@@ -31,7 +31,9 @@
     "--config=/home/kowalski/Dotfiles/sway/config"
   ];
 
-  projects.container-orchestrator.enable = true;
+  #  projects.container-orchestrator.enable = true;
+
+  programs.ladybird.enable = true;
 
   # Home Manager
   home-manager = {
