@@ -16,8 +16,12 @@
     # Git
     programs.git = {
       enable = true;
-      userEmail = "0xkowalskiaudit@gmail.com";
-      userName = "0xkowalski1";
+      userEmail = "0xkowalskidev@gmail.com";
+      userName = "0xkowalskidev";
+
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
     };
   };
 }
