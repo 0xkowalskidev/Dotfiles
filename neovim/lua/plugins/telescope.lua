@@ -17,13 +17,8 @@ require('telescope').setup {
 }
 
 -- Telescope keymappings
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-
--- Find files using Telescope command-line sugar.
-map('n', '<A-p>', '<cmd>Telescope find_files<cr>', opts)        -- Find files in cur dir
-map('n', '<S-p>', '<cmd>Telescope find_files cwd=~/<cr>', opts) -- Find files in home
-
--- Live grep using Telescope
-map('n', '<A-f>', '<cmd>Telescope live_grep<cr>', opts)        -- Grep cur dir
-map('n', '<S-f>', '<cmd>Telescope live_grep cwd=~/<cr>', opts) -- Grep home
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
