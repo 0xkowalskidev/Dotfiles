@@ -26,6 +26,7 @@
     cloc # Count lines of code
     dust # Disk usage analysis
     gnumake
+    tt # Typespeed test
   ];
 
   home.stateVersion = "24.05"; # DO NOT CHANGE
