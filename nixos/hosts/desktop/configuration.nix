@@ -28,6 +28,9 @@
   # Projects
   projects.container-orchestrator.enable = true;
 
+  programs.ladybird.enable = true;
+  programs.firefox.enable = true;
+
   # Autologin
   services.displayManager = {
     autoLogin.enable = true;
