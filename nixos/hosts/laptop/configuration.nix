@@ -32,6 +32,7 @@
   ];
 
   projects.container-orchestrator.enable = true;
+  games.minecraft.enable = true;
 
   programs.ladybird.enable = true;
 
