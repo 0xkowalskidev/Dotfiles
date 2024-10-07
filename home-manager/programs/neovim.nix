@@ -45,7 +45,10 @@
       # Ruby
       ruby
       ruby-lsp
+      rubyPackages.rails
+      bundix
       sqlite
+      libyaml
       # Dev Tools
       reflex
     ];
