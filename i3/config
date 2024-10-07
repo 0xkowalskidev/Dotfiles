@@ -12,7 +12,7 @@ bindsym $mod+space exec dmenu_run
 
 bindsym $mod+r restart
 
-for_window [floating] floating disable
+#for_window [floating] floating disable
 
 # Startup apps
 exec --no-startup-id $terminal
