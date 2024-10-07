@@ -42,6 +42,10 @@
       nixpkgs-fmt # Formatting
       # Python
       python310
+      # Ruby
+      ruby
+      ruby-lsp
+      sqlite
       # Dev Tools
       reflex
     ];

@@ -84,7 +84,13 @@ lspconfig.nil_ls.setup({
 })
 
 -- JS
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+})
+
+-- Ruby
+lspconfig.ruby_lsp.setup({
         on_attach = on_attach,
         capabilities = capabilities,
 })
