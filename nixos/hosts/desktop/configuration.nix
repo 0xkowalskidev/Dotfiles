@@ -28,8 +28,28 @@
   # Projects
   projects.container-orchestrator.enable = true;
 
+  networking.firewall = {
+    enable = true;
+
+    allowedTCPPorts = [ 22 25565 ];
+
+    allowedTCPPortRanges = [
+      { from = 30000; to = 32767; }
+    ];
+
+
+    allowedUDPPortRanges = [
+      { from = 30000; to = 32767; }
+    ];
+  };
+
   programs.ladybird.enable = true;
   programs.firefox.enable = true;
+
+
+  # SSH
+  services.openssh.enable = true;
+  services.openssh.settings.PasswordAuthentication = true;
 
   # Autologin
   services.displayManager = {
@@ -49,6 +69,7 @@
       fsType = "ext4";
     };
   };
+
 
   # GPU
   hardware.nvidia = {
