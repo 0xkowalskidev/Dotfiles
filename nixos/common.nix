@@ -51,7 +51,7 @@
   #Users
   users.users.kowalski = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd" "docker" ];
   };
 
   # Ssh
