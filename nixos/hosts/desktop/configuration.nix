@@ -43,6 +43,10 @@
     ];
   };
 
+  # Virt manager
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
   programs.ladybird.enable = true;
   programs.firefox.enable = true;
 
