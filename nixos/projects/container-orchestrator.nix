@@ -19,6 +19,7 @@
       pkgs.cni-plugins
     ];
 
+    services.openssh.enable = true;
     services.etcd.enable = true;
 
     environment.etc."cni/net.d/10-mynet.conflist".text = ''
