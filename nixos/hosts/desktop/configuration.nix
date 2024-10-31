@@ -47,7 +47,6 @@
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
-  programs.ladybird.enable = true;
   programs.firefox.enable = true;
 
 
@@ -78,7 +77,7 @@
   # GPU
   hardware.nvidia = {
     modesetting.enable = true;
-
+    open = false;
     nvidiaPersistenced = true;
 
     nvidiaSettings = true;
