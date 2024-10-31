@@ -46,6 +46,7 @@
 
   environment.systemPackages = with pkgs; [
     pulsemixer # TUI Audio Mixer
+    signal-desktop
   ];
 
   #Users
