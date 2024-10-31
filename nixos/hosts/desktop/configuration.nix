@@ -105,13 +105,13 @@
 
   # Gpu or Psu is broken, lower power limit
   systemd.services.setGpuPowerLimit = {
-    description = "Set NVIDIA GPU Power Limit to 160W";
+    description = "Set NVIDIA GPU Power Limit to 125W";
     after = [ "nvidia-persistenced.service" "display-manager.service" ]; # Run after NVIDIA persistence daemon and X server start
     wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "/run/current-system/sw/bin/nvidia-smi -pl 160";
+      ExecStart = "/run/current-system/sw/bin/nvidia-smi -pl 125";
     };
   };
 
