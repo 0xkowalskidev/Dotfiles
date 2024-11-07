@@ -24,9 +24,14 @@
     jq # Command Line Json Proccesor
     geeqie # Image viewer
     cloc # Count lines of code
-    dust # Disk usage analysis
+    ncdu # Disk usage analysis
     gnumake
     tt # Typespeed test
+    nmap
+    tree
+    neofetch
+    cpufetch
+    busybox
   ];
 
   home.stateVersion = "24.05"; # DO NOT CHANGE
