@@ -21,9 +21,9 @@
 
   # Games
   games.minecraft.enable = true;
-  games.steam.enable = true;
+  games.steam.enable = false;
   games.star-citizen.enable = true;
-  games.r2modman.enable = true;
+  games.r2modman.enable = false;
 
   # Projects
   projects.container-orchestrator.enable = true;
