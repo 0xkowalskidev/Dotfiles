@@ -31,7 +31,6 @@
     tree
     neofetch
     cpufetch
-    busybox
   ];
 
   home.stateVersion = "24.05"; # DO NOT CHANGE
