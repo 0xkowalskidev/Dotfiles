@@ -1,5 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 
+
 {
   options.games.star-citizen.enable = lib.mkOption {
     type = lib.types.bool;
@@ -7,19 +8,29 @@
     description = "Enable Star Citizen.";
   };
 
-  config = lib.mkIf config.games.star-citizen.enable {
-    # Nix-gaming cache
-    nix.settings = {
-      substituters = [ "https://nix-gaming.cachix.org" ];
-      trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
+  config = lib.mkIf config.games.star-citizen.enable
+    {
+      boot.kernel.sysctl = {
+        "vm.max_map_count" = 16777216;
+        "fs.file-max" = 524288;
+      };
+
+      swapDevices = [{
+        device = "/mnt/secondary/swapfile";
+        size = 16 * 1024; # 16 GB Swap
+      }];
+
+      users.users.kowalski = lib.mkMerge [
+        {
+          packages = [
+            (inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.star-citizen.override {
+              tricks = [ "arial" "vcrun2019" "win10" "sound=alsa" ];
+            })
+          ];
+        }
+      ];
     };
 
-    environment.systemPackages = with pkgs; [
-      inputs.nix-citizen.packages.${system}.star-citizen
-    ];
-  };
 }
-
-
 
 
