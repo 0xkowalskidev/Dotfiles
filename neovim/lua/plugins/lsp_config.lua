@@ -64,6 +64,12 @@ lspconfig.cssls.setup({
         capabilities = capabilities
 })
 
+-- JS
+lspconfig.ts_ls.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+})
+
 -- Json
 lspconfig.jsonls.setup({
         on_attach = on_attach,
@@ -81,16 +87,4 @@ lspconfig.nil_ls.setup({
                         },
                 },
         },
-})
-
--- JS
-lspconfig.ts_ls.setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-})
-
--- Ruby
-lspconfig.ruby_lsp.setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
 })

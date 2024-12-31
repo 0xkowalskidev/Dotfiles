@@ -15,7 +15,7 @@
   config = lib.mkIf config.alacritty.enable {
     # Font
     home.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" ]; })
+      nerd-fonts.fira-code
     ];
 
     fonts.fontconfig.enable = true;

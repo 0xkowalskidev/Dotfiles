@@ -32,7 +32,7 @@
     neofetch
     cpufetch
     qemu
-    quickemu
+    #quickemu
   ];
 
   home.stateVersion = "24.05"; # DO NOT CHANGE
