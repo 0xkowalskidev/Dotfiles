@@ -30,6 +30,9 @@
   programs.sway.extraOptions = [
     "--config=/home/kowalski/Dotfiles/sway/config"
   ];
+  environment.systemPackages = with pkgs; [
+    dmenu
+  ];
 
   projects.container-orchestrator.enable = true;
   games.minecraft.enable = true;
