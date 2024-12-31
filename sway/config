@@ -39,6 +39,12 @@
       bindsym $mod+Shift+Up move up
       bindsym $mod+Shift+Down move down
 
+      # Resize window
+      bindsym $mod+Mod1+Right resize shrink width 10px
+      bindsym $mod+Mod1+Left resize grow width 10px
+      bindsym $mod+Mod1+Up resize shrink height 10px
+      bindsym $mod+Mod1+Down resize grow height 10px
+
       # Split containers
       bindsym $mod+h split h
       bindsym $mod+v split v
