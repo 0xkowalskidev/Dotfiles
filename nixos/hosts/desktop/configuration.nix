@@ -21,9 +21,11 @@
 
   # Games
   games.minecraft.enable = true;
-  games.steam.enable = false;
+  games.steam.enable = true;
   games.star-citizen.enable = true;
   games.r2modman.enable = false;
+
+  powerManagement.cpuFreqGovernor = "performance";
 
   # Projects
   projects.container-orchestrator.enable = true;
@@ -43,16 +45,6 @@
     ];
   };
 
-  # Virt manager
-  virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
-
-  programs.firefox.enable = true;
-
-
-  # SSH
-  services.openssh.enable = true;
-  services.openssh.settings.PasswordAuthentication = true;
 
   # Autologin
   services.displayManager = {
