@@ -40,15 +40,6 @@
       # Nix
       nil # Lsp
       nixpkgs-fmt # Formatting
-      # Python
-      python310
-      # Ruby
-      ruby
-      ruby-lsp
-      rubyPackages.rails
-      bundix
-      sqlite
-      libyaml
       # Dev Tools
       reflex
     ];
