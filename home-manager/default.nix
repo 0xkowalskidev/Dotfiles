@@ -29,7 +29,7 @@
     tt # Typespeed test
     nmap
     tree
-    neofetch
+    fastfetch
     cpufetch
     qemu
     #quickemu
