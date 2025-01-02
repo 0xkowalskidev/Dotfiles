@@ -33,6 +33,7 @@
     cpufetch
     qemu
     #quickemu
+    inetutils
   ];
 
   home.stateVersion = "24.05"; # DO NOT CHANGE
