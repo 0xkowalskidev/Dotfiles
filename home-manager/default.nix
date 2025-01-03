@@ -34,6 +34,8 @@
     qemu
     #quickemu
     inetutils
+    firefox
+    openvpn
   ];
 
   home.stateVersion = "24.05"; # DO NOT CHANGE
