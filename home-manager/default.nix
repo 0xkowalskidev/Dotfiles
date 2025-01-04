@@ -36,6 +36,12 @@
     inetutils
     firefox
     openvpn
+    dig
+    wireshark
+    pass
+    gnupg
+    tcpdump
+    calc
   ];
 
   home.stateVersion = "24.05"; # DO NOT CHANGE
