@@ -24,6 +24,7 @@
         {
           packages = [
             (inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.star-citizen.override {
+              location = "/mnt/secondary/starcitizen";
               tricks = [ "arial" "vcrun2019" "win10" "sound=alsa" ];
             })
           ];
