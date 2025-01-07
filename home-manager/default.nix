@@ -45,6 +45,7 @@
     unzip
     john
     hashid
+    gobuster
   ];
 
   home.stateVersion = "24.05"; # DO NOT CHANGE
