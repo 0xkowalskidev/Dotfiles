@@ -48,6 +48,8 @@
     gobuster
     thc-hydra
     sqlmap
+    poppler_utils
+    exiftool
   ];
 
   home.stateVersion = "24.05"; # DO NOT CHANGE
