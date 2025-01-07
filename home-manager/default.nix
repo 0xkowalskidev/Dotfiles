@@ -47,6 +47,7 @@
     hashid
     gobuster
     thc-hydra
+    sqlmap
   ];
 
   home.stateVersion = "24.05"; # DO NOT CHANGE
