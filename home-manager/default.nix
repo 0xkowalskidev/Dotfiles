@@ -42,6 +42,9 @@
     gnupg
     tcpdump
     calc
+    unzip
+    john
+    hashid
   ];
 
   home.stateVersion = "24.05"; # DO NOT CHANGE
