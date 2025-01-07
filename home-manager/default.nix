@@ -46,6 +46,7 @@
     john
     hashid
     gobuster
+    thc-hydra
   ];
 
   home.stateVersion = "24.05"; # DO NOT CHANGE
