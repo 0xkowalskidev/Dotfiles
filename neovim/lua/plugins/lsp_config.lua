@@ -24,6 +24,13 @@ lspconfig.gopls.setup({
         capabilities = capabilities
 })
 
+-- Odin
+lspconfig.ols.setup({
+        on_attach = on_attach,
+        capabilities = capabilities
+})
+
+
 -- Templ
 lspconfig.templ.setup({
         on_attach = on_attach,
