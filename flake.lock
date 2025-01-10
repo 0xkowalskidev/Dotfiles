@@ -25,11 +25,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736277415,
-        "narHash": "sha256-kPDXF6cIPsVqSK08XF5EC6KM7BdMnM9vtJDzsnf+lLU=",
+        "lastModified": 1736421950,
+        "narHash": "sha256-RyrX0WFXxFrYvzHNLTIyuk3NcNl3UBykuYru/P0zW5E=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5c4302313d9207f7ec0886d68f8ff4a3c71209a1",
+        "rev": "d4aebb947a301b8da8654a804979a738c5c5da50",
         "type": "github"
       },
       "original": {
@@ -45,11 +45,11 @@
         "umu": "umu"
       },
       "locked": {
-        "lastModified": 1736275344,
-        "narHash": "sha256-96yQIFgep6DT5XuGEYl7O0GCbPOZv6NVctl7nw0m3Gg=",
+        "lastModified": 1736473360,
+        "narHash": "sha256-1LKdD8j4chu5MWCY/ybP/oCK38N+5ZEg7cWahuvVqhc=",
         "owner": "fufexan",
         "repo": "nix-gaming",
-        "rev": "6f431d614aa0e50a01253b7167c8c97a0ec83872",
+        "rev": "2e7ee2c0178ebe4643c9b1b74b4ba698735bfc8c",
         "type": "github"
       },
       "original": {
@@ -88,11 +88,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1736012469,
-        "narHash": "sha256-/qlNWm/IEVVH7GfgAIyP6EsVZI6zjAx1cV5zNyrs+rI=",
+        "lastModified": 1736344531,
+        "narHash": "sha256-8YVQ9ZbSfuUk2bUf2KRj60NRraLPKPS0Q4QFTbc+c2c=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8f3e1f807051e32d8c95cd12b9b421623850a34d",
+        "rev": "bffc22eb12172e6db3c5dde9e3e5628f8e3e7912",
         "type": "github"
       },
       "original": {
@@ -118,11 +118,11 @@
       },
       "locked": {
         "dir": "packaging/nix",
-        "lastModified": 1736271378,
-        "narHash": "sha256-j1TqXcffjqp/xmWvY9j4Johj1AdKiGXv94pNZHXEz6Y=",
+        "lastModified": 1736468146,
+        "narHash": "sha256-Y4sobTZCfR9ANeF9HEIS08XdS447zlp+nZQ7dt3xAtY=",
         "ref": "refs/heads/main",
-        "rev": "f423d6683cac7037333fbf38db8d0cc94c984fda",
-        "revCount": 880,
+        "rev": "fc3ec7aba3c622fd92f22750ec18fb31ea676a14",
+        "revCount": 894,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix"
