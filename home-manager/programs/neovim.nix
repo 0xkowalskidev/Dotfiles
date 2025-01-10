@@ -31,6 +31,9 @@
       go
       gopls # Lsp
       templ # Templating 
+      ## Odin
+      odin
+      ols # LSP
       # Html, CSS, JSON
       vscode-langservers-extracted
       # Javascript/Typescript
