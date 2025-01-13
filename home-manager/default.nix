@@ -32,7 +32,7 @@
     fastfetch
     cpufetch
     qemu
-    #quickemu
+    quickemu
     inetutils
     firefox
     openvpn
