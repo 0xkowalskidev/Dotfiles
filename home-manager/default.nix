@@ -33,6 +33,8 @@
     cpufetch
     qemu
     quickemu
+    swtpm
+    spicy
     inetutils
     firefox
     openvpn
