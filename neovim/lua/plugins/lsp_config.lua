@@ -26,6 +26,7 @@ lspconfig.gopls.setup({
 
 -- Odin
 lspconfig.ols.setup({
+        cmd = { "/home/kowalski/dev/ols/ols" },
         on_attach = on_attach,
         capabilities = capabilities
 })
