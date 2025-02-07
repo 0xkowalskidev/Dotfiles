@@ -27,6 +27,12 @@
 
   powerManagement.cpuFreqGovernor = "performance";
 
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+  };
+  services.open-webui.enable = true;
+
   # Projects
   projects.container-orchestrator.enable = true;
 
@@ -44,6 +50,7 @@
       { from = 30000; to = 32767; }
     ];
   };
+  networking.nameservers = [ "8.8.8.8" "9.9.9.9" ];
 
 
   # Autologin
