@@ -40,6 +40,12 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+h split h
 bindsym $mod+v split v
 
+# Resize window with control
+bindsym $mod+Control+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+Control+Down resize shrink height 10 px or 10 ppt
+bindsym $mod+Control+Up resize grow height 10 px or 10 ppt
+bindsym $mod+Control+Right resize grow width 10 px or 10 ppt
+
 # Switch workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
