@@ -22,6 +22,14 @@
       ];
     };
 
+    nixosConfigurations.chuwi = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./nixos/hosts/chuwi/configuration.nix
+        inputs.home-manager.nixosModules.default
+      ];
+    };
+
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
