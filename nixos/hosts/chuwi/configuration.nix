@@ -23,6 +23,10 @@
     powertop.enable = true;
   };
 
+  # Bluetooth 
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   programs.sway.enable = true;
   programs.sway.extraOptions = [
     "--config=/home/kowalski/Dotfiles/sway/config"

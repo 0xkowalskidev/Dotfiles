@@ -5,7 +5,8 @@
       focus_follows_mouse no
 
       output * bg #000000 solid_color
-      output eDP-1 scale 1.5
+      output DSI-1 transform 90
+      input "1046:9110:Goodix_Capacitive_TouchScreen" map_to_output DSI-1
 
       bindsym $mod+t exec swaymsg input type:touchpad events toggle
       seat * hide_cursor 2000 
