@@ -23,9 +23,22 @@
     powertop.enable = true;
   };
 
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.sway}/bin/sway --config=/home/kowalski/Dotfiles/sway/config";
+        user = "kowalski";
+      };
+      default_session = initial_session;
+    };
+  };
+
   # Bluetooth 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+
+  games.minecraft.enable = true;
 
   programs.sway.enable = true;
   programs.sway.extraOptions = [
