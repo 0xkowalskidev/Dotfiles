@@ -52,7 +52,6 @@
       { from = 30000; to = 32767; }
     ];
   };
-  networking.nameservers = [ "8.8.8.8" "9.9.9.9" ];
 
 
   # Autologin

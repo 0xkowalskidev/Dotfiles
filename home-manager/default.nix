@@ -27,6 +27,7 @@
     ncdu # Disk usage analysis
     gnumake
     tt # Typespeed test
+    evince # pdf reader
     nmap
     tree
     fastfetch
