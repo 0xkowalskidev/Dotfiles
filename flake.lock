@@ -125,11 +125,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1742867052,
-        "narHash": "sha256-3aOtuK+fb9mGB+xgYHt/6lodDVwOK2uIerLoKOYwHFw=",
+        "lastModified": 1742869922,
+        "narHash": "sha256-MWM+ctcBk6ZreNskLJf99AIbID7yYI7qbRhBuQJSXnE=",
         "owner": "0xkowalskidev",
         "repo": "nopswd",
-        "rev": "9ae95479343c40f1f0706ccb0ce24ca6d0724588",
+        "rev": "e471e6258d744428513e66fafa79d31f5b72eaa0",
         "type": "github"
       },
       "original": {
