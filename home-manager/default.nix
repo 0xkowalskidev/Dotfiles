@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -52,6 +52,7 @@
     sqlmap
     poppler_utils
     exiftool
+    inputs.nopswd.packages.x86_64-linux.default
   ];
 
   home.stateVersion = "24.05"; # DO NOT CHANGE

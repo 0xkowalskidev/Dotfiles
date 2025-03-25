@@ -16,6 +16,8 @@
   # Networking
   networking.hostName = "chuwi";
   networking.networkmanager.enable = true;
+  networking.firewall.allowedTCPPorts = [ 3000 8080 ];
+  networking.firewall.allowedUDPPorts = [ 3000 8080 ];
 
   # Power
   powerManagement = {
@@ -39,6 +41,7 @@
   services.blueman.enable = true;
 
   games.minecraft.enable = true;
+  games.steam.enable = true;
 
   programs.sway.enable = true;
   programs.sway.extraOptions = [

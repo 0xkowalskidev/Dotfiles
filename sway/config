@@ -11,7 +11,7 @@
       bindsym $mod+t exec swaymsg input type:touchpad events toggle
       seat * hide_cursor 2000 
 
-      for_window [floating] floating disable
+      #for_window [floating] floating disable
 
       # Core commands
       bindsym $mod+Return exec $terminal

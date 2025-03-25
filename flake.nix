@@ -10,6 +10,8 @@
     };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
+
+    nopswd.url = "github:0xkowalskidev/nopswd";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
