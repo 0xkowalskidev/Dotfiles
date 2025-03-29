@@ -28,15 +28,18 @@
   powerManagement.cpuFreqGovernor = "performance";
 
   services.ollama = {
-    enable = false;
+    enable = true;
     acceleration = "cuda";
   };
-  services.open-webui.enable = false;
-  services.open-webui.openFirewall = false;
+  services.open-webui.enable = true;
+  services.open-webui.openFirewall = true;
   services.open-webui.host = "0.0.0.0";
 
   # Projects
   projects.container-orchestrator.enable = false;
+
+  services.openssh.enable = true;
+  services.openssh.settings.PasswordAuthentication = true;
 
   networking.firewall = {
     enable = true;
