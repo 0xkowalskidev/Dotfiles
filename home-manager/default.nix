@@ -16,6 +16,8 @@
   home.username = "kowalski";
   home.homeDirectory = "/home/kowalski";
 
+  programs.tmux.enable = true;
+
   home.packages = with pkgs; [
     # Utils
     btop

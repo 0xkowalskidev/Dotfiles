@@ -38,6 +38,7 @@
   # Projects
   projects.container-orchestrator.enable = true;
 
+  # SSH
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = true;
 
