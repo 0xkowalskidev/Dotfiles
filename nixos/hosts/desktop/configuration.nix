@@ -36,7 +36,7 @@
   services.open-webui.host = "0.0.0.0";
 
   # Projects
-  projects.container-orchestrator.enable = false;
+  projects.container-orchestrator.enable = true;
 
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = true;

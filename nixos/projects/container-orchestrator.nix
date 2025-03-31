@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, pkgs-stable, ... }:
 
 {
   options.projects.container-orchestrator.enable = lib.mkOption {
@@ -21,6 +21,7 @@
 
     services.openssh.enable = true;
     services.etcd.enable = true;
+    services.etcd.package = pkgs-stable.etcd;
 
     environment.etc."cni/net.d/10-mynet.conflist".text = ''
        {
