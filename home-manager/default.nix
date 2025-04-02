@@ -17,6 +17,7 @@
   home.homeDirectory = "/home/kowalski";
 
   programs.tmux.enable = true;
+  programs.tmux.newSession = true;
 
   home.packages = with pkgs; [
     # Utils

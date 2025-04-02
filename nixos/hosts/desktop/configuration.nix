@@ -42,6 +42,8 @@
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = true;
 
+  networking.nameservers = [ "8.8.8.8" "1.1.1.1" ];
+
   networking.firewall = {
     enable = true;
 
