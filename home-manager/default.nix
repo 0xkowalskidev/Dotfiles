@@ -20,6 +20,8 @@
   programs.tmux.newSession = true;
 
   home.packages = with pkgs; [
+    qbittorrent
+    mpv
     # Utils
     btop
     acpi # Battery viewer
