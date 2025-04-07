@@ -22,6 +22,7 @@
   home.packages = with pkgs; [
     qbittorrent
     mpv
+    mullvad-browser
     # Utils
     btop
     acpi # Battery viewer
