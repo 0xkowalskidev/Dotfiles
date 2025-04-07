@@ -48,7 +48,10 @@
     pulsemixer # TUI Audio Mixer
     signal-desktop
     zapzap
+    mullvad-vpn
   ];
+
+  services.mullvad-vpn.enable = true;
 
   #Users
   users.users.kowalski = {
