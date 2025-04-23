@@ -22,8 +22,8 @@
   # Games
   games.minecraft.enable = true;
   games.steam.enable = true;
-  games.star-citizen.enable = true;
   games.r2modman.enable = true;
+  games.lutris.enable = true;
 
   powerManagement.cpuFreqGovernor = "performance";
 
