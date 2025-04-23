@@ -25,14 +25,15 @@
         memoryMax = 16 * 1024 * 1024 * 1024; # 16 GB ZRAM
       };
 
+      environment.systemPackages = with pkgs; [ wineWowPackages.staging winetricks ];
+
       users.users.kowalski = lib.mkMerge [
         {
           packages = [
             (inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.star-citizen.override {
-
               location = "/mnt/secondary/starcitizen";
-              wine = inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.wine-ge;
-              tricks = [ "vcrun2019" "arial" "corefonts" "d3dx9" "win10" ];
+              tricks = [ "arial" "vcrun2019" "win10" "sound=alsa" ];
+              wine = pkgs.wineWowPackages.staging;
             })
           ];
         }
