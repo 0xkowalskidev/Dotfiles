@@ -41,7 +41,6 @@
   services.blueman.enable = true;
 
   games.minecraft.enable = true;
-  games.steam.enable = true;
 
   programs.sway.enable = true;
   programs.sway.extraOptions = [
