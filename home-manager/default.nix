@@ -23,6 +23,7 @@
     qbittorrent
     mpv
     mullvad-browser
+    monero-gui
     # Utils
     btop
     acpi # Battery viewer
