@@ -60,6 +60,8 @@
     sqlmap
     poppler_utils
     exiftool
+    rar
+    tldr
     inputs.nopswd.packages.x86_64-linux.default
   ];
 
