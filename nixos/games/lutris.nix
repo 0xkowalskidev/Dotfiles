@@ -23,13 +23,13 @@
       memoryMax = 16 * 1024 * 1024 * 1024; # 16 GB ZRAM
     };
 
+
     environment.systemPackages = with pkgs; [
-      (lutris.override {
-        extraPkgs = pkgs: [
-        ];
-        extraLibraries = pkgs: [
-        ];
-      })
+      wineWowPackages.stable
+      winetricks
+      libwebp
+
+      lutris
     ];
   };
 }
