@@ -22,8 +22,8 @@
   # Games
   games.minecraft.enable = true;
   games.steam.enable = true;
-  games.star-citizen.enable = true;
   games.r2modman.enable = true;
+  games.lutris.enable = true;
 
   powerManagement.cpuFreqGovernor = "performance";
 
@@ -35,14 +35,15 @@
   services.open-webui.openFirewall = true;
   services.open-webui.host = "0.0.0.0";
 
+  services.jellyfin.enable = true;
+  services.jellyfin.openFirewall = true;
+
   # Projects
   projects.container-orchestrator.enable = true;
 
   # SSH
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = true;
-
-  networking.nameservers = [ "8.8.8.8" "1.1.1.1" ];
 
   networking.firewall = {
     enable = true;
@@ -59,6 +60,7 @@
     ];
   };
 
+  networking.nameservers = [ "1.1.1.1 8.8.8.8" ];
 
   # Autologin
   services.displayManager = {
