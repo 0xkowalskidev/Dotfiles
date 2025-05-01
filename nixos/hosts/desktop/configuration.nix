@@ -1,4 +1,4 @@
-{ config, inputs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   imports =
@@ -35,6 +35,22 @@
   services.open-webui.openFirewall = true;
   services.open-webui.host = "0.0.0.0";
 
+
+  nixpkgs.overlays = [
+    (self: super: {
+      jellyfin-ffmpeg = super.jellyfin-ffmpeg.override {
+        ffmpeg_7-full = super.ffmpeg_7-full.override {
+          withNvenc = true;
+          withUnfree = true;
+        };
+      };
+    })
+  ];
+  environment.systemPackages = [
+    pkgs.jellyfin
+    pkgs.jellyfin-web
+    pkgs.jellyfin-ffmpeg
+  ];
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
 
