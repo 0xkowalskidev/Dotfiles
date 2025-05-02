@@ -8,12 +8,13 @@
     ];
 
   # Boot
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # Networking
   networking.hostName = "dopey";
   networking.networkmanager.enable = true;
+  networking.firewall.enable = true;
 
   # SSH
   services.openssh.enable = true;
@@ -30,18 +31,6 @@
           inputs.self.outputs.homeManagerModules.default
         ];
       };
-    };
-  };
-
-  services.minecraft-server = {
-    enable = true;
-    eula = true;
-    openFirewall = true;
-    jvmOpts = "-Xmx8G -Xms8G";
-    declarative = true;
-    serverProperties = {
-      motd = "Big Wickes!";
-      difficulty = 3;
     };
   };
 
