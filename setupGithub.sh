@@ -8,7 +8,7 @@ if [ -f "$KEY_PATH" ]; then
     echo "SSH key already exists at $KEY_PATH"
 else
     # Generate a new SSH key
-    ssh-keygen -t rsa -b 4096 -C "0xkowalskiaudit@gmail.com" -f "$KEY_PATH" -N ""
+    ssh-keygen -t rsa -b 4096 -C "0xkowalskidev@gmail.com" -f "$KEY_PATH" -N ""
 
     # Start the ssh-agent in the background.
     eval "$(ssh-agent -s)"
