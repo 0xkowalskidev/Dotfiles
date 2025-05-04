@@ -34,6 +34,10 @@
         Group = "rust-gameserver";
         WorkingDirectory = "/var/lib/rust-gameserver";
         Restart = "on-failure";
+        ExecStartPre = [
+          "${pkgs.coreutils}/bin/chown -R rust-gameserver:rust-gameserver /var/lib/rust-gameserver"
+          "${pkgs.coreutils}/bin/chmod -R u+rwX /var/lib/rust-gameserver"
+        ];
       };
 
       preStart = ''
