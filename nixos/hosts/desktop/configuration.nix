@@ -25,6 +25,8 @@
   games.r2modman.enable = true;
   games.lutris.enable = true;
 
+  services.gameservers.rust.enable = false;
+
   powerManagement.cpuFreqGovernor = "performance";
 
   services.ollama = {
