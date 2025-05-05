@@ -33,7 +33,8 @@
         User = "rust-gameserver";
         Group = "rust-gameserver";
         WorkingDirectory = "/var/lib/rust-gameserver";
-        Restart = "on-failure";
+        Restart = "no";
+        TimeoutStartSec = "10m";
         ExecStartPre = [
           "${pkgs.coreutils}/bin/chown -R rust-gameserver:rust-gameserver /var/lib/rust-gameserver"
           "${pkgs.coreutils}/bin/chmod -R u+rwX /var/lib/rust-gameserver"
@@ -50,17 +51,19 @@
       '';
 
       script = ''
-        ${pkgs.steam-run}/bin/steam-run ./RustDedicated \
-          -noeac \ 
+        ${pkgs.steam-run}/bin/steam-run /var/lib/rust-gameserver/RustDedicated \
           +server.port 28015 \
-          +rcon.port 28016 \
-          +server.maxplayers 50 \
-          +server.hostname "My NixOS Rust Server" \
-          +server.identity "rust_server" \
           +server.level "Procedural Map" \
-          +server.seed 12345 \
-          +server.worldsize 4000 \
-          -logfile "rust_server.log"
+          +server.seed 1234 \
+          +server.worldsize 1000 \
+          +server.maxplayers 10 \
+          +server.hostname "test" \
+          +server.description "test!" \
+          +server.identity "server1" \ 
+          +rcon.port 28016 \
+          +rcon.password letmein \ 
+          +rcon.web 1 \ 
+          -logfile server.log 
       '';
 
     };
