@@ -35,10 +35,6 @@
         WorkingDirectory = "/var/lib/rust-gameserver";
         Restart = "no";
         TimeoutStartSec = "10m";
-        ExecStartPre = [
-          "${pkgs.coreutils}/bin/chown -R rust-gameserver:rust-gameserver /var/lib/rust-gameserver"
-          "${pkgs.coreutils}/bin/chmod -R u+rwX /var/lib/rust-gameserver"
-        ];
       };
 
       preStart = ''
@@ -51,19 +47,7 @@
       '';
 
       script = ''
-        ${pkgs.steam-run}/bin/steam-run /var/lib/rust-gameserver/RustDedicated \
-          +server.port 28015 \
-          +server.level "Procedural Map" \
-          +server.seed 1234 \
-          +server.worldsize 1000 \
-          +server.maxplayers 10 \
-          +server.hostname "test" \
-          +server.description "test!" \
-          +server.identity "server1" \ 
-          +rcon.port 28016 \
-          +rcon.password letmein \ 
-          +rcon.web 1 \ 
-          -logfile server.log 
+        ${pkgs.steam-run}/bin/steam-run /var/lib/rust-gameserver/RustDedicated -batchmode -logfile server.log
       '';
 
     };
