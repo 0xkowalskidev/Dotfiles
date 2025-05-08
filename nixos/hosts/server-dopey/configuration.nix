@@ -20,6 +20,18 @@
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = true;
 
+  # DDNS
+  services.ddclient = {
+    enable = true;
+    interval = "1min";
+    protocol = "cloudflare";
+    ssl = true;
+    username = "token";
+    passwordFile = "/etc/nixos/ddns-token";
+    zone = "0xkowalski.dev";
+    domains = [ "@" ];
+  };
+
   # Home Manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
