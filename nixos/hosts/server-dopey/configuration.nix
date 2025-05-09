@@ -32,6 +32,22 @@
     domains = [ "@" ];
   };
 
+  # Container Registry
+  services.dockerRegistry = {
+    enable = true;
+  };
+
+  services.caddy = {
+    enable = true;
+    virtualHosts."registry.0xkowalski.dev" = {
+      extraConfig = ''
+        reverse_proxy localhost:5000
+      '';
+    };
+  };
+
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
+
   # Home Manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
