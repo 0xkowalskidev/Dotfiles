@@ -9,6 +9,8 @@
     ./programs/bash.nix
     ./programs/git.nix
     ./programs/discord.nix
+    ./programs/freecad.nix
+    ./programs/bambu-studio.nix
   ];
 
   programs.home-manager.enable = true;
