@@ -66,6 +66,17 @@
         ];
       };
 
+      nixosConfigurations.sleepy = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          inherit pkgs-stable;
+        };
+        modules = [
+          ./nixos/hosts/server-sleepy/configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
+
       homeManagerModules.default = ./home-manager;
     };
 }
