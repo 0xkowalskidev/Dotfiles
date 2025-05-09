@@ -10,4 +10,6 @@
   bash.enable = true;
   git.enable = true;
   discord.enable = true;
+  freecad.enable = true;
+  bambu-studio.enable = true;
 }
