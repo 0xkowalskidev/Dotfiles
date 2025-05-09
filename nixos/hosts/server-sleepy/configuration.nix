@@ -38,6 +38,14 @@
     https = true;
     host = "gitlab.0xkowalski.dev";
     port = 443;
+    databasePasswordFile = "/var/keys/gitlab/db_password";
+    initialRootPasswordFile = "/var/keys/gitlab/root_password";
+    secrets = {
+      dbFile = "/var/keys/gitlab/db";
+      secretFile = "/var/keys/gitlab/secret";
+      otpFile = "/var/keys/gitlab/otp";
+      jwsFile = "/var/keys/gitlab/jws";
+    };
   };
 
   # Container Registry
