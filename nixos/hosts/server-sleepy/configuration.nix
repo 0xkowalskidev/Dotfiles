@@ -32,6 +32,14 @@
     domains = [ "@" ];
   };
 
+  # Gitlab
+  services.gitlab = {
+    enable = true;
+    https = true;
+    host = "gitlab.0xkowalski.dev";
+    port = 443;
+  };
+
   # Container Registry
   services.dockerRegistry = {
     enable = true;
@@ -42,6 +50,11 @@
     virtualHosts."registry.0xkowalski.dev" = {
       extraConfig = ''
         reverse_proxy localhost:5000
+      '';
+    };
+    virtualHosts."0xkowalski.0xkowalski.dev" = {
+      extraConfig = ''
+        reverse_proxy localhost:443
       '';
     };
   };
