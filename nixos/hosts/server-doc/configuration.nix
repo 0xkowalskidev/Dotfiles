@@ -12,7 +12,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Networking
-  networking.hostName = "doc`";
+  networking.hostName = "doc";
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
 
