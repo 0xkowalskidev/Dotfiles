@@ -20,6 +20,15 @@
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = true;
 
+  # NAS
+  boot.supportedFilesystems = [ "nfs" ];
+
+  fileSystems."/mnt/data" = {
+    device = "192.168.1.129:/data";
+    fsType = "nfs";
+    options = [ "rw" "sync" ];
+  };
+
   # Home Manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
