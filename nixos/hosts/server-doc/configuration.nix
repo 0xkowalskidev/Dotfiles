@@ -27,10 +27,19 @@
     options = [ "noatime" "compress=zstd" ];
   };
 
+  users.groups.nfsusers = {
+    gid = 1000;
+  };
+
+  # Set permissions for /data and subdirectories
+  systemd.tmpfiles.rules = [
+    "d /data 0770 nobody nfsusers - -" # Root /data directory
+  ];
+
   services.nfs.server = {
     enable = true;
     exports = ''
-      /data 192.168.1.0/24(rw,sync,no_subtree_check)
+      /data 192.168.1.0/24(rw,sync,no_subtree_check,all_squash,anonuid=65534,anongid=1000)
     '';
   };
 
