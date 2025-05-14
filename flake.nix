@@ -88,6 +88,17 @@
         ];
       };
 
+      nixosConfigurations.grumpy = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+          inherit pkgs-stable;
+        };
+        modules = [
+          ./nixos/hosts/server-grumpy/configuration.nix
+          inputs.home-manager.nixosModules.default
+        ];
+      };
+
       homeManagerModules.default = ./home-manager;
     };
 }
