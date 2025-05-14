@@ -35,6 +35,14 @@
   services.open-webui.openFirewall = true;
   services.open-webui.host = "0.0.0.0";
 
+  # NAS
+  boot.supportedFilesystems = [ "nfs" ];
+
+  fileSystems."/mnt/data" = {
+    device = "192.168.1.129:/data";
+    fsType = "nfs";
+    options = [ "rw" "sync" ];
+  };
 
   nixpkgs.overlays = [
     (self: super: {
