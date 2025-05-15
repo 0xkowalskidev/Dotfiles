@@ -1,6 +1,5 @@
 { config, lib, ... }:
 
-
 {
   options =
     {
@@ -21,7 +20,15 @@
 
       extraConfig = {
         init.defaultBranch = "main";
+        url = {
+          "git@github.com:" = { insteadOf = "https://github.com/"; };
+        };
+
       };
+    };
+
+    home.sessionVariables = {
+      GOPRIVATE = "github.com/0xkowalskidev/*"; # Should not really be here
     };
   };
 }
