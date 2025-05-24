@@ -22,6 +22,7 @@
   programs.tmux.newSession = true;
 
   home.packages = with pkgs; [
+    jellyfin-media-player #Jellyfin client
     qbittorrent
     mpv
     mullvad-browser
