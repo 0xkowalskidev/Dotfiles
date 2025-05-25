@@ -44,24 +44,6 @@
     options = [ "rw" "sync" ];
   };
 
-  nixpkgs.overlays = [
-    (self: super: {
-      jellyfin-ffmpeg = super.jellyfin-ffmpeg.override {
-        ffmpeg_7-full = super.ffmpeg_7-full.override {
-          withNvenc = true;
-          withUnfree = true;
-        };
-      };
-    })
-  ];
-  environment.systemPackages = [
-    pkgs.jellyfin
-    pkgs.jellyfin-web
-    pkgs.jellyfin-ffmpeg
-  ];
-  services.jellyfin.enable = true;
-  services.jellyfin.openFirewall = true;
-
   # Projects
   projects.container-orchestrator.enable = true;
 
