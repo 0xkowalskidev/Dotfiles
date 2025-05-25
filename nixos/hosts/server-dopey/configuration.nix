@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports =
@@ -28,6 +28,33 @@
     fsType = "nfs";
     options = [ "rw" "sync" ];
   };
+
+  users.users.minecraft = {
+    extraGroups = [ "nfsusers" ];
+  };
+
+  users.groups.nfsusers = {
+    gid = 1000;
+  };
+
+  services.minecraft-server = {
+    enable = true;
+    openFirewall = true;
+    eula = true;
+    dataDir = "/mnt/data/minecraft-server";
+    jvmOpts = "-Xmx6G -Xms6G -Djava.net.preferIPv4Stack=true";
+    declarative = true;
+    serverProperties = {
+      difficulty = 3;
+      max-players = 10000;
+      motd = "Jonathan Wickes.";
+      view-distance = 64;
+    };
+  };
+
+
+  services.jellyfin.enable = true;
+  services.jellyfin.openFirewall = true;
 
   # Home Manager
   home-manager = {
