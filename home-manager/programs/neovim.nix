@@ -30,7 +30,6 @@
       ## Go
       go
       gopls # Lsp
-      templ # Templating 
       ## Odin
       odin
       ols # LSP
