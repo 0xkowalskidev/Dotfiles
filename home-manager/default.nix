@@ -23,6 +23,7 @@
 
   home.packages = with pkgs; [
     jellyfin-media-player #Jellyfin client
+    spotify
     qbittorrent
     mpv
     mullvad-browser
