@@ -10,14 +10,13 @@
   # Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [ "fbcon=rotate:1" ];
+  boot.kernelParams = [ "video=DSI-1:panel_orientation=right_side_up" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Networking
   networking.hostName = "chuwi";
   networking.networkmanager.enable = true;
-  networking.firewall.allowedTCPPorts = [ 3000 8080 ];
-  networking.firewall.allowedUDPPorts = [ 3000 8080 ];
+  services.mullvad-vpn.enable = true;
 
   # Power
   powerManagement = {
@@ -25,30 +24,28 @@
     powertop.enable = true;
   };
 
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.sway}/bin/sway --config=/home/kowalski/Dotfiles/sway/config";
-        user = "kowalski";
-      };
-      default_session = initial_session;
-    };
-  };
-
   # Bluetooth 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  games.minecraft.enable = true;
+  # Hyprland
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+    xwayland.enable = true;
+  };
 
-  programs.sway.enable = true;
-  programs.sway.extraOptions = [
-    "--config=/home/kowalski/Dotfiles/sway/config"
-  ];
-  environment.systemPackages = with pkgs; [
-    dmenu
-  ];
+  # Autologin
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "hyprland";
+	user = "kowalski";
+      };
+      default_session = initial_session;
+    };
+  };
 
   # Home Manager
   home-manager = {
@@ -58,12 +55,12 @@
       "kowalski" = { ... }: {
         imports = [
           ./home.nix
-          inputs.self.outputs.homeManagerModules.default
+	  ../../common-home.nix 
         ];
       };
     };
   };
 
 
-  system.stateVersion = "24.11"; # DO NOT CHANGE
+  system.stateVersion = "25.05"; 
 }
