@@ -8,14 +8,6 @@
 
   time.timeZone = "Europe/London";
 
-  # Garbage Collection
-  nix.gc = {
-    automatic = true;
-    persistent = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
-
   #Users
   users.users.kowalski = {
     isNormalUser = true;
@@ -23,9 +15,7 @@
   };
 
   # Ssh
-  programs.ssh = {
-    startAgent = true;
-  };
+  programs.ssh = { startAgent = true; };
 
   # Git
   programs.git.enable = true;

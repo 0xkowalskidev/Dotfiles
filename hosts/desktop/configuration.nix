@@ -1,11 +1,7 @@
 { inputs, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../common.nix
-    ];
+  imports = [ ./hardware-configuration.nix ../../common.nix ];
 
   # Boot
   boot.loader.systemd-boot.enable = true;
@@ -48,7 +44,7 @@
     open = false;
     nvidiaPersistenced = true;
   };
-  services.xserver.videoDrivers = [ "nvidia" ]; 
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Hyprland
   programs.hyprland = {
@@ -56,6 +52,7 @@
     withUWSM = true;
     xwayland.enable = true;
   };
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Autologin
   services.greetd = {
@@ -63,7 +60,7 @@
     settings = rec {
       initial_session = {
         command = "hyprland";
-	user = "kowalski";
+        user = "kowalski";
       };
       default_session = initial_session;
     };
@@ -74,15 +71,9 @@
     extraSpecialArgs = { inherit inputs; };
 
     users = {
-      "kowalski" = { ... }: {
-        imports = [
-          ./home.nix
-	  ../../common-home.nix 
-        ];
-      };
+      "kowalski" = { ... }: { imports = [ ./home.nix ../../common-home.nix ]; };
     };
   };
 
-
-  system.stateVersion = "25.05"; 
+  system.stateVersion = "25.05";
 }
