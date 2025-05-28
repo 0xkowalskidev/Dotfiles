@@ -69,15 +69,6 @@
     };
   };
 
-  # Ollama
-  services.ollama = {
-    enable = true;
-    openFirewall = true;
-    host = "0.0.0.0";
-    port = 11434;
-    acceleration = "cuda";
-  };
-
   # Games
   ## Lutris/Star Citizen
   boot.kernel.sysctl = {
