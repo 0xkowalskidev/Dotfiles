@@ -37,8 +37,17 @@
 
     # Programming Languages, tools, etc
     reflex # Reload on change
+    # Nix
     nixfmt # Extra formatter for nix, not included in nil_ls
+    # Go
     go
+
+    # Rust
+    rustc
+    cargo
+    rustfmt
+
+    gcc
   ];
 
   # Alacritty Terminal
@@ -152,6 +161,13 @@
           enable = true;
           settings.formatting.command =
             [ "nixfmt" ]; # Ensure nil_ls uses nixfmt
+        };
+        rust_analyzer = {
+          enable = true;
+          settings.formatting.command = [ "rustfmt" ];
+          installRustc = true;
+          installCargo = true;
+          installRustfmt = true;
         };
         gopls.enable = true;
         html.enable = true;
