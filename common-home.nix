@@ -494,5 +494,16 @@
     };
   };
 
+  ## Hyprpaper
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      ipc = "on";
+      splash = false;
+      wallpaper = [ ", ~/background.jpg" ];
+      preload = [ "~/background.jpg" ];
+    };
+  };
+
   home.stateVersion = "25.05";
 }
