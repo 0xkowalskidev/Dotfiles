@@ -18,7 +18,7 @@
       exec = "mullvad-exclude lutris %U";
       icon = "lutris";
       categories = [ "Game" ];
-      genericName = "Gaming Platform";
+      genericName = "Lutris";
       comment = "Open gaming platform";
     };
     "org.prismlauncher.PrismLauncher" = {

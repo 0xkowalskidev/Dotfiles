@@ -254,6 +254,16 @@
         action.__raw = "function() require'harpoon':list():select(4) end";
       }
     ];
+
+    # Avante AI 
+    plugins.avante = {
+      enable = true;
+      autoLoad = true;
+      settings = {
+        provider = "ollama";
+        ollama = { model = "qwen2.5-coder:1.5b"; };
+      };
+    };
   };
 
   # Window Manager
