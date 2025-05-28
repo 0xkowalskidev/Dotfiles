@@ -107,15 +107,16 @@
     viAlias = true;
 
     opts = {
-      number = true;
-      tabstop = 2;
-      shiftwidth = 2;
-      expandtab = true;
-      autoindent = true;
-      wrap = false;
-      cursorline = true;
-      ignorecase = true;
-      smartcase = true;
+      number = true; # Show line numbers in the gutter
+      tabstop = 2; # Set tab width to 2 spaces
+      shiftwidth = 2; # Set indentation width to 2 spaces
+      expandtab = true; # Convert tabs to spaces
+      autoindent = true; # Automatically indent new lines based on previous line
+      wrap = false; # Prevent text from wrapping to the next line
+      cursorline = true; # Highlight the line where the cursor is located
+      ignorecase = true; # Make searches case-insensitive
+      smartcase =
+        true; # Override ignorecase if search contains uppercase letters
     };
 
     # Clipboard 
