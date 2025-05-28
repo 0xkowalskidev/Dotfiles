@@ -69,6 +69,12 @@
     };
   };
 
+  # Ollama
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+  };
+
   # Games
   ## Lutris/Star Citizen
   boot.kernel.sysctl = {
