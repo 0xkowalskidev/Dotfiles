@@ -57,6 +57,18 @@
   # Rofi Application Launcher
   programs.rofi = { enable = true; };
 
+  # SSH
+  programs.ssh = {
+    enable = true;
+    extraConfig = ''
+      Host github.com
+        HostName github.com
+        IdentityFile ~/.ssh/github_rsa
+        IdentitiesOnly yes
+    '';
+  };
+  services.ssh-agent.enable = true;
+
   # Git
   programs.git = {
     enable = true;
