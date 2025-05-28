@@ -15,6 +15,9 @@
   # Power
   powerManagement.cpuFreqGovernor = "performance";
 
+  # Startup optimizations
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   # NAS
   boot.supportedFilesystems = [ "nfs" ];
 
