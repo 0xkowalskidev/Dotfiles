@@ -33,22 +33,22 @@
     # Servers
     nixosConfigurations.dopey = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
-      modules = [ ./hosts/server-dopey/configuration.nix ];
+      modules = [ ./hosts/dopey/configuration.nix ];
     };
 
     nixosConfigurations.sleepy = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
-      modules = [ ./hosts/server-sleepy/configuration.nix ];
+      modules = [ ./hosts/sleepy/configuration.nix ];
     };
 
     nixosConfigurations.doc = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
-      modules = [ ./hosts/server-doc/configuration.nix ];
+      modules = [ ./hosts/doc/configuration.nix ];
     };
 
     nixosConfigurations.grumpy = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
-      modules = [ ./hosts/server-grumpy/configuration.nix ];
+      modules = [ ./hosts/grumpy/configuration.nix ];
     };
   };
 }
