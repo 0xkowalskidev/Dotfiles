@@ -14,7 +14,6 @@
     qbittorrent
     mullvad-browser
     signal-desktop
-    zapzap # Whatsapp
     discord
 
     nerd-fonts.fira-code # Font
