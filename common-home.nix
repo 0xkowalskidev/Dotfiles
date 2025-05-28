@@ -444,6 +444,9 @@
         border_size = 1;
       };
 
+      # Mouse acceleration
+      input = { accel_profile = "flat"; };
+
       # Fast Animations
       animations = {
         enabled = true;
