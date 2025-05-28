@@ -121,7 +121,7 @@
     extraSpecialArgs = { inherit inputs; };
 
     users = {
-      "kowalski" = { ... }: { imports = [ ./home.nix ../../common-home.nix ]; };
+      "kowalski" = { ... }: { imports = [ ./home.nix ../../home.nix ]; };
     };
   };
 
