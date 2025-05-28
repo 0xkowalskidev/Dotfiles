@@ -20,6 +20,9 @@
     powertop.enable = true;
   };
 
+  # Startup optimizations
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   # Bluetooth 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
