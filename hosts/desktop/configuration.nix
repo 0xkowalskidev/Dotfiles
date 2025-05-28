@@ -66,6 +66,53 @@
     };
   };
 
+  # Games
+  ## Lutris/Star Citizen
+  boot.kernel.sysctl = {
+    "vm.max_map_count" = 16777216;
+    "fs.file-max" = 524288;
+  };
+
+  swapDevices = [{
+    device = "/mnt/secondary/swapfile";
+    size = 16 * 1024; # 16 GB Swap
+  }];
+
+  zramSwap = {
+    enable = true;
+    memoryMax = 16 * 1024 * 1024 * 1024; # 16 GB ZRAM
+  };
+
+  environment.systemPackages = with pkgs; [
+    # Lutris
+    wineWowPackages.stable
+    winetricks
+    libwebp
+    lutris
+    # Minecraft     
+    openjdk21
+    prismlauncher # Unofficial Minecraft Launcher
+  ];
+  ## Steam
+  programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
+
+  # Gpu or Psu is broken, lower power limit
+  systemd.services.setGpuPowerLimit = {
+    description = "Set NVIDIA GPU Power Limit to 125W";
+    after = [
+      "nvidia-persistenced.service"
+      "display-manager.service"
+    ]; # Run after NVIDIA persistence daemon and X server start
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "/run/current-system/sw/bin/nvidia-smi -pl 125";
+    };
+  };
+
   # Home Manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
