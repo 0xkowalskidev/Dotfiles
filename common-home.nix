@@ -55,7 +55,10 @@
   };
 
   # Rofi Application Launcher
-  programs.rofi = { enable = true; };
+  programs.rofi = {
+    enable = true;
+    theme = "material";
+  };
 
   # SSH
   programs.ssh = {
