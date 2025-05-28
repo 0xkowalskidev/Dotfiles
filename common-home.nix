@@ -246,6 +246,26 @@
     settings = {
       "$mod" = "SUPER";
       "exec-once" = "alacritty"; # Open terminal on startup
+
+      # General settings
+      general = {
+        gaps_in = 4;
+        gaps_out = 6;
+        border_size = 1;
+      };
+
+      # Fast Animations
+      animations = {
+        enabled = true;
+        animation = [
+          "windows, 1, 1, default"
+          "windowsOut, 1, 1, default"
+          "fade, 1, 1, default"
+          "workspaces, 1, 1, default"
+        ];
+      };
+
+      # Keybinds
       bind = [
         "$mod, Return, exec, alacritty" # Open Terminal
         "$mod, Space, exec, rofi -show drun" # Application Launcher
