@@ -35,7 +35,10 @@
     quickemu # VM tools
     inputs.nopswd.packages.x86_64-linux.default # Password manager
 
+    # Programming Languages, tools, etc
+    reflex # Reload on change
     nixfmt # Extra formatter for nix, not included in nil_ls
+    go
   ];
 
   # Alacritty Terminal
@@ -150,6 +153,8 @@
           settings.formatting.command =
             [ "nixfmt" ]; # Ensure nil_ls uses nixfmt
         };
+        gopls.enable = true;
+        html.enable = true;
       };
       keymaps = {
         lspBuf = {
