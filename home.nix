@@ -464,7 +464,7 @@
     enable = true;
     settings = {
       "$mod" = "SUPER";
-      exec-once = [ "alacritty" "waybar" ]; # Open terminal on startup
+      exec-once = [ "alacritty" "waybar" ]; # Open terminal + waybar on startup
 
       # General settings
       general = {
@@ -507,10 +507,10 @@
         "$mod SHIFT, down, movewindow, d" # Move window down
 
         # Resize window
-        "$mod ALT, right, resizeactive, -10 0" # Shrink width
-        "$mod ALT, left, resizeactive, 10 0" # Grow width
-        "$mod ALT, up, resizeactive, 0 -10" # Shrink height
-        "$mod ALT, down, resizeactive, 0 10" # Grow height
+        "$mod ALT, left, resizeactive, -10 0"
+        "$mod ALT, right, resizeactive, 10 0"
+        "$mod ALT, up, resizeactive, 0 -10"
+        "$mod ALT, down, resizeactive, 0 10"
 
         # Switch workspace
         "$mod, 1, workspace, 1"
