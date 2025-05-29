@@ -223,9 +223,9 @@
       autoEnableSources = true;
       settings = {
         mapping = {
-          "<C-n>" = "cmp.mapping.select_next_item()";
-          "<C-p>" = "cmp.mapping.select_prev_item()";
-          "<C-y>" = "cmp.mapping.confirm({ select = true })";
+          "<C-Down>" = "cmp.mapping.select_next_item()";
+          "<C-Up>" = "cmp.mapping.select_prev_item()";
+          "<Tab>" = "cmp.mapping.confirm({ select = true })";
           "<C-Space>" = "cmp.mapping.complete()";
         };
         sources = [
