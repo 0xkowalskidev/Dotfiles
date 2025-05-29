@@ -37,19 +37,6 @@
     domains = [ "@" ];
   };
 
-  # DNS
-  services.dnsmasq = {
-    enable = true;
-    settings = {
-      address = [
-        "/dopey/192.168.1.69"
-	"/doc/192.168.1.129"
-	"/sleepy/192.168.1.102"
-	"/grumpy/192.168.1.184"
-      ];
-    };
-  };
-
   # User
   users.users.kowalski = {
     isNormalUser = true;
