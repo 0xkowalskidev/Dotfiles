@@ -17,6 +17,14 @@
   # Ssh
   programs.ssh = { startAgent = true; };
 
+  # Homelab
+  networking.extraHosts = ''
+    192.168.1.69 dopey
+    192.168.1.102 sleepy
+    192.168.1.129 doc
+    192.168.1.184 grumpy
+  '';
+
   # Git
   programs.git.enable = true;
 
