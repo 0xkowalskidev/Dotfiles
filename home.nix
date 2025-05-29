@@ -153,6 +153,12 @@
     # Colour Shceme
     colorschemes.catppuccin.enable = true;
 
+    # Transparent
+    plugins.transparent = {
+      enable = true;
+      autoLoad = true;
+    };
+
     # LSPs
     plugins.lsp = {
       enable = true;
