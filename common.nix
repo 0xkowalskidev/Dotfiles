@@ -19,5 +19,10 @@
 
   # Git
   programs.git.enable = true;
+
+  environment.systemPackages = with pkgs;
+    [
+      lm_sensors # Heat Sensors
+    ];
 }
 
