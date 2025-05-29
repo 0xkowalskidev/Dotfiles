@@ -35,6 +35,7 @@
     qemu # VMs
     quickemu # VM tools
     inputs.nopswd.packages.x86_64-linux.default # Password manager
+    catppuccin-cursors.mochaDark
 
     # Programming Languages, tools, etc
     reflex # Reload on change
@@ -479,6 +480,12 @@
         gaps_out = 6;
         border_size = 1;
       };
+
+      # Cursor
+      env = [
+        "HYPRCURSOR_THEME,catppuccin-mocha-dark-cursors"
+        "HYPRCURSOR_SIZE,24"
+      ];
 
       # Decoration
       decoration = {
