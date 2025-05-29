@@ -19,6 +19,7 @@
     nerd-fonts.fira-code # Font
 
     # Utils
+    wl-clipboard
     ripgrep
     mullvad-vpn
     pamixer # Audio Mixer
