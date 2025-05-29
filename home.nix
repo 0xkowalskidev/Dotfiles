@@ -55,7 +55,13 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      window.opacity = 0.9;
+      window = {
+        opacity = 0.9;
+        padding = {
+          x = 10;
+          y = 10;
+        };
+      };
       font = {
         normal = {
           family = "FiraCode Nerd Font Mono";
@@ -472,6 +478,16 @@
         gaps_out = 6;
         border_size = 1;
       };
+
+      # Decoration
+      decoration = {
+        rounding = 10;
+
+        # Performance Optimization 
+        blur.enabled = false;
+        shadow.enabled = false;
+      };
+      misc.vfr = true;
 
       # Mouse acceleration
       input = { accel_profile = "flat"; };
