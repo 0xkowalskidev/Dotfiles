@@ -490,6 +490,7 @@
       # Keybinds
       bind = [
         "$mod, Return, exec, alacritty" # Open Terminal
+        "$mod, b, exec, brave" # Open Browser
         "$mod, Space, exec, rofi -show drun" # Application Launcher
         "$mod, ESCAPE, killactive" # Kill Program
 
