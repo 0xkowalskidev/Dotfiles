@@ -481,6 +481,18 @@
         border_size = 1;
       };
 
+      # Misc
+      misc = {
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+      };
+
+      # Ecosystem
+      ecosystem = {
+        no_update_news = true;
+        no_donation_nag = true;
+      };
+
       # Cursor
       env = [
         "HYPRCURSOR_THEME,catppuccin-mocha-dark-cursors"
