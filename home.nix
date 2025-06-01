@@ -35,7 +35,6 @@
     qemu # VMs
     quickemu # VM tools
     inputs.nopswd.packages.x86_64-linux.default # Password manager
-    catppuccin-cursors.mochaDark
 
     # Programming Languages, tools, etc
     reflex # Reload on change
@@ -73,10 +72,119 @@
     };
   };
 
-  # Rofi Application Launcher
-  programs.rofi = {
+  # Wofi Application Launcher
+  programs.wofi = {
     enable = true;
-    theme = "material";
+    settings = {
+      show = "drun"; # Start as an application launcher
+      term = "alacritty";
+      allow_images = true;
+      allow_markup = true;
+
+      # Window settings
+      width = 600;
+      height = 400;
+      location = "center";
+      orientation = "vertical";
+      halign = "fill";
+
+      # Behavior
+      insensitive = true;
+      prompt = "Search...";
+      filter_rate = 100;
+
+      # Disable animations
+      no_actions = true;
+      matching = "contains";
+
+      # Performance
+      cache_file = "/dev/null";
+    };
+
+    style = ''
+      window {
+        margin: 0px;
+        border: 1px solid #7c3aed;
+        background-color: #1e1e2e;
+        border-radius: 12px;
+        font-family: "FiraCode Nerd Font Mono";
+        font-size: 14px;
+      }
+
+      #input {
+        margin: 8px 12px;
+        padding: 12px 16px;
+        border: 2px solid #313244;
+        background-color: #181825;
+        border-radius: 8px;
+        color: #cdd6f4;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      #input:focus {
+        border: 2px solid #7c3aed;
+        outline: none;
+      }
+
+      #inner-box {
+        margin: 8px 12px;
+        border: none;
+        background-color: transparent;
+      }
+
+      #outer-box {
+        margin: 0px;
+        border: none;
+        background-color: transparent;
+      }
+
+      #scroll {
+        margin: 0px;
+        border: none;
+        background-color: transparent;
+      }
+
+      #text {
+        margin: 5px;
+        border: none;
+        color: #cdd6f4;
+        font-weight: 500;
+      }
+
+      #entry {
+        border: none;
+        border-radius: 8px;
+        margin: 2px 4px;
+        padding: 8px 12px;
+        background-color: transparent;
+        transition: none;
+      }
+
+      #entry:selected {
+        background-color: #7c3aed;
+        color: #ffffff;
+        border-radius: 8px;
+      }
+
+      #entry:hover {
+        background-color: #313244;
+        border-radius: 8px;
+      }
+
+      #entry:selected:hover {
+        background-color: #8b5cf6;
+      }
+
+      #entry img {
+        margin-right: 8px;
+      }
+
+      #text:selected {
+        color: #ffffff;
+        font-weight: 600;
+      }
+    '';
   };
 
   # SSH
@@ -493,12 +601,6 @@
         no_donation_nag = true;
       };
 
-      # Cursor
-      env = [
-        "HYPRCURSOR_THEME,catppuccin-mocha-dark-cursors"
-        "HYPRCURSOR_SIZE,24"
-      ];
-
       # Decoration
       decoration = {
         rounding = 10;
@@ -527,7 +629,7 @@
       bind = [
         "$mod, Return, exec, alacritty" # Open Terminal
         "$mod, b, exec, brave" # Open Browser
-        "$mod, Space, exec, rofi -show drun" # Application Launcher
+        "$mod, Space, exec, wofi --show drun" # Application Launcher
         "$mod, ESCAPE, killactive" # Kill Program
 
         # Switch Focus
