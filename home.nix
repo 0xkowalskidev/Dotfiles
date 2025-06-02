@@ -15,6 +15,7 @@
     mullvad-browser
     signal-desktop
     discord
+    slack
 
     nerd-fonts.fira-code # Font
 
