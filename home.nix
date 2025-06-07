@@ -80,6 +80,9 @@
     escapeTime = 0; # Make neovim snappier
     keyMode = "vi";
 
+    plugins =
+      [{ plugin = inputs.minimal-tmux.packages.${pkgs.system}.default; }];
+
     extraConfig = ''
       # M is ALT in this context
       # Manage Windows
@@ -730,8 +733,8 @@
     settings = {
       ipc = "on";
       splash = false;
-      wallpaper = [ ", ~/background.jpg" ];
-      preload = [ "~/background.jpg" ];
+      wallpaper = [ ", ~/Dotfiles/background.jpg" ];
+      preload = [ "~/Dotfiles/background.jpg" ];
     };
   };
 
