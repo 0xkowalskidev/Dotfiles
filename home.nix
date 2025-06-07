@@ -78,6 +78,26 @@
     enable = true;
     shortcut = "a"; # Set default keybind ctrl+a
     baseIndex = 1; # Make windows start at 1
+    escapeTime = 0; # Make neovim snappier
+    keyMode = "vi";
+
+    extraConfig = ''
+      # M is ALT in this context
+      # Manage Windows
+      bind-key -n M-X kill-window
+
+      # Switch to specific window by number 
+      bind-key -n M-1 run-shell "tmux select-window -t :=1 || tmux new-window -t 1"
+      bind-key -n M-2 run-shell "tmux select-window -t :=2 || tmux new-window -t 2"
+      bind-key -n M-3 run-shell "tmux select-window -t :=3 || tmux new-window -t 3"
+      bind-key -n M-4 run-shell "tmux select-window -t :=4 || tmux new-window -t 4"
+      bind-key -n M-5 run-shell "tmux select-window -t :=5 || tmux new-window -t 5"
+      bind-key -n M-6 run-shell "tmux select-window -t :=6 || tmux new-window -t 6"
+      bind-key -n M-7 run-shell "tmux select-window -t :=7 || tmux new-window -t 7"
+      bind-key -n M-8 run-shell "tmux select-window -t :=8 || tmux new-window -t 8"
+      bind-key -n M-9 run-shell "tmux select-window -t :=9 || tmux new-window -t 9"
+      bind-key -n M-0 run-shell "tmux select-window -t :=10 || tmux new-window -t 10"
+    '';
   };
 
   # Cursor
