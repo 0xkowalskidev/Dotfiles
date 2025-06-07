@@ -58,7 +58,7 @@
     enable = true;
     settings = {
       window = {
-        opacity = 0.9;
+        opacity = 0.8;
         padding = {
           x = 10;
           y = 10;
@@ -73,7 +73,7 @@
     };
   };
 
-  # TMUX
+  # Tmux
   programs.tmux = {
     enable = true;
     baseIndex = 1; # Make windows start at 1
@@ -376,6 +376,18 @@
         "<leader>fg" = "live_grep";
       };
     };
+    extraConfigLua = ''
+      require("telescope").setup({
+        defaults = {
+          file_ignore_patterns = {
+            "flake.lock",
+            "node_modules/",
+            ".git/",
+          },
+          hidden = true, -- Respect .gitignore and .ignore files
+        },
+      })
+    '';
 
     plugins.web-devicons = {
       enable = true;
