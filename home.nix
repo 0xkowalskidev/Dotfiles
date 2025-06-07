@@ -73,6 +73,13 @@
     };
   };
 
+  # TMUX
+  programs.tmux = {
+    enable = true;
+    shortcut = "a"; # Set default keybind ctrl+a
+    baseIndex = 1; # Make windows start at 1
+  };
+
   # Cursor
   home.pointerCursor = {
     enable = true;
@@ -218,7 +225,15 @@
   };
 
   # Bash
-  programs.bash = { enable = true; };
+  programs.bash = {
+    enable = true;
+    initExtra = ''
+      # Auto-start Tmux if not already in a session
+      if [ -z "$TMUX" ]; then
+        tmux attach -t default || tmux new -s default
+      fi
+    '';
+  };
 
   # Direnv
   programs.direnv = {
