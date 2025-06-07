@@ -76,7 +76,6 @@
   # TMUX
   programs.tmux = {
     enable = true;
-    shortcut = "a"; # Set default keybind ctrl+a
     baseIndex = 1; # Make windows start at 1
     escapeTime = 0; # Make neovim snappier
     keyMode = "vi";
