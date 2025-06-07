@@ -295,6 +295,8 @@
     vimAlias = true;
     viAlias = true;
 
+    globals = { mapleader = " "; };
+
     opts = {
       number = true; # Show line numbers in the gutter
       tabstop = 2; # Set tab width to 2 spaces
@@ -412,33 +414,33 @@
     keymaps = [
       {
         mode = "n";
-        key = "<A-a>";
+        key = "<leader>a";
         action.__raw = "function() require'harpoon':list():add() end";
       }
       {
         mode = "n";
-        key = "<A-h>";
+        key = "<leader>h";
         action.__raw =
           "function() require'harpoon'.ui:toggle_quick_menu(require'harpoon':list()) end";
       }
       {
         mode = "n";
-        key = "<A-1>";
+        key = "<leader>1";
         action.__raw = "function() require'harpoon':list():select(1) end";
       }
       {
         mode = "n";
-        key = "<A-2>";
+        key = "<leader>2";
         action.__raw = "function() require'harpoon':list():select(2) end";
       }
       {
         mode = "n";
-        key = "<A-3>";
+        key = "<leader>3";
         action.__raw = "function() require'harpoon':list():select(3) end";
       }
       {
         mode = "n";
-        key = "<A-4>";
+        key = "<leader>4";
         action.__raw = "function() require'harpoon':list():select(4) end";
       }
     ];
