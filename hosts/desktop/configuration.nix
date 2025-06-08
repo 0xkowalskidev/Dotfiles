@@ -71,7 +71,7 @@
   };
 
   # Games
-  ## Lutris/Star Citizen
+  ## Star Citizen
   boot.kernel.sysctl = {
     "vm.max_map_count" = 16777216;
     "fs.file-max" = 524288;
@@ -88,11 +88,9 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # Lutris
-    wineWowPackages.stable
-    winetricks
-    libwebp
+    # Star Citizen/Lutris
     lutris
+
     # Minecraft     
     openjdk21
     prismlauncher # Unofficial Minecraft Launcher
