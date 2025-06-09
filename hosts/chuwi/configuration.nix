@@ -20,12 +20,18 @@
     powertop.enable = true;
   };
 
-  # Startup optimizations
-  systemd.services.NetworkManager-wait-online.enable = false;
-
   # Bluetooth 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+
+  # NAS
+  boot.supportedFilesystems = [ "nfs" ];
+
+  fileSystems."/mnt/data" = {
+    device = "192.168.1.129:/data";
+    fsType = "nfs";
+    options = [ "rw" "sync" ];
+  };
 
   # Hyprland
   programs.hyprland = {
