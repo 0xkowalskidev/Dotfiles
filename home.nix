@@ -100,6 +100,11 @@
       bind-key -n M-8 run-shell "tmux select-window -t :=8 || tmux new-window -t 8"
       bind-key -n M-9 run-shell "tmux select-window -t :=9 || tmux new-window -t 9"
       bind-key -n M-0 run-shell "tmux select-window -t :=10 || tmux new-window -t 10"
+
+      # Session Management
+      bind-key -n M-n new-session # Create new session
+      bind-key -n M-s choose-session # Switch between sessions
+      bind-key -n M-k kill-session # Kill current session
     '';
   };
 

@@ -37,6 +37,16 @@
     domains = [ "@" ];
   };
 
+  # Github runners
+  services.github-runners = {
+    vaai = {
+      enable = true;
+      url = "https://github.com/0xkowalskidev/VirtualAdminTrainer";
+      tokenFile = "/var/lib/vaai.env";
+      name = "vaai";
+    };
+  };
+
   # User
   users.users.kowalski = {
     isNormalUser = true;
