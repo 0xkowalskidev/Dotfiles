@@ -16,6 +16,7 @@
     signal-desktop
     discord
     slack
+    claude-code
 
     nerd-fonts.fira-code # Font
 
