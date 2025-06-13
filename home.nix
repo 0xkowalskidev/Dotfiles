@@ -648,7 +648,10 @@
     enable = true;
     settings = {
       "$mod" = "SUPER";
-      exec-once = [ "alacritty" "waybar" ]; # Open terminal + waybar on startup
+      exec-once = [
+        "hyprctl dispatch exec '[workspace 1] alacritty'"
+        "waybar"
+      ]; # Open terminal + waybar on startup
 
       # General settings
       general = {
