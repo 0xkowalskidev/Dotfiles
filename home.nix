@@ -699,6 +699,7 @@
         "$mod, b, exec, brave" # Open Browser
         "$mod, Space, exec, wofi --show drun" # Application Launcher
         "$mod, ESCAPE, killactive" # Kill Program
+        "$mod, f, fullscreen"
 
         # Switch Focus
         "$mod, right, movefocus, r" # Focus right
