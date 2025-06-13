@@ -80,6 +80,7 @@
     baseIndex = 1; # Make windows start at 1
     escapeTime = 0; # Make neovim snappier
     keyMode = "vi";
+    mouse = true;
 
     plugins =
       [{ plugin = inputs.minimal-tmux.packages.${pkgs.system}.default; }];
