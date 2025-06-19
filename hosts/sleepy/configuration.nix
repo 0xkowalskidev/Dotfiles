@@ -98,7 +98,7 @@
     serviceConfig = {
       Type = "oneshot";
       ExecStart =
-        "/bin/sh -c 'cp /srv/vaai/sqlite.db /mnt/data/vaai/backup.db'";
+        "/bin/sh -c 'cp /srv/vaai/sqlite.db /mnt/data/vaai/backup-$$(date +%%Y%%m%%d%%H%%M%%S).db'";
       User = "root"; # Adjust user if needed
     };
   };
