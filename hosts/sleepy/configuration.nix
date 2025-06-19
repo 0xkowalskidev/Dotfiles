@@ -46,61 +46,59 @@
       name = "vaai";
       user = "vaai";
       group = "vaai";
-      serviceOverrides = {
-  ReadWritePaths = [
-    "/srv/vaai"
-  ];
-};
+      serviceOverrides = { ReadWritePaths = [ "/srv/vaai" ]; };
     };
   };
 
-  users.users.vaai = { isSystemUser = true; group = "vaai"; };
-  users.groups.vaai = {};
+  users.users.vaai = {
+    isSystemUser = true;
+    group = "vaai";
+  };
+  users.groups.vaai = { };
 
-  systemd.tmpfiles.rules = [
-    "d /srv/vaai 0755 vaai vaai -"
-  ];
+  systemd.tmpfiles.rules = [ "d /srv/vaai 0755 vaai vaai -" ];
 
   systemd.services.vaai = {
-  description = "Virtual Admin Trainer Go Application";
-  after = [ "network.target" ];
-  wantedBy = [ "multi-user.target" ];
+    description = "Virtual Admin Trainer Go Application";
+    after = [ "network.target" ];
+    wantedBy = [ "multi-user.target" ];
 
-  serviceConfig = {
-    User = "vaai";
-    Group = "vaai";
-    WorkingDirectory = "/srv/vaai";
-    ExecStart = "/srv/vaai/vaai";
-    Restart = "always";
-    RestartSec = "5s";
-    EnvironmentFile = "/etc/vaai/vaai.env";
+    serviceConfig = {
+      User = "vaai";
+      Group = "vaai";
+      WorkingDirectory = "/srv/vaai";
+      ExecStart = "/srv/vaai/vaai";
+      Restart = "always";
+      RestartSec = "5s";
+      EnvironmentFile = "/etc/vaai/vaai.env";
+    };
   };
-};
 
-systemd.paths."vaai-restarter" = {
-  description = "Watch for new vaai binary to trigger a restart";
-  wantedBy = [ "multi-user.target" ];
-  pathConfig = {
-    PathChanged = "/srv/vaai/vaai"; # Monitor the vaai binary specifically
+  systemd.paths."vaai-restarter" = {
+    description = "Watch for new vaai binary to trigger a restart";
+    wantedBy = [ "multi-user.target" ];
+    pathConfig = {
+      PathChanged = "/srv/vaai/vaai"; # Monitor the vaai binary specifically
+    };
   };
-};
 
-systemd.services."vaai-restarter" = {
-  description = "Restart vaai service";
-  serviceConfig = {
-    Type = "oneshot";
-    ExecStart = "${pkgs.systemd}/bin/systemctl restart vaai.service";
-    StartLimitIntervalSec = 60;
-    StartLimitBurst = 10;
+  systemd.services."vaai-restarter" = {
+    description = "Restart vaai service";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.systemd}/bin/systemctl restart vaai.service";
+      StartLimitIntervalSec = 60;
+      StartLimitBurst = 10;
+    };
   };
-};
 
-# Backup DB
-systemd.services.sqlite-backup = {
+  # Backup DB
+  systemd.services.sqlite-backup = {
     description = "Backup SQLite database";
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "/bin/sh -c 'cp /srv/vaai/sqlite.db /mnt/data/vaai/backup.db'";
+      ExecStart =
+        "/bin/sh -c 'cp /srv/vaai/sqlite.db /mnt/data/vaai/backup.db'";
       User = "root"; # Adjust user if needed
     };
   };
@@ -114,12 +112,12 @@ systemd.services.sqlite-backup = {
     };
   };
 
-networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
   services.caddy = {
     enable = true;
     virtualHosts."0xkowalski.dev".extraConfig = ''
       reverse_proxy localhost:3000
-    ''; 
+    '';
     virtualHosts."online-portal.myfreelanceadmin.com".extraConfig = ''
       reverse_proxy localhost:3000
     '';
