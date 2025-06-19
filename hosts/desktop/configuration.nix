@@ -70,6 +70,9 @@
     };
   };
 
+  # Virtualisation
+  virtualisation.containerd.enable = true;
+
   # Games
   ## Star Citizen
   boot.kernel.sysctl = {
