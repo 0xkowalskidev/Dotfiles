@@ -72,6 +72,8 @@
 
   # Virtualisation
   virtualisation.containerd.enable = true;
+  virtualisation.docker.enable = true;
+  users.users.kowalski.extraGroups = [ "wheel" "docker" ];
 
   # Games
   ## Star Citizen
@@ -118,7 +120,6 @@
       ExecStart = "/run/current-system/sw/bin/nvidia-smi -pl 125";
     };
   };
-
   # Home Manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
