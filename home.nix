@@ -44,6 +44,10 @@
     nixfmt # Extra formatter for nix, not included in nil_ls
     # Go
     go
+    # JS/Node
+    nodejs_24
+    # Odin
+    odin
 
     # Rust
     rustc
@@ -82,15 +86,27 @@
     keyMode = "vi";
     mouse = true;
 
-    plugins =
-      [{ plugin = inputs.minimal-tmux.packages.${pkgs.system}.default; }];
+    plugins = [
+      { plugin = inputs.minimal-tmux.packages.${pkgs.system}.default; }
+      {
+        plugin = pkgs.tmuxPlugins.resurrect;
+        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+      }
+      {
+        plugin = pkgs.tmuxPlugins.continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+        '';
+      }
+      { plugin = pkgs.tmuxPlugins.yank; }
+    ];
 
     extraConfig = ''
       # M is ALT in this context
       # Manage Windows
       bind-key -n M-X kill-window
 
-      # Switch to specific window by number 
+      ## Switch to specific window by number 
       bind-key -n M-1 run-shell "tmux select-window -t :=1 || tmux new-window -t 1"
       bind-key -n M-2 run-shell "tmux select-window -t :=2 || tmux new-window -t 2"
       bind-key -n M-3 run-shell "tmux select-window -t :=3 || tmux new-window -t 3"
@@ -106,6 +122,24 @@
       bind-key -n M-n new-session # Create new session
       bind-key -n M-s choose-session # Switch between sessions
       bind-key -n M-k kill-session # Kill current session
+
+      # Pane Management
+      bind-key -n M-x kill-pane
+      ## Pane Splitting 
+      bind-key -n M-h split-window -h 
+      bind-key -n M-v split-window -v 
+
+      ## Navigate panes
+      bind-key -n M-Left select-pane -L
+      bind-key -n M-Right select-pane -R
+      bind-key -n M-Up select-pane -U
+      bind-key -n M-Down select-pane -D
+
+      ## Resize panes 
+      bind-key -n -r M-S-Left resize-pane -L 5
+      bind-key -n -r M-S-Right resize-pane -R 5
+      bind-key -n -r M-S-Up resize-pane -U 5
+      bind-key -n -r M-S-Down resize-pane -D 5
     '';
   };
 
