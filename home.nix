@@ -17,6 +17,7 @@
     discord
     slack
     claude-code
+    stripe-cli
 
     nerd-fonts.fira-code # Font
 
@@ -37,6 +38,7 @@
     qemu # VMs
     quickemu # VM tools
     inputs.nopswd.packages.x86_64-linux.default # Password manager
+    inputs.gameserverquery.packages.x86_64-linux.default
 
     # Programming Languages, tools, etc
     reflex # Reload on change
