@@ -18,6 +18,8 @@
       "9, monitor:HDMI-A-1"
       "10, monitor:DP-1"
     ];
+
+    env = [ "LIBVA_DRIVER_NAME,amdgpu" "GBM_BACKEND,amdgpu-drm" ];
   };
 
   # Override .desktop files to prepend mullvad-exclude

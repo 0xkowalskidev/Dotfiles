@@ -6,6 +6,8 @@
   # Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   # Networking
   networking.hostName = "ace";
@@ -13,9 +15,6 @@
   services.mullvad-vpn.enable = true;
   networking.firewall.allowedTCPPorts = [ 25565 27015 28015 28017 7777 ];
   networking.firewall.allowedUDPPorts = [ 25565 27015 28015 28017 7777 ];
-
-  # Power
-  powerManagement.cpuFreqGovernor = "performance";
 
   # NAS
   boot.supportedFilesystems = [ "nfs" ];
@@ -64,21 +63,20 @@
     "fs.file-max" = 524288;
   };
 
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 16 * 1024; # 16 GB Swap
+  }];
   zramSwap = {
     enable = true;
     memoryMax = 16 * 1024 * 1024 * 1024; # 16 GB ZRAM
   };
 
-  nix.settings = {
-    substituters = [ "https://nix-citizen.cachix.org" ];
-    trusted-public-keys = [
-      "nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo="
-    ];
-  };
-
   environment.systemPackages = with pkgs; [
     # Star Citizen
-    inputs.nix-citizen.packages.${system}.star-citizen
+    #  (inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.star-citizen.override {
+    #   tricks = [ "arial" "vcrun2019" "win10" "sound=alsa" ];
+    #})
 
     # Minecraft     
     openjdk21
@@ -93,6 +91,8 @@
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
+
+  services.fwupd.enable = true;
 
   # Home Manager
   home-manager = {
