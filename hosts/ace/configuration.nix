@@ -31,7 +31,7 @@
     enable = true;
     enable32Bit = true;
   };
-  
+
   # Hyprland
   programs.hyprland = {
     enable = true;
@@ -69,13 +69,24 @@
     memoryMax = 16 * 1024 * 1024 * 1024; # 16 GB ZRAM
   };
 
+  nix.settings = {
+    substituters = [ "https://nix-citizen.cachix.org" ];
+    trusted-public-keys = [
+      "nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo="
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
-    # Star Citizen/Lutris
-    lutris
+    # Star Citizen
+    inputs.nix-citizen.packages.${system}.star-citizen
 
     # Minecraft     
     openjdk21
     prismlauncher # Unofficial Minecraft Launcher
+
+    amdgpu_top
+    wlr-randr
+    mangohud
   ];
   ## Steam
   programs.steam.enable = true;
