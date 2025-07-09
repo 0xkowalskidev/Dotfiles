@@ -276,7 +276,7 @@
     extraConfig = ''
       Host github.com
         HostName github.com
-        IdentityFile ~/.ssh/github_rsa
+        IdentityFile ~/.ssh/id_ed25519
         IdentitiesOnly yes
     '';
   };
