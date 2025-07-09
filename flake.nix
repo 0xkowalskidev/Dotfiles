@@ -35,6 +35,14 @@
       ];
     };
 
+    nixosConfigurations.ace = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./hosts/ace/configuration.nix
+        inputs.home-manager.nixosModules.home-manager
+      ];
+    };
+
     # Servers
     nixosConfigurations.dopey = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
