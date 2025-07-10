@@ -6,8 +6,8 @@
   # Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelParams = [ "amdgpu.dcdebugmask=0x12" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.kernelModules = [ "amdgpu" ];
 
   # Networking
   networking.hostName = "ace";
@@ -37,7 +37,6 @@
     withUWSM = true;
     xwayland.enable = true;
   };
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Autologin
   services.greetd = {
@@ -50,6 +49,27 @@
       default_session = initial_session;
     };
   };
+
+  # LLama cpp
+  hardware.amdgpu.opencl.enable = true;
+
+  ## servies.llama-cpp would not compile with rocm even when forced to with package
+  #systemd.services.llama-cpp = {
+  #  description = "Custom Llama.cpp Server";
+  #  after = [ "network.target" ];
+  #  wantedBy = [ "multi-user.target" ];
+  #  serviceConfig = {
+  #    ExecStart = ''
+  #      ${pkgs.llama-cpp.override { rocmSupport = true; }}/bin/llama-server \
+  #        --model /home/kowalski/models/gemma-3-4b-it-q4_0.gguf \
+  #         --n-gpu-layers 99
+  #     '';
+  #     User = "kowalski";
+  #     Group = "users";
+  #     Restart = "always";
+  #    Environment = [ "HSA_OVERRIDE_GFX_VERSION=11.0.0" ];
+  #  };
+  #  };
 
   # Virtualisation
   virtualisation.containerd.enable = true;
@@ -72,11 +92,16 @@
     memoryMax = 16 * 1024 * 1024 * 1024; # 16 GB ZRAM
   };
 
+  nix.settings = {
+    substituters = [ "https://nix-citizen.cachix.org" ];
+    trusted-public-keys = [
+      "nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo="
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     # Star Citizen
-    #  (inputs.nix-gaming.packages.${pkgs.hostPlatform.system}.star-citizen.override {
-    #   tricks = [ "arial" "vcrun2019" "win10" "sound=alsa" ];
-    #})
+    inputs.nix-citizen.packages.${system}.star-citizen
 
     # Minecraft     
     openjdk21
@@ -85,14 +110,17 @@
     amdgpu_top
     wlr-randr
     mangohud
+
+    rocmPackages_6.rocm-runtime
+    rocmPackages_6.rocm-smi
+    rocmPackages_6.rocminfo
+    (pkgs.llama-cpp.override { rocmSupport = true; })
   ];
   ## Steam
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
-
-  services.fwupd.enable = true;
 
   # Home Manager
   home-manager = {
