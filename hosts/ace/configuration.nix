@@ -25,6 +25,12 @@
     options = [ "rw" "sync" ];
   };
 
+  # Second SSD
+  fileSystems."/data" = {
+    device = "/dev/disk/by-uuid/0c83a41b-ebd6-4ad5-ae8f-f6007a671a93";
+    fsType = "ext4";
+  };
+
   # Graphics
   hardware.graphics = {
     enable = true;
@@ -50,26 +56,18 @@
     };
   };
 
-  # LLama cpp
+  # Ollama
   hardware.amdgpu.opencl.enable = true;
 
-  ## servies.llama-cpp would not compile with rocm even when forced to with package
-  #systemd.services.llama-cpp = {
-  #  description = "Custom Llama.cpp Server";
-  #  after = [ "network.target" ];
-  #  wantedBy = [ "multi-user.target" ];
-  #  serviceConfig = {
-  #    ExecStart = ''
-  #      ${pkgs.llama-cpp.override { rocmSupport = true; }}/bin/llama-server \
-  #        --model /home/kowalski/models/gemma-3-4b-it-q4_0.gguf \
-  #         --n-gpu-layers 99
-  #     '';
-  #     User = "kowalski";
-  #     Group = "users";
-  #     Restart = "always";
-  #    Environment = [ "HSA_OVERRIDE_GFX_VERSION=11.0.0" ];
-  #  };
-  #  };
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+    environmentVariables = { HCC_AMDGPU_TARGET = "gfx1150"; };
+    rocmOverrideGfx = "11.0.0";
+    openFirewall = true;
+    host = "0.0.0.0";
+    port = 11111;
+  };
 
   # Virtualisation
   virtualisation.containerd.enable = true;
@@ -92,16 +90,13 @@
     memoryMax = 16 * 1024 * 1024 * 1024; # 16 GB ZRAM
   };
 
-  nix.settings = {
-    substituters = [ "https://nix-citizen.cachix.org" ];
-    trusted-public-keys = [
-      "nix-citizen.cachix.org-1:lPMkWc2X8XD4/7YPEEwXKKBg+SVbYTVrAaLA2wQTKCo="
-    ];
-  };
-
   environment.systemPackages = with pkgs; [
-    # Star Citizen
-    inputs.nix-citizen.packages.${system}.star-citizen
+    # Star Citizen/Lutris
+    wineWowPackages.stable
+    winetricks
+    libwebp
+
+    lutris
 
     # Minecraft     
     openjdk21
@@ -114,7 +109,6 @@
     rocmPackages_6.rocm-runtime
     rocmPackages_6.rocm-smi
     rocmPackages_6.rocminfo
-    (pkgs.llama-cpp.override { rocmSupport = true; })
   ];
   ## Steam
   programs.steam.enable = true;

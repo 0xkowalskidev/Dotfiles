@@ -49,15 +49,5 @@
       genericName = "Minecraft Launcher";
       comment = "A custom launcher for Minecraft";
     };
-    star-citizen = {
-      name = "Star Citizen";
-      comment = "Star Citizen - Alpha";
-      exec = "mullvad-exclude star-citizen %U";
-      icon = "star-citizen";
-      categories = [ "Game" ];
-      mimeType = [ "application/x-star-citizen-launcher" ];
-      type = "Application";
-      settings = { Version = "1.4"; };
-    };
   };
 }
