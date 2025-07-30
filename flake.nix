@@ -13,8 +13,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-citizen.url = "github:LovingMelody/nix-citizen";
-
     nopswd.url = "github:0xkowalskidev/nopswd";
     gameserverquery.url = "github:0xkowalskidev/gameserverquery";
   };
