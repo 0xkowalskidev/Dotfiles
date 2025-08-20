@@ -91,88 +91,6 @@
     port = 11111;
   };
 
-  # Monero
-  services.monero = {
-    enable = true;
-    dataDir = "/data/monero";
-    environmentFile = "/etc/monero/monero.env";
-    rpc = {
-      address = "127.0.0.1";
-      port = 18081;
-    };
-    extraConfig = ''
-      zmq-pub=tcp://127.0.0.1:18083
-    '';
-    prune = true;
-  };
-
-  users.users.monero = {
-    isSystemUser = true;
-    group = "monero";
-  };
-  users.groups.monero = { };
-
-  systemd.services.p2pool = {
-    description = "P2Pool Monero mining pool";
-    wantedBy = [ "multi-user.target" ];
-    after = [
-      "network.target"
-      "monero.service"
-    ];
-    serviceConfig = {
-      EnvironmentFile = "/etc/monero/monero.env";
-      ExecStart = ''
-        ${pkgs.p2pool}/bin/p2pool \
-          --host 127.0.0.1 \
-          --rpc-port 18081 \
-          --wallet $MONERO_WALLET \
-          --mini \
-          --data-dir /data/p2pool \
-      '';
-      Restart = "always";
-      User = "monero";
-      Group = "monero";
-    };
-  };
-
-  services.xmrig = {
-    enable = true;
-    settings = {
-      autosave = true;
-      cpu = {
-        enabled = true;
-        huge-pages = true;
-        huge-pages-jit = true;
-        priority = 2;
-        max-threads-hint = 80; # ~9-10 threads for 12-core CPU
-        asm = true;
-        randomx = {
-          "1gb-pages" = true;
-          mode = "fast";
-          numa = true;
-        };
-      };
-      opencl = false; # No GPU mining for RandomX
-      cuda = false;
-      pools = [
-        {
-          url = "127.0.0.1:3333";
-          user = "$(cat /etc/monero/monero.env | grep MONERO_WALLET | cut -d= -f2)";
-          keepalive = true;
-          tls = false;
-        }
-      ];
-    };
-  };
-
-  # Ensure p2pool starts before XMRig
-  systemd.services.xmrig.after = [ "p2pool.service" ];
-
-  # Enable huge pages for RandomX
-  boot.kernel.sysctl = {
-    "vm.nr_hugepages" = 1280; # ~2.5 GB for 9-10 threads
-  };
-
   # Virtualisation
   virtualisation.containerd.enable = true;
   virtualisation.docker.enable = true;
@@ -221,7 +139,6 @@
 
     # Monero
     monero-gui
-    p2pool
   ];
   ## Steam
   programs.steam.enable = true;
