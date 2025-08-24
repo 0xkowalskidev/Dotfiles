@@ -16,7 +16,6 @@
     signal-desktop
     discord
     slack
-    claude-code
     stripe-cli
 
     nerd-fonts.fira-code # Font
@@ -340,7 +339,9 @@
     vimAlias = true;
     viAlias = true;
 
-    globals = { mapleader = " "; };
+    globals = {
+      mapleader = " ";
+    };
 
     opts = {
       number = true; # Show line numbers in the gutter
@@ -351,11 +352,10 @@
       wrap = false; # Prevent text from wrapping to the next line
       cursorline = true; # Highlight the line where the cursor is located
       ignorecase = true; # Make searches case-insensitive
-      smartcase =
-        true; # Override ignorecase if search contains uppercase letters
+      smartcase = true; # Override ignorecase if search contains uppercase letters
     };
 
-    # Clipboard 
+    # Clipboard
     clipboard.register = "unnamedplus";
     clipboard.providers.wl-copy.enable = true;
 
@@ -374,8 +374,7 @@
       servers = {
         nil_ls = {
           enable = true;
-          settings.formatting.command =
-            [ "nixfmt" ]; # Ensure nil_ls uses nixfmt
+          settings.formatting.command = [ "nixfmt" ]; # Ensure nil_ls uses nixfmt
         };
         rust_analyzer = {
           enable = true;
@@ -405,7 +404,9 @@
           timeout_ms = 500;
           lsp_format = "fallback";
         };
-        formatters_by_ft = { nix = [ "nixfmt" ]; };
+        formatters_by_ft = {
+          nix = [ "nixfmt" ];
+        };
       };
     };
 
@@ -477,8 +478,7 @@
       {
         mode = "n";
         key = "<leader>h";
-        action.__raw =
-          "function() require'harpoon'.ui:toggle_quick_menu(require'harpoon':list()) end";
+        action.__raw = "function() require'harpoon'.ui:toggle_quick_menu(require'harpoon':list()) end";
       }
       {
         mode = "n";
@@ -511,7 +511,10 @@
       mainBar = {
         layer = "top";
         position = "top";
-        modules-left = [ "hyprland/workspaces" "custom/right-arrow-dark" ];
+        modules-left = [
+          "hyprland/workspaces"
+          "custom/right-arrow-dark"
+        ];
         modules-center = [
           "custom/left-arrow-dark"
           "clock#1"
@@ -580,7 +583,10 @@
           format-muted = "MUTE";
           format-icons = {
             headphones = "";
-            default = [ "" "" ];
+            default = [
+              ""
+              ""
+            ];
           };
           scroll-step = 5;
           on-click = "pamixer -t";
@@ -600,14 +606,22 @@
             critical = 15;
           };
           format = "{icon} {capacity}%";
-          format-icons = [ "" "" "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
         disk = {
           interval = 5;
           format = "Disk {percentage_used}%";
           path = "/";
         };
-        tray = { icon-size = 20; };
+        tray = {
+          icon-size = 20;
+        };
       };
     };
     style = ''
@@ -713,14 +727,16 @@
       decoration = {
         rounding = 10;
 
-        # Performance Optimization 
+        # Performance Optimization
         blur.enabled = false;
         shadow.enabled = false;
       };
       misc.vfr = true;
 
       # Mouse acceleration
-      input = { accel_profile = "flat"; };
+      input = {
+        accel_profile = "flat";
+      };
 
       # Fast Animations
       animations = {
