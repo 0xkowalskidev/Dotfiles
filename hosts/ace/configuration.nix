@@ -11,6 +11,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "amdgpu.dcdebugmask=0x12" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  hardware.firmware = [ pkgs.linux-firmware ];
 
   # Networking
   networking.hostName = "ace";
@@ -22,7 +23,6 @@
     28015
     28017
     7777
-    18080
   ];
   networking.firewall.allowedUDPPorts = [
     25565
@@ -30,7 +30,6 @@
     28015
     28017
     7777
-    18080
   ];
 
   # NAS
@@ -76,21 +75,6 @@
     };
   };
 
-  # Ollama
-  hardware.amdgpu.opencl.enable = true;
-
-  services.ollama = {
-    enable = true;
-    acceleration = "rocm";
-    environmentVariables = {
-      HCC_AMDGPU_TARGET = "gfx1150";
-    };
-    rocmOverrideGfx = "11.0.0";
-    openFirewall = true;
-    host = "0.0.0.0";
-    port = 11111;
-  };
-
   # Virtualisation
   virtualisation.containerd.enable = true;
   virtualisation.docker.enable = true;
@@ -112,10 +96,6 @@
       size = 16 * 1024; # 16 GB Swap
     }
   ];
-  zramSwap = {
-    enable = true;
-    memoryMax = 16 * 1024 * 1024 * 1024; # 16 GB ZRAM
-  };
 
   environment.systemPackages = with pkgs; [
     # Star Citizen/Lutris
