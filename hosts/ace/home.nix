@@ -4,6 +4,9 @@
   nixpkgs.config.allowUnfree = true;
 
   wayland.windowManager.hyprland.settings = {
+    monitor = [
+      "DP-1, 1920x1080@100hz, 0x0, 1"
+    ];
     env = [
       "LIBVA_DRIVER_NAME,amdgpu"
       "GBM_BACKEND,amdgpu-drm"
