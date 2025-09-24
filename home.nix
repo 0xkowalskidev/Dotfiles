@@ -7,9 +7,14 @@
   home.homeDirectory = "/home/kowalski";
 
   # Packages
+  # Temp fix for jellyfin
+  nixpkgs.config.permittedInsecurePackages = [
+    "qtwebengine-5.15.19"
+  ];
+
   home.packages = with pkgs; [
     # Apps
-    #jellyfin-media-player # Jellyfin client
+    jellyfin-media-player # Jellyfin client
     spotify
     qbittorrent
     mullvad-browser
