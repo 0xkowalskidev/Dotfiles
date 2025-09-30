@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   # System
@@ -14,16 +19,18 @@
   # NAS
   boot.supportedFilesystems = [ "nfs" ];
 
-  fileSystems."/mnt/data" = {
-    device = "192.168.1.129:/data";
-    fsType = "nfs";
-    options = [
-      "rw"
-      "sync"
-      "x-systemd.automount"
-      "x-systemd.mount-timeout=30"
-      "retry=3"
-    ];
+  fileSystems = lib.mkIf (config.networking.hostName != "doc") {
+    "/mnt/data" = {
+      device = "192.168.1.129:/data";
+      fsType = "nfs";
+      options = [
+        "rw"
+        "sync"
+        "x-systemd.automount"
+        "x-systemd.mount-timeout=30"
+        "retry=3"
+      ];
+    };
   };
 
   #Users
