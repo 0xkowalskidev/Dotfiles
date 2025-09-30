@@ -1,7 +1,10 @@
 { inputs, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ../../common.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../common.nix
+  ];
 
   # Boot
   boot.loader.systemd-boot.enable = true;
@@ -20,18 +23,9 @@
     powertop.enable = true;
   };
 
-  # Bluetooth 
+  # Bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
-
-  # NAS
-  boot.supportedFilesystems = [ "nfs" ];
-
-  fileSystems."/mnt/data" = {
-    device = "192.168.1.129:/data";
-    fsType = "nfs";
-    options = [ "rw" "sync" ];
-  };
 
   # Hyprland
   programs.hyprland = {
@@ -58,7 +52,14 @@
     extraSpecialArgs = { inherit inputs; };
 
     users = {
-      "kowalski" = { ... }: { imports = [ ./home.nix ../../home.nix ]; };
+      "kowalski" =
+        { ... }:
+        {
+          imports = [
+            ./home.nix
+            ../../home.nix
+          ];
+        };
     };
   };
 

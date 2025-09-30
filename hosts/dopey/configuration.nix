@@ -1,7 +1,10 @@
 { inputs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ../../common.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../common.nix
+  ];
 
   # Boot
   boot.loader.systemd-boot.enable = true;
@@ -16,20 +19,17 @@
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = true;
 
-  # NAS
-  boot.supportedFilesystems = [ "nfs" ];
-
-  fileSystems."/mnt/data" = {
-    device = "192.168.1.129:/data";
-    fsType = "nfs";
-    options = [ "rw" "sync" ];
+  # Minecraft Server
+  users.groups.minecraft = { };
+  users.users.minecraft = {
+    extraGroups = [ "nfsusers" ];
+    isSystemUser = true;
+    group = "minecraft";
   };
 
-  # Minecraft Server
-  users.groups.minecraft = {};
-  users.users.minecraft = { extraGroups = [ "nfsusers" ]; isSystemUser = true; group = "minecraft"; };
-
-  users.groups.nfsusers = { gid = 1000; };
+  users.groups.nfsusers = {
+    gid = 1000;
+  };
 
   services.minecraft-server = {
     enable = true;
