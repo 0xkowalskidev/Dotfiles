@@ -32,18 +32,6 @@
     7777
   ];
 
-  # NAS
-  boot.supportedFilesystems = [ "nfs" ];
-
-  fileSystems."/mnt/data" = {
-    device = "192.168.1.129:/data";
-    fsType = "nfs";
-    options = [
-      "rw"
-      "sync"
-    ];
-  };
-
   # Second SSD
   fileSystems."/data" = {
     device = "/dev/disk/by-uuid/0c83a41b-ebd6-4ad5-ae8f-f6007a671a93";

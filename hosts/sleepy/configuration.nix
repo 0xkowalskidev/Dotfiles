@@ -19,22 +19,6 @@
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = true;
 
-  # NAS
-  boot.supportedFilesystems = [ "nfs" ];
-
-  fileSystems."/mnt/data" = {
-    device = "192.168.1.129:/data";
-    fsType = "nfs";
-<<<<<<< HEAD
-    options = [ "rw" "sync" "x-systemd.automount" "x-systemd.mount-timeout=30" "retry=3" ];
-=======
-    options = [
-      "rw"
-      "sync"
-    ];
->>>>>>> e6d1d04524a95377740c7d057a918eca2be0705b
-  };
-
   # DDNS
   services.ddclient = {
     enable = true;
