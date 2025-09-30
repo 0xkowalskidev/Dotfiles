@@ -26,7 +26,8 @@
   };
 
   # Minecraft Server
-  users.users.minecraft = { extraGroups = [ "nfsusers" ]; };
+  users.groups.minecraft = {};
+  users.users.minecraft = { extraGroups = [ "nfsusers" ]; isSystemUser = true; group = "minecraft"; };
 
   users.groups.nfsusers = { gid = 1000; };
 
