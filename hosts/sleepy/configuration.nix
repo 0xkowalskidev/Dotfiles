@@ -114,7 +114,7 @@
   services.caddy = {
     enable = true;
     virtualHosts."0xkowalski.dev".extraConfig = ''
-      reverse_proxy localhost:3000
+      respond 403
     '';
     virtualHosts."online-portal.myfreelanceadmin.com".extraConfig = ''
       reverse_proxy localhost:3000
