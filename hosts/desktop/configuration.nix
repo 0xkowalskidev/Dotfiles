@@ -11,6 +11,8 @@
   networking.hostName = "desktop";
   networking.networkmanager.enable = true;
   services.mullvad-vpn.enable = true;
+  networking.firewall.allowedTCPPorts = [ 25565 27015 28015 28017 7777 ];
+  networking.firewall.allowedUDPPorts = [ 25565 27015 28015 28017 7777 ];
 
   # Power
   powerManagement.cpuFreqGovernor = "performance";
@@ -72,6 +74,8 @@
 
   # Virtualisation
   virtualisation.containerd.enable = true;
+  virtualisation.docker.enable = true;
+  users.users.kowalski.extraGroups = [ "wheel" "docker" ];
 
   # Games
   ## Star Citizen
@@ -118,7 +122,6 @@
       ExecStart = "/run/current-system/sw/bin/nvidia-smi -pl 125";
     };
   };
-
   # Home Manager
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

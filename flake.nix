@@ -14,6 +14,7 @@
     };
 
     nopswd.url = "github:0xkowalskidev/nopswd";
+    gameserverquery.url = "github:0xkowalskidev/gameserverquery";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
@@ -30,6 +31,14 @@
       specialArgs = { inherit inputs; };
       modules = [
         ./hosts/desktop/configuration.nix
+        inputs.home-manager.nixosModules.home-manager
+      ];
+    };
+
+    nixosConfigurations.ace = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./hosts/ace/configuration.nix
         inputs.home-manager.nixosModules.home-manager
       ];
     };

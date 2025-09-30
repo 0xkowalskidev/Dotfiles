@@ -1,7 +1,10 @@
 { inputs, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ../../common.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../common.nix
+  ];
 
   # Boot
   boot.loader.systemd-boot.enable = true;
@@ -22,7 +25,14 @@
   fileSystems."/mnt/data" = {
     device = "192.168.1.129:/data";
     fsType = "nfs";
+<<<<<<< HEAD
     options = [ "rw" "sync" "x-systemd.automount" "x-systemd.mount-timeout=30" "retry=3" ];
+=======
+    options = [
+      "rw"
+      "sync"
+    ];
+>>>>>>> e6d1d04524a95377740c7d057a918eca2be0705b
   };
 
   # DDNS
@@ -46,7 +56,9 @@
       name = "vaai";
       user = "vaai";
       group = "vaai";
-      serviceOverrides = { ReadWritePaths = [ "/srv/vaai" ]; };
+      serviceOverrides = {
+        ReadWritePaths = [ "/srv/vaai" ];
+      };
     };
   };
 
@@ -97,8 +109,7 @@
     description = "Backup SQLite database";
     serviceConfig = {
       Type = "oneshot";
-      ExecStart =
-        "/bin/sh -c 'cp /srv/vaai/sqlite.db /mnt/data/vaai/backup-$$(date +%%Y%%m%%d%%H%%M%%S).db'";
+      ExecStart = "/bin/sh -c 'cp /srv/vaai/sqlite.db /mnt/data/vaai/backup-$$(date +%%Y%%m%%d%%H%%M%%S).db'";
       User = "root"; # Adjust user if needed
     };
   };
@@ -112,7 +123,10 @@
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
   services.caddy = {
     enable = true;
     virtualHosts."0xkowalski.dev".extraConfig = ''
