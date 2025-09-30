@@ -22,7 +22,7 @@
   fileSystems."/mnt/data" = {
     device = "192.168.1.129:/data";
     fsType = "nfs";
-    options = [ "rw" "sync" ];
+    options = [ "rw" "sync" "x-systemd.automount" "x-systemd.mount-timeout=30" "retry=3" ];
   };
 
   # DDNS
