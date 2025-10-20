@@ -56,5 +56,17 @@
       genericName = "Minecraft Launcher";
       comment = "A custom launcher for Minecraft";
     };
+    discord = {
+      name = "Discord";
+      exec = "mullvad-exclude discord %U";
+      icon = "discord";
+      categories = [
+        "Network"
+        "InstantMessaging"
+        "Chat"
+      ];
+      genericName = "Discord";
+      comment = "Voice, Video and Text Chat";
+    };
   };
 }
