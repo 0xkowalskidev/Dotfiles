@@ -390,6 +390,7 @@
         };
         gopls.enable = true;
         html.enable = true;
+        pyright.enable = true;
       };
       keymaps = {
         lspBuf = {
