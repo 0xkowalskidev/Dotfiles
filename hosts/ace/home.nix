@@ -6,7 +6,6 @@
   wayland.windowManager.hyprland.settings = {
     monitor = [
       "DP-1, 1920x1080@100hz, 0x0, 1"
-      "HDMI-A-1, 1920x1080, -1920x0, 1"
     ];
     workspace = [
       "1, monitor:DP-1, default:true"
@@ -18,7 +17,7 @@
       "7, monitor:DP-1"
       "8, monitor:DP-1"
       "9, monitor:DP-1"
-      "10, monitor:HDMI-A-1"
+      "10, monitor:DP-1"
     ];
     env = [
       "LIBVA_DRIVER_NAME,amdgpu"
