@@ -12,6 +12,7 @@
   boot.kernelParams = [ "amdgpu.dcdebugmask=0x12" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.firmware = [ pkgs.linux-firmware ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   # Networking
   networking.hostName = "ace";
@@ -71,6 +72,13 @@
     "docker"
   ];
 
+  # Ollama
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+  };
+  services.open-webui.enable = true;
+
   # Games
   ## Star Citizen
   boot.kernel.sysctl = {
@@ -104,6 +112,7 @@
     rocmPackages_6.rocm-runtime
     rocmPackages_6.rocm-smi
     rocmPackages_6.rocminfo
+    ollama-rocm
 
     # Monero
     monero-gui
