@@ -7,14 +7,9 @@
   home.homeDirectory = "/home/kowalski";
 
   # Packages
-  # Temp fix for jellyfin
-  nixpkgs.config.permittedInsecurePackages = [
-    "qtwebengine-5.15.19"
-  ];
-
   home.packages = with pkgs; [
     # Apps
-    jellyfin-media-player # Jellyfin client
+    #jellyfin-media-player # Jellyfin client
     spotify
     qbittorrent
     mullvad-browser
@@ -22,13 +17,20 @@
     discord
     slack
     stripe-cli
+    satisfactorymodmanager
 
     nerd-fonts.fira-code # Font
+
+    openvpn
+    nmap
+    gobuster
+    thc-hydra
 
     # Utils
     wl-clipboard
     ripgrep
     mullvad-vpn
+    feh
     pamixer # Audio Mixer
     mpv # Video player
     btop
@@ -391,6 +393,7 @@
         gopls.enable = true;
         html.enable = true;
         pyright.enable = true;
+        ols.enable = true;
       };
       keymaps = {
         lspBuf = {
@@ -721,6 +724,7 @@
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
+        initial_workspace_tracking = 2;
       };
 
       # Ecosystem
