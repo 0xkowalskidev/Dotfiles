@@ -33,10 +33,10 @@
   ];
 
   # Second SSD
-  fileSystems."/data" = {
-    device = "/dev/disk/by-uuid/0c83a41b-ebd6-4ad5-ae8f-f6007a671a93";
-    fsType = "ext4";
-  };
+  # fileSystems."/data" = {
+  #  device = "/dev/disk/by-uuid/0c83a41b-ebd6-4ad5-ae8f-f6007a671a93";
+  #  fsType = "ext4";
+  # };
 
   # Graphics
   hardware.graphics = {
