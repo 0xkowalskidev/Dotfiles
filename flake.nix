@@ -15,6 +15,8 @@
 
     nopswd.url = "github:0xkowalskidev/nopswd";
     gameserverquery.url = "github:0xkowalskidev/gameserverquery";
+
+    opencode.url = "github:anomalyco/opencode";
   };
 
   outputs =

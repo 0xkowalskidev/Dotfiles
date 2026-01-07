@@ -143,6 +143,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1767364772,
+        "narHash": "sha256-fFUnEYMla8b7UKjijLnMe+oVFOz6HjijGGNS1l7dYaQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "16c7794d0a28b5a37904d55bcca36003b9109aaa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -181,6 +197,24 @@
         "type": "github"
       }
     },
+    "opencode": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1767814093,
+        "narHash": "sha256-KJLF/aD1j4bz3Z7OP4ci4nNyWif9/wF0VGFf28lttXs=",
+        "owner": "anomalyco",
+        "repo": "opencode",
+        "rev": "34c9d106ee8987e655c69b11fdd852e7d2a45c77",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anomalyco",
+        "repo": "opencode",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "gameserverquery": "gameserverquery",
@@ -188,7 +222,8 @@
         "minimal-tmux": "minimal-tmux",
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
-        "nopswd": "nopswd"
+        "nopswd": "nopswd",
+        "opencode": "opencode"
       }
     },
     "systems": {
