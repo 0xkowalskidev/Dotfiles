@@ -57,6 +57,8 @@
     # Odin
     odin
 
+    inputs.opencode.packages.x86_64-linux.default
+
     # Rust
     rustc
     cargo
