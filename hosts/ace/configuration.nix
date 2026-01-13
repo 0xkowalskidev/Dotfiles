@@ -9,7 +9,7 @@
   # Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [ "amdgpu.dcdebugmask=0x12" ];
+  #boot.kernelParams = [ "amdgpu.dcdebugmask=0x12" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.firmware = [ pkgs.linux-firmware ];
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -92,6 +92,8 @@
       size = 16 * 1024; # 16 GB Swap
     }
   ];
+
+  services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
     # Star Citizen/Lutris
