@@ -66,6 +66,7 @@
       DEBUG = "";
       GAMESERVER_HOST = "0.0.0.0";
       GAMESERVER_PORT = "3000";
+      GAMESERVER_PUBLIC_ADDRESS = "0xkowalski.dev";
       GAMESERVER_SHUTDOWN_TIMEOUT = "30s";
       GAMESERVER_DATABASE_PATH = "/var/lib/gameservers/gameservers.db";
       GAMESERVER_DOCKER_SOCKET = ""; # Uses default: /var/run/docker.sock
