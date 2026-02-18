@@ -96,12 +96,8 @@
   services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # Star Citizen/Lutris
-    wineWowPackages.stable
-    winetricks
-    libwebp
-
-    lutris
+    # Star Citizen
+    inputs.nix-citizen.packages.${system}.rsi-launcher
 
     # Minecraft
     openjdk21

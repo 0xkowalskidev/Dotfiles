@@ -58,6 +58,7 @@
     odin
 
     inputs.opencode.packages.x86_64-linux.default
+    claude-code
 
     # Rust
     rustc
