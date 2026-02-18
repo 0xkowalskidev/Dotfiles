@@ -48,6 +48,15 @@
       genericName = "Lutris";
       comment = "Open gaming platform";
     };
+    rsi-launcher = {
+      name = "RSI Launcher";
+      genericName = "Star Citizen Launcher";
+      exec = "mullvad-exclude rsi-launcher %U";
+      icon = "rsi-launcher";
+      terminal = false;
+      categories = [ "Game" ];
+      mimeType = [ "application/x-rsi-launcher" ];
+    };
     "org.prismlauncher.PrismLauncher" = {
       name = "PrismLauncher";
       exec = "mullvad-exclude prismlauncher %U";
