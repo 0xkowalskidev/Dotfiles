@@ -55,11 +55,13 @@
   services.dockerRegistry = {
     enable = true;
     port = 5000;
-    htpasswdFile = "/etc/docker-registry/htpasswd";
   };
 
   # HTTPS for Registry
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
   services.caddy = {
     enable = true;
     virtualHosts."registry.0xkowalski.dev".extraConfig = ''
