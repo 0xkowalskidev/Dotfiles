@@ -42,6 +42,12 @@
         bind = "loopback"; # only accept local connections
       };
 
+      # Browser config for NixOS (use unwrapped chromium path)
+      browser = {
+        executablePath = "${pkgs.chromium.browser}/libexec/chromium/chromium";
+        noSandbox = true;
+      };
+
       # Scheduled tasks
       cron.enabled = true;
     };
@@ -61,7 +67,11 @@
     Environment = "SSH_AUTH_SOCK=%t/ssh-agent";
     # Mount empty tmpfs over /home/kowalski, then bind-mount allowed paths
     TemporaryFileSystem = "/home/kowalski:ro";
-    BindPaths = [ "/home/kowalski/.openclaw" ];
+    BindPaths = [
+      "/home/kowalski/.openclaw"
+      "/home/kowalski/.config/chromium"  # browser profile data
+      "/home/kowalski/.cache/chromium"   # browser cache
+    ];
     BindReadOnlyPaths = [ "/home/kowalski/Dotfiles" ];
     InaccessiblePaths = [ "/root" ];
   };
