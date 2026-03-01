@@ -58,6 +58,7 @@
   # Load gateway token and restrict filesystem access
   systemd.user.services.openclaw-gateway.Service = {
     EnvironmentFile = "/home/kowalski/.openclaw/secrets/openclaw-gateway-env";
+    Environment = "SSH_AUTH_SOCK=%t/ssh-agent";
     # Mount empty tmpfs over /home/kowalski, then bind-mount allowed paths
     TemporaryFileSystem = "/home/kowalski:ro";
     BindPaths = [ "/home/kowalski/.openclaw" ];
