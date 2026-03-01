@@ -65,6 +65,11 @@
   services.caddy = {
     enable = true;
     virtualHosts."registry.0xkowalski.dev".extraConfig = ''
+      @push {
+        method POST PUT PATCH DELETE
+        not remote_ip 192.168.1.17
+      }
+      respond @push 403
       reverse_proxy localhost:5000
     '';
   };
