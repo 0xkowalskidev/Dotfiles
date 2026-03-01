@@ -14,7 +14,7 @@
 
   # SSH
   services.openssh.enable = true;
-  services.openssh.settings.PasswordAuthentication = true;
+  services.openssh.settings.PasswordAuthentication = false;
 
   # NAS
   fileSystems."/data" = {
