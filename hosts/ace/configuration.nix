@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  pkgs-unstable,
+  ...
+}:
 
 {
   imports = [
@@ -72,11 +77,14 @@
     "docker"
   ];
 
-  # Ollama
-  #services.ollama = {
-  # enable = true;
-  # acceleration = "rocm";
-  #};
+  # Ollama (Vulkan works better on Strix Point gfx1150)
+  services.ollama = {
+    enable = true;
+    package = pkgs-unstable.ollama-vulkan;
+    environmentVariables = {
+      OLLAMA_CONTEXT_LENGTH = "32768";
+    };
+  };
   #services.open-webui.enable = true;
 
   # Games
@@ -106,11 +114,12 @@
     amdgpu_top
     wlr-randr
     mangohud
+    lsof
 
     rocmPackages_6.rocm-runtime
     rocmPackages_6.rocm-smi
     rocmPackages_6.rocminfo
-    ollama-rocm
+    pkgs-unstable.ollama
 
     # Monero
     monero-gui
@@ -123,6 +132,9 @@
 
   # Home Manager
   home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "hm-backup";
     extraSpecialArgs = { inherit inputs; };
 
     users = {

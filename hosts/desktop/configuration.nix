@@ -1,7 +1,10 @@
 { inputs, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ../../common.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../common.nix
+  ];
 
   # Boot
   boot.loader.systemd-boot.enable = true;
@@ -11,8 +14,20 @@
   networking.hostName = "desktop";
   networking.networkmanager.enable = true;
   services.mullvad-vpn.enable = true;
-  networking.firewall.allowedTCPPorts = [ 25565 27015 28015 28017 7777 ];
-  networking.firewall.allowedUDPPorts = [ 25565 27015 28015 28017 7777 ];
+  networking.firewall.allowedTCPPorts = [
+    25565
+    27015
+    28015
+    28017
+    7777
+  ];
+  networking.firewall.allowedUDPPorts = [
+    25565
+    27015
+    28015
+    28017
+    7777
+  ];
 
   # Power
   powerManagement.cpuFreqGovernor = "performance";
@@ -23,7 +38,10 @@
   fileSystems."/mnt/data" = {
     device = "192.168.1.129:/data";
     fsType = "nfs";
-    options = [ "rw" "sync" ];
+    options = [
+      "rw"
+      "sync"
+    ];
   };
 
   # Drives
@@ -75,7 +93,10 @@
   # Virtualisation
   virtualisation.containerd.enable = true;
   virtualisation.docker.enable = true;
-  users.users.kowalski.extraGroups = [ "wheel" "docker" ];
+  users.users.kowalski.extraGroups = [
+    "wheel"
+    "docker"
+  ];
 
   # Games
   ## Star Citizen
@@ -84,10 +105,12 @@
     "fs.file-max" = 524288;
   };
 
-  swapDevices = [{
-    device = "/mnt/secondary/swapfile";
-    size = 16 * 1024; # 16 GB Swap
-  }];
+  swapDevices = [
+    {
+      device = "/mnt/secondary/swapfile";
+      size = 16 * 1024; # 16 GB Swap
+    }
+  ];
 
   zramSwap = {
     enable = true;
@@ -98,7 +121,7 @@
     # Star Citizen/Lutris
     lutris
 
-    # Minecraft     
+    # Minecraft
     openjdk21
     prismlauncher # Unofficial Minecraft Launcher
   ];
@@ -127,7 +150,14 @@
     extraSpecialArgs = { inherit inputs; };
 
     users = {
-      "kowalski" = { ... }: { imports = [ ./home.nix ../../home.nix ]; };
+      "kowalski" =
+        { ... }:
+        {
+          imports = [
+            ./home.nix
+            ../../home.nix
+          ];
+        };
     };
   };
 
