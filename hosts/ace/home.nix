@@ -64,7 +64,6 @@
     BindReadOnlyPaths = [ "/home/kowalski/Dotfiles" ];
     InaccessiblePaths = [ "/root" ];
   };
-  nixpkgs.config.allowUnfree = true;
 
   wayland.windowManager.hyprland.settings = {
     monitor = [
