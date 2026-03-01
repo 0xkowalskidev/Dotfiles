@@ -1,6 +1,70 @@
-{ ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
+  imports = [
+    inputs.openclaw.homeManagerModules.openclaw
+  ];
+
+  # OpenClaw
+  programs.openclaw = {
+    enable = true;
+    package = pkgs.openclaw;
+    config = {
+      agents.defaults = {
+        workspace = "/home/kowalski/.openclaw/workspace";
+        model = {
+          primary = "anthropic/claude-sonnet-4-6";
+          fallbacks = [ ];
+        };
+        sandbox = {
+          mode = "all";
+          workspaceAccess = "rw"; # read-write to sandboxed workspace only
+          scope = "session"; # isolate per session
+          docker.network = "bridge"; # allow network access
+        };
+      };
+
+      # Disable unused channels
+      channels.whatsapp.enabled = false;
+
+      channels.telegram = {
+        tokenFile = "/home/kowalski/.secrets/telegram-bot-token";
+        allowFrom = [ 8681495906 ];
+        dmPolicy = "allowlist";
+        groupPolicy = "allowlist";
+      };
+
+      gateway = {
+        mode = "local";
+        bind = "loopback"; # only accept local connections
+      };
+
+      # Scheduled tasks
+      cron.enabled = true;
+    };
+
+    # Bundled plugins
+    bundledPlugins = {
+      summarize.enable = true; # Summarize URLs, PDFs, YouTube
+    };
+  };
+
+  # Force overwrite openclaw config to avoid backup conflicts
+  home.file.".openclaw/openclaw.json".force = true;
+
+  # Load gateway token from secret file and set PATH for NixOS
+  systemd.user.services.openclaw-gateway.Service = {
+    EnvironmentFile = "/home/kowalski/.secrets/openclaw-gateway-env";
+    Environment = [
+      "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/kowalski/bin:/usr/bin:/bin"
+    ];
+  };
   nixpkgs.config.allowUnfree = true;
 
   wayland.windowManager.hyprland.settings = {

@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,6 +19,7 @@
     gameservers.url = "github:0xkowalskidev/gameservers";
 
     opencode.url = "github:anomalyco/opencode";
+    openclaw.url = "github:openclaw/nix-openclaw";
 
     nix-citizen.url = "github:LovingMelody/nix-citizen";
     nix-gaming.url = "github:fufexan/nix-gaming";
@@ -45,10 +47,17 @@
       };
 
       nixosConfigurations.ace = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+          pkgs-unstable = import inputs.nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
         modules = [
           ./hosts/ace/configuration.nix
           inputs.home-manager.nixosModules.home-manager
+          { nixpkgs.overlays = [ inputs.openclaw.overlays.default ]; }
         ];
       };
 

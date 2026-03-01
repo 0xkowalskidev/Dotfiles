@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 {
   programs.home-manager.enable = true;
@@ -13,6 +18,7 @@
     spotify
     qbittorrent
     mullvad-browser
+    chromium
     signal-desktop
     discord
     slack
@@ -53,7 +59,7 @@
     # Go
     go
     # JS/Node
-    nodejs_24
+    (lib.hiPrio nodejs_24)
     # Odin
     odin
 
