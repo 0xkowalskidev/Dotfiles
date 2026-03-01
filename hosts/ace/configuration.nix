@@ -106,7 +106,7 @@
 
   environment.systemPackages = with pkgs; [
     # Star Citizen
-    inputs.nix-citizen.packages.${system}.rsi-launcher
+    inputs.nix-citizen.packages.${pkgs.stdenv.hostPlatform.system}.rsi-launcher
 
     # Minecraft
     openjdk21

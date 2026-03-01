@@ -49,8 +49,8 @@
     cpufetch
     qemu # VMs
     quickemu # VM tools
-    inputs.nopswd.packages.x86_64-linux.default # Password manager
-    inputs.gameserverquery.packages.x86_64-linux.default
+    inputs.nopswd.packages.${pkgs.stdenv.hostPlatform.system}.default # Password manager
+    inputs.gameserverquery.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Programming Languages, tools, etc
     reflex # Reload on change
@@ -63,7 +63,7 @@
     # Odin
     odin
 
-    inputs.opencode.packages.x86_64-linux.default
+    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
     claude-code
 
     # Rust
@@ -104,7 +104,7 @@
     mouse = true;
 
     plugins = [
-      { plugin = inputs.minimal-tmux.packages.${pkgs.system}.default; }
+      { plugin = inputs.minimal-tmux.packages.${pkgs.stdenv.hostPlatform.system}.default; }
       {
         plugin = pkgs.tmuxPlugins.resurrect;
         extraConfig = "set -g @resurrect-strategy-nvim 'session'";
@@ -288,20 +288,23 @@
   # SSH
   programs.ssh = {
     enable = true;
-    extraConfig = ''
-      Host github.com
-        HostName github.com
-        IdentityFile ~/.ssh/id_ed25519
-        IdentitiesOnly yes
-    '';
+    enableDefaultConfig = false;
+    matchBlocks = {
+      "*" = {};
+      "github.com" = {
+        hostname = "github.com";
+        identityFile = "~/.ssh/id_ed25519";
+        identitiesOnly = true;
+      };
+    };
   };
   services.ssh-agent.enable = true;
 
   # Git
   programs.git = {
     enable = true;
-    userName = "0xkowalskidev";
-    userEmail = "0xkowalskidev@gmail.com";
+    settings.user.name = "0xkowalskidev";
+    settings.user.email = "0xkowalskidev@gmail.com";
   };
 
   # Bash
@@ -349,7 +352,7 @@
   };
 
   # Neovim Editor
-  imports = [ inputs.nixvim.homeManagerModules.nixvim ];
+  imports = [ inputs.nixvim.homeModules.nixvim ];
   programs.nixvim = {
     enable = true;
     vimAlias = true;

@@ -78,7 +78,7 @@
     };
 
     serviceConfig = {
-      ExecStart = "${inputs.gameservers.packages.${pkgs.system}.default}/bin/gameservers";
+      ExecStart = "${inputs.gameservers.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/gameservers";
       StateDirectory = "gameservers";
       WorkingDirectory = "/var/lib/gameservers";
       Restart = "on-failure";
