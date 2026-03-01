@@ -22,13 +22,10 @@
           primary = "anthropic/claude-sonnet-4-6";
           fallbacks = [ ];
         };
-        sandbox = {
-          mode = "all";
-          workspaceAccess = "rw"; # read-write to sandboxed workspace only
-          scope = "session"; # isolate per session
-          docker.network = "bridge"; # allow network access
-        };
       };
+
+      # Restrict file operations to workspace
+      tools.fs.workspaceOnly = true;
 
       # Disable unused channels
       channels.whatsapp.enabled = false;
@@ -58,12 +55,14 @@
   # Force overwrite openclaw config to avoid backup conflicts
   home.file.".openclaw/openclaw.json".force = true;
 
-  # Load gateway token from secret file and set PATH for NixOS
+  # Load gateway token and restrict filesystem access
   systemd.user.services.openclaw-gateway.Service = {
     EnvironmentFile = "/home/kowalski/.secrets/openclaw-gateway-env";
-    Environment = [
-      "PATH=/run/current-system/sw/bin:/etc/profiles/per-user/kowalski/bin:/usr/bin:/bin"
-    ];
+    # Mount empty tmpfs over /home/kowalski, then bind-mount allowed paths
+    TemporaryFileSystem = "/home/kowalski:ro";
+    BindPaths = [ "/home/kowalski/.openclaw" ];
+    BindReadOnlyPaths = [ "/home/kowalski/Dotfiles" ];
+    InaccessiblePaths = [ "/root" ];
   };
   nixpkgs.config.allowUnfree = true;
 
