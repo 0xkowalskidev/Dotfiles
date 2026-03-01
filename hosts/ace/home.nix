@@ -31,7 +31,7 @@
       channels.whatsapp.enabled = false;
 
       channels.telegram = {
-        tokenFile = "/home/kowalski/.secrets/telegram-bot-token";
+        tokenFile = "/home/kowalski/.openclaw/secrets/telegram-bot-token";
         allowFrom = [ 8681495906 ];
         dmPolicy = "allowlist";
         groupPolicy = "allowlist";
@@ -57,7 +57,7 @@
 
   # Load gateway token and restrict filesystem access
   systemd.user.services.openclaw-gateway.Service = {
-    EnvironmentFile = "/home/kowalski/.secrets/openclaw-gateway-env";
+    EnvironmentFile = "/home/kowalski/.openclaw/secrets/openclaw-gateway-env";
     # Mount empty tmpfs over /home/kowalski, then bind-mount allowed paths
     TemporaryFileSystem = "/home/kowalski:ro";
     BindPaths = [ "/home/kowalski/.openclaw" ];
