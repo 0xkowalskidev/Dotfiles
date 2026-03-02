@@ -18,14 +18,7 @@
     config = {
       agents.defaults = {
         workspace = "/home/kowalski/.openclaw/workspace";
-        model = {
-          primary = "anthropic/claude-sonnet-4-6";
-          fallbacks = [ ];
-        };
       };
-
-      # Restrict file operations to workspace
-      tools.fs.workspaceOnly = true;
 
       # Disable unused channels
       channels.whatsapp.enabled = false;
@@ -40,12 +33,6 @@
       gateway = {
         mode = "local";
         bind = "loopback"; # only accept local connections
-      };
-
-      # Browser config for NixOS (use unwrapped chromium path)
-      browser = {
-        executablePath = "${pkgs.chromium.browser}/libexec/chromium/chromium";
-        noSandbox = true;
       };
 
       # Scheduled tasks
@@ -65,15 +52,6 @@
   systemd.user.services.openclaw-gateway.Service = {
     EnvironmentFile = "/home/kowalski/.openclaw/secrets/openclaw-gateway-env";
     Environment = "SSH_AUTH_SOCK=%t/ssh-agent";
-    # Mount empty tmpfs over /home/kowalski, then bind-mount allowed paths
-    TemporaryFileSystem = "/home/kowalski:ro";
-    BindPaths = [
-      "/home/kowalski/.openclaw"
-      "/home/kowalski/.config/chromium"  # browser profile data
-      "/home/kowalski/.cache/chromium"   # browser cache
-    ];
-    BindReadOnlyPaths = [ "/home/kowalski/Dotfiles" ];
-    InaccessiblePaths = [ "/root" ];
   };
 
   wayland.windowManager.hyprland.settings = {
