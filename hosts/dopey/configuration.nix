@@ -64,12 +64,15 @@
   ];
   services.caddy = {
     enable = true;
+    globalConfig = ''
+      import /etc/caddy/registry-htpasswd
+    '';
     virtualHosts."registry.0xkowalski.dev".extraConfig = ''
       @push {
         method POST PUT PATCH DELETE
       }
       basicauth @push {
-        import /etc/caddy/registry-htpasswd
+        import registry-auth
       }
       reverse_proxy localhost:5000
     '';
