@@ -72,6 +72,7 @@
         import /etc/caddy/registry-htpasswd
       }
       reverse_proxy localhost:5000 {
+        header_up -Authorization
         header_up X-Forwarded-Proto {scheme}
         header_up X-Real-IP {remote_host}
       }
