@@ -31,39 +31,18 @@
     gid = 1000;
   };
 
-  services.minecraft-server = {
-    enable = true;
-    openFirewall = true;
-    eula = true;
-    dataDir = "/mnt/data/minecraft-server";
-    jvmOpts = "-Xmx6G -Xms6G -Djava.net.preferIPv4Stack=true";
-    declarative = true;
-    serverProperties = {
-      difficulty = 3;
-      max-players = 10000;
-      motd = "Jonathan Wickes.";
-      view-distance = 64;
-    };
-  };
-
   # Jellyfin
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
 
-  # Container Registry
+  # Container Registry (no auth - handled by Caddy)
   virtualisation.docker.enable = true;
   services.dockerRegistry = {
     enable = true;
     port = 5000;
-    extraConfig = {
-      auth.htpasswd = {
-        realm = "Registry Realm";
-        path = "/etc/docker-registry/htpasswd";
-      };
-    };
   };
 
-  # HTTPS for Registry
+  # HTTPS for Registry (public pull, private push)
   networking.firewall.allowedTCPPorts = [
     80
     443
@@ -71,6 +50,13 @@
   services.caddy = {
     enable = true;
     virtualHosts."registry.0xkowalski.dev".extraConfig = ''
+      header Docker-Distribution-Api-Version "registry/2.0"
+
+      @write method PUT POST PATCH DELETE
+      basicauth @write {
+        import /etc/caddy/registry-htpasswd
+      }
+
       reverse_proxy localhost:5000
     '';
   };
