@@ -35,14 +35,14 @@
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
 
-  # Container Registry (no auth - handled by Caddy)
+  # Container Registry
   virtualisation.docker.enable = true;
   services.dockerRegistry = {
     enable = true;
     port = 5000;
   };
 
-  # HTTPS for Registry (public pull, private push)
+  # HTTPS for Registry
   networking.firewall.allowedTCPPorts = [
     80
     443
@@ -50,13 +50,6 @@
   services.caddy = {
     enable = true;
     virtualHosts."registry.0xkowalski.dev".extraConfig = ''
-      header Docker-Distribution-Api-Version "registry/2.0"
-
-      @write method PUT POST PATCH DELETE
-      basic_auth @write {
-        kowalski $2a$14$xypqLlDEIF0N0GxRsr127eWIKEG3dhL0ddzqa0uR5Zc6RvGYVovhu
-      }
-
       reverse_proxy localhost:5000
     '';
   };
