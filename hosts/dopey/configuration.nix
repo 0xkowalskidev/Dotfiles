@@ -53,8 +53,8 @@
       header Docker-Distribution-Api-Version "registry/2.0"
 
       @write method PUT POST PATCH DELETE
-      basicauth @write {
-        import /etc/caddy/registry-htpasswd
+      basic_auth @write {
+        kowalski $2a$14$xypqLlDEIF0N0GxRsr127eWIKEG3dhL0ddzqa0uR5Zc6RvGYVovhu
       }
 
       reverse_proxy localhost:5000
