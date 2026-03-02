@@ -142,9 +142,9 @@
 
       # Pane Management
       bind-key -n M-x kill-pane
-      ## Pane Splitting 
-      bind-key -n M-h split-window -h 
-      bind-key -n M-v split-window -v 
+      ## Pane Splitting
+      bind-key -n M-h split-window -h -c "#{pane_current_path}"
+      bind-key -n M-v split-window -v -c "#{pane_current_path}" 
 
       ## Navigate panes
       bind-key -n M-Left select-pane -L
