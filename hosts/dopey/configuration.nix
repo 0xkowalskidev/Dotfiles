@@ -55,6 +55,12 @@
   services.dockerRegistry = {
     enable = true;
     port = 5000;
+    extraConfig = {
+      auth.htpasswd = {
+        realm = "Registry Realm";
+        path = "/etc/docker-registry/htpasswd";
+      };
+    };
   };
 
   # HTTPS for Registry
@@ -65,17 +71,7 @@
   services.caddy = {
     enable = true;
     virtualHosts."registry.0xkowalski.dev".extraConfig = ''
-      @push {
-        method POST PUT PATCH DELETE
-      }
-      basic_auth @push {
-        import /etc/caddy/registry-htpasswd
-      }
-      reverse_proxy localhost:5000 {
-        header_up -Authorization
-        header_up X-Forwarded-Proto {scheme}
-        header_up X-Real-IP {remote_host}
-      }
+      reverse_proxy localhost:5000
     '';
   };
 
