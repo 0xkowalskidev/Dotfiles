@@ -45,7 +45,9 @@
   };
   programs.waybar.style = lib.mkAfter ''
     #battery {
+      background: #181825;
       color: #a6e3a1;
+      padding: 0 10px;
     }
   '';
 }
