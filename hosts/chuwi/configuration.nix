@@ -15,6 +15,7 @@
   # Networking
   networking.hostName = "chuwi";
   networking.networkmanager.enable = true;
+  systemd.services.NetworkManager-wait-online.enable = false; # Faster boot
   services.mullvad-vpn.enable = true;
 
   # Power
