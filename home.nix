@@ -119,6 +119,11 @@
     ];
 
     extraConfig = ''
+      # Clipboard (Wayland)
+      set -g @yank_selection_mouse 'clipboard'
+      set -g @override_copy_command 'wl-copy'
+      set -g set-clipboard on
+
       # M is ALT in this context
       # Manage Windows
       bind-key -n M-X kill-window

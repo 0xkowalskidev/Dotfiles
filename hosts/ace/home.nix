@@ -39,10 +39,6 @@
       cron.enabled = true;
     };
 
-    # Bundled plugins
-    bundledPlugins = {
-      summarize.enable = true; # Summarize URLs, PDFs, YouTube
-    };
   };
 
   # Force overwrite openclaw config to avoid backup conflicts
