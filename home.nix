@@ -771,6 +771,13 @@
         "$mod SHIFT, 9, movetoworkspace, 9"
         "$mod SHIFT, 0, movetoworkspace, 10"
       ];
+
+      # Window rules
+      windowrulev2 = [
+        "tile,class:^(steam)$"
+        "tile,class:^(Steam)$"
+        "float,class:^(steam)$,title:^(Steam Settings)$" # Settings dialog works better floating
+      ];
     };
   };
 
