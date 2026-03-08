@@ -33,6 +33,7 @@
     thc-hydra
 
     # Utils
+    hyprshot
     wl-clipboard
     ripgrep
     mullvad-vpn
@@ -728,6 +729,11 @@
         "$mod, Space, exec, wofi --show drun" # Application Launcher
         "$mod, ESCAPE, killactive" # Kill Program
         "$mod, f, fullscreen"
+
+        # Screenshots
+        ", Print, exec, hyprshot -m output -o ~/screenshots" # Full monitor
+        "SHIFT, Print, exec, hyprshot -m region -o ~/screenshots" # Select region
+        "CTRL, Print, exec, hyprshot -m window -o ~/screenshots" # Active window
 
         # Switch Focus
         "$mod, right, movefocus, r" # Focus right
