@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -14,7 +14,7 @@
 
   # Battery in waybar (chuwi has a battery, ace doesn't)
   programs.waybar.settings.mainBar = {
-    modules-right = [
+    modules-right = lib.mkForce [
       "custom/left-arrow-dark"
       "pulseaudio"
       "custom/left-arrow-light"
@@ -40,10 +40,10 @@
         critical = 15;
       };
       format = "{icon} {capacity}%";
-      format-icons = [ "" "" "" "" "" ];
+      format-icons = [ "󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
     };
   };
-  programs.waybar.style = ''
+  programs.waybar.style = lib.mkAfter ''
     #battery {
       color: #a6e3a1;
     }
