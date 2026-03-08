@@ -24,6 +24,8 @@
     nix-citizen.url = "github:LovingMelody/nix-citizen";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-citizen.inputs.nix-gaming.follows = "nix-gaming";
+
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
 
   outputs =
@@ -49,6 +51,7 @@
         modules = [
           ./hosts/ace/configuration.nix
           inputs.home-manager.nixosModules.home-manager
+          inputs.chaotic.nixosModules.default
           { nixpkgs.overlays = [ inputs.openclaw.overlays.default ]; }
         ];
       };

@@ -608,7 +608,7 @@
     };
     style = ''
       * {
-        font-size: 14px;
+        font-size: 18px;
         font-family: "FiraCode Nerd Font Mono";
       }
       window#waybar {
