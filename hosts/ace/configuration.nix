@@ -14,7 +14,10 @@
   # Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [ "amdgpu.cwsr_enable=0" ]; # Workaround for MES hang on Strix Point
+  boot.kernelParams = [
+    "amdgpu.cwsr_enable=0" # Workaround for MES hang on Strix Point
+    "mitigations=off" # Disable CPU security mitigations for performance
+  ];
   boot.kernelPackages = pkgs.linuxPackages_cachyos; # CachyOS kernel for gaming
   hardware.firmware = [ pkgs.linux-firmware ];
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -22,6 +25,7 @@
   # Networking
   networking.hostName = "ace";
   networking.networkmanager.enable = true;
+  systemd.services.NetworkManager-wait-online.enable = false; # Faster boot
   services.mullvad-vpn.enable = true;
   networking.firewall.allowedTCPPorts = [
     25565
@@ -93,14 +97,21 @@
   boot.kernel.sysctl = {
     "vm.max_map_count" = 16777216;
     "fs.file-max" = 524288;
+    "vm.swappiness" = 10; # Prefer RAM over swap
+    "vm.vfs_cache_pressure" = 50; # Keep file cache longer
   };
 
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 16 * 1024; # 16 GB Swap
-    }
-  ];
+  # zram (compressed RAM swap - faster than disk)
+  zramSwap = {
+    enable = true;
+    memoryPercent = 50; # Use up to 50% of RAM for zram
+    algorithm = "zstd";
+  };
+
+  # I/O scheduler for NVMe
+  services.udev.extraRules = ''
+    ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/scheduler}="kyber"
+  '';
 
   services.flatpak.enable = true;
 
