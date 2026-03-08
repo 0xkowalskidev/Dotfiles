@@ -122,6 +122,10 @@
     ];
 
     extraConfig = ''
+      # Pane borders (Catppuccin)
+      set -g pane-border-style 'fg=#313244'
+      set -g pane-active-border-style 'fg=#313244'
+
       # Clipboard (Wayland)
       set -g @yank_selection_mouse 'clipboard'
       set -g @override_copy_command 'wl-copy'
