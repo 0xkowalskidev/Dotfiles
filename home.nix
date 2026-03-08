@@ -33,6 +33,7 @@
     thc-hydra
 
     # Utils
+    hyprlock
     hyprshot
     wl-clipboard
     ripgrep
@@ -730,6 +731,9 @@
         "$mod, ESCAPE, killactive" # Kill Program
         "$mod, f, fullscreen"
 
+        # Lock screen
+        "$mod, L, exec, hyprlock"
+
         # Screenshots
         ", Print, exec, hyprshot -m output -o ~/screenshots" # Full monitor
         "SHIFT, Print, exec, hyprshot -m region -o ~/screenshots" # Select region
@@ -795,6 +799,89 @@
       splash = false;
       wallpaper = [ ", ~/Dotfiles/background.jpg" ];
       preload = [ "~/Dotfiles/background.jpg" ];
+    };
+  };
+
+  ## Hyprlock
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      general = {
+        hide_cursor = true;
+        grace = 3;
+      };
+      background = {
+        path = "~/Dotfiles/background.jpg";
+        blur_passes = 2;
+        blur_size = 4;
+      };
+      label = [
+        {
+          text = "$TIME";
+          font_size = 72;
+          font_family = "FiraCode Nerd Font Mono";
+          color = "rgb(cdd6f4)";
+          position = "0, 200";
+          halign = "center";
+          valign = "center";
+        }
+        {
+          text = "cmd[update:3600000] date '+%A, %B %d'";
+          font_size = 20;
+          font_family = "FiraCode Nerd Font Mono";
+          color = "rgb(a6adc8)";
+          position = "0, 120";
+          halign = "center";
+          valign = "center";
+        }
+        {
+          text = "kowalski";
+          font_size = 16;
+          font_family = "FiraCode Nerd Font Mono";
+          color = "rgb(89b4fa)";
+          position = "0, 50";
+          halign = "center";
+          valign = "center";
+        }
+      ];
+      input-field = {
+        size = "150, 30";
+        outline_thickness = 0;
+        outer_color = "rgba(00000000)";
+        inner_color = "rgba(00000000)";
+        font_color = "rgb(cdd6f4)";
+        fade_on_empty = true;
+        placeholder_text = "";
+        check_color = "rgba(00000000)";
+        fail_color = "rgba(00000000)";
+        fail_text = "Wrong Password";
+        position = "0, -20";
+        halign = "center";
+        valign = "center";
+      };
+    };
+  };
+
+  ## Hypridle
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        lock_cmd = "pidof hyprlock || hyprlock";
+        before_sleep_cmd = "loginctl lock-session";
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+      };
+      listener = [
+        {
+          timeout = 300; # 5 min
+          on-timeout = "hyprlock";
+        }
+        {
+          timeout = 600; # 10 min
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+      ];
     };
   };
 
