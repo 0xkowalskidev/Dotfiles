@@ -729,9 +729,9 @@
 
       # General settings
       general = {
-        gaps_in = 4;
-        gaps_out = 6;
-        border_size = 1;
+        gaps_in = 0; # prev: 4
+        gaps_out = 0; # prev: 6
+        border_size = 0; # prev: 1
       };
 
       # Misc
@@ -749,7 +749,7 @@
 
       # Decoration
       decoration = {
-        rounding = 10;
+        rounding = 0; # prev: 10
 
         # Performance Optimization
         blur.enabled = false;
