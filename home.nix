@@ -205,87 +205,52 @@
     };
 
     style = ''
-      window {
-        margin: 0px;
-        border: 1px solid #7c3aed;
-        background-color: #1e1e2e;
-        border-radius: 12px;
+      * {
         font-family: "FiraCode Nerd Font Mono";
         font-size: 14px;
       }
 
-      #input {
-        margin: 8px 12px;
-        padding: 12px 16px;
-        border: 2px solid #313244;
-        background-color: #181825;
-        border-radius: 8px;
-        color: #cdd6f4;
-        font-size: 16px;
-        font-weight: 500;
+      window {
+        margin: 0px;
+        border: 1px solid #45475a;
+        background-color: #1e1e2e;
       }
 
-      #input:focus {
-        border: 2px solid #7c3aed;
-        outline: none;
+      #input {
+        margin: 8px;
+        padding: 8px 12px;
+        border: none;
+        background-color: #313244;
+        color: #cdd6f4;
       }
 
       #inner-box {
-        margin: 8px 12px;
-        border: none;
-        background-color: transparent;
+        margin: 4px 8px;
       }
 
       #outer-box {
         margin: 0px;
-        border: none;
-        background-color: transparent;
       }
 
       #scroll {
         margin: 0px;
-        border: none;
-        background-color: transparent;
       }
 
       #text {
-        margin: 5px;
-        border: none;
+        margin: 4px;
         color: #cdd6f4;
-        font-weight: 500;
       }
 
       #entry {
-        border: none;
-        border-radius: 8px;
-        margin: 2px 4px;
-        padding: 8px 12px;
-        background-color: transparent;
-        transition: none;
+        padding: 6px 8px;
       }
 
       #entry:selected {
-        background-color: #7c3aed;
-        color: #ffffff;
-        border-radius: 8px;
-      }
-
-      #entry:hover {
         background-color: #313244;
-        border-radius: 8px;
-      }
-
-      #entry:selected:hover {
-        background-color: #8b5cf6;
-      }
-
-      #entry img {
-        margin-right: 8px;
       }
 
       #text:selected {
-        color: #ffffff;
-        font-weight: 600;
+        color: #89b4fa;
       }
     '';
   };
@@ -565,9 +530,6 @@
           "cpu"
           "custom/left-arrow-light"
           "custom/left-arrow-dark"
-          "battery"
-          "custom/left-arrow-light"
-          "custom/left-arrow-dark"
           "disk"
           "custom/left-arrow-light"
           "custom/left-arrow-dark"
@@ -627,21 +589,6 @@
           interval = 5;
           format = "CPU {usage}%";
         };
-        battery = {
-          states = {
-            good = 95;
-            warning = 30;
-            critical = 15;
-          };
-          format = "{icon} {capacity}%";
-          format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
-        };
         disk = {
           interval = 5;
           format = "Disk {percentage_used}%";
@@ -654,21 +601,21 @@
     };
     style = ''
       * {
-        font-size: 20px;
-        font-family: monospace;
+        font-size: 14px;
+        font-family: "FiraCode Nerd Font Mono";
       }
       window#waybar {
-        background: #292b2e;
-        color: #fdf6e3;
+        background: #1e1e2e;
+        color: #cdd6f4;
       }
       #custom-right-arrow-dark,
       #custom-left-arrow-dark {
-        color: #1a1a1a;
+        color: #181825;
       }
       #custom-right-arrow-light,
       #custom-left-arrow-light {
-        color: #292b2e;
-        background: #1a1a1a;
+        color: #1e1e2e;
+        background: #181825;
       }
       #workspaces,
       #clock.1,
@@ -677,39 +624,35 @@
       #pulseaudio,
       #memory,
       #cpu,
-      #battery,
       #disk,
       #tray {
-        background: #1a1a1a;
+        background: #181825;
       }
       #workspaces button {
         padding: 0 2px;
-        color: #fdf6e3;
+        color: #cdd6f4;
       }
       #workspaces button.active {
-        color: #268bd2;
+        color: #89b4fa;
       }
       #workspaces button:hover {
         box-shadow: inherit;
         text-shadow: inherit;
-        background: #1a1a1a;
-        border: #1a1a1a;
+        background: #181825;
+        border: #181825;
         padding: 0 3px;
       }
       #pulseaudio {
-        color: #268bd2;
+        color: #89b4fa;
       }
       #memory {
-        color: #2aa198;
+        color: #94e2d5;
       }
       #cpu {
-        color: #6c71c4;
-      }
-      #battery {
-        color: #859900;
+        color: #cba6f7;
       }
       #disk {
-        color: #b58900;
+        color: #f9e2af;
       }
       #clock,
       #pulseaudio,
