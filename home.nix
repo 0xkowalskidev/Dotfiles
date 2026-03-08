@@ -35,6 +35,7 @@
     # Utils
     hyprlock
     hyprshot
+    libnotify # notify-send
     wl-clipboard
     ripgrep
     mullvad-vpn
@@ -261,10 +262,10 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    addKeysToAgent = "yes";
     matchBlocks = {
       "*" = {
         identityFile = "~/.ssh/id_ed25519";
+        addKeysToAgent = "yes";
       };
       "github.com" = {
         hostname = "github.com";
@@ -859,6 +860,22 @@
         halign = "center";
         valign = "center";
       };
+    };
+  };
+
+  ## Mako (notifications)
+  services.mako = {
+    enable = true;
+    settings = {
+      font = "FiraCode Nerd Font Mono 11";
+      background-color = "#1e1e2e";
+      text-color = "#cdd6f4";
+      border-color = "#313244";
+      border-radius = 0;
+      border-size = 1;
+      padding = "10";
+      margin = "10";
+      default-timeout = 5000;
     };
   };
 
