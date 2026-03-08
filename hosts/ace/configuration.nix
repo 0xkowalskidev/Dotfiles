@@ -15,7 +15,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "amdgpu.cwsr_enable=0" ]; # Workaround for MES hang on Strix Point
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos; # CachyOS kernel for gaming
   hardware.firmware = [ pkgs.linux-firmware ];
   boot.initrd.kernelModules = [ "amdgpu" ];
 
