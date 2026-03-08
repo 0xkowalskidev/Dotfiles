@@ -38,6 +38,16 @@
     libnotify # notify-send
     wl-clipboard
     ripgrep
+    dnsutils # dig, nslookup
+    whois
+    traceroute
+    tree
+    jq
+    unzip
+    zip
+    file
+    lsof
+    strace
     mullvad-vpn
     feh
     pamixer # Audio Mixer
