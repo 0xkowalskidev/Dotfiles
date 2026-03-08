@@ -38,14 +38,6 @@
         ];
       };
 
-      nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/desktop/configuration.nix
-          inputs.home-manager.nixosModules.home-manager
-        ];
-      };
-
       nixosConfigurations.ace = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs;
