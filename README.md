@@ -5,6 +5,8 @@ Tenets order reversed due to AI "Lost in the middle" concept
 
 ## Developer Tenets
 
+AI agents are expected to follow these tenets.
+
 ### Conflict Resolution
 When tenets conflict, apply in this priority order (highest first):
 1. **Fail Loudly** — Safety and correctness are non-negotiable
