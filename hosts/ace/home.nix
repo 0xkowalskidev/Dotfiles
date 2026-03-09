@@ -1,55 +1,8 @@
 {
-  config,
-  inputs,
-  lib,
-  pkgs,
   ...
 }:
 
 {
-  imports = [
-    inputs.openclaw.homeManagerModules.openclaw
-  ];
-
-  # OpenClaw
-  programs.openclaw = {
-    enable = true;
-    package = pkgs.openclaw;
-    config = {
-      agents.defaults = {
-        workspace = "/home/kowalski/.openclaw/workspace";
-      };
-
-      # Disable unused channels
-      channels.whatsapp.enabled = false;
-
-      channels.telegram = {
-        tokenFile = "/home/kowalski/.openclaw/secrets/telegram-bot-token";
-        allowFrom = [ 8681495906 ];
-        dmPolicy = "allowlist";
-        groupPolicy = "allowlist";
-      };
-
-      gateway = {
-        mode = "local";
-        bind = "loopback"; # only accept local connections
-      };
-
-      # Scheduled tasks
-      cron.enabled = true;
-    };
-
-  };
-
-  # Force overwrite openclaw config to avoid backup conflicts
-  home.file.".openclaw/openclaw.json".force = true;
-
-  # Load gateway token and restrict filesystem access
-  systemd.user.services.openclaw-gateway.Service = {
-    EnvironmentFile = "/home/kowalski/.openclaw/secrets/openclaw-gateway-env";
-    Environment = "SSH_AUTH_SOCK=%t/ssh-agent";
-  };
-
   wayland.windowManager.hyprland.settings = {
     monitor = [
       "DP-1, 1920x1080@100hz, 0x0, 1"

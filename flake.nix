@@ -19,7 +19,6 @@
     gameservers.url = "github:0xkowalskidev/gameservers";
 
     opencode.url = "github:anomalyco/opencode";
-    openclaw.url = "github:openclaw/nix-openclaw";
 
     nix-citizen.url = "github:LovingMelody/nix-citizen";
     nix-gaming.url = "github:fufexan/nix-gaming";
@@ -52,7 +51,6 @@
           ./hosts/ace/configuration.nix
           inputs.home-manager.nixosModules.home-manager
           inputs.chaotic.nixosModules.default
-          { nixpkgs.overlays = [ inputs.openclaw.overlays.default ]; }
         ];
       };
 
