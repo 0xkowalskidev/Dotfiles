@@ -44,6 +44,8 @@
     startAgent = true;
   };
 
+  programs.nix-ld.enable = true;
+
   # Homelab
   networking.extraHosts = ''
     192.168.1.69 dopey
