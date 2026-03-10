@@ -120,11 +120,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1771615359,
-        "narHash": "sha256-gLMuL7+1CqVK8EHHKFts5XMwiioKhaOPg7kjA64jQ14=",
+        "lastModified": 1772393102,
+        "narHash": "sha256-w2onpqL5jN2xw8ZiCXyEVOBrT0aaU+eWOVh1tM5vlkA=",
         "owner": "0xkowalskidev",
         "repo": "gameservers",
-        "rev": "c9babe29dc729e023610891ed4192c90fdd9a18c",
+        "rev": "d0788757566dd68a2a8e6bd6e0002bcaa6e24893",
         "type": "github"
       },
       "original": {
