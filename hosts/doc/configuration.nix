@@ -16,6 +16,9 @@
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
 
+  # Remote rebuilds
+  security.sudo.wheelNeedsPassword = false;
+
   # NAS
   fileSystems."/data" = {
     device = "/dev/nvme0n1";
