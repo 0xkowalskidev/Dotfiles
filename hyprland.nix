@@ -89,7 +89,6 @@
       '';
     };
 
-    # Waybar
     programs.waybar = {
       enable = true;
       settings = {
@@ -128,19 +127,19 @@
             "tray"
           ];
           "custom/left-arrow-dark" = {
-            format = "";
+            format = "";
             tooltip = false;
           };
           "custom/left-arrow-light" = {
-            format = "";
+            format = "";
             tooltip = false;
           };
           "custom/right-arrow-dark" = {
-            format = "";
+            format = "";
             tooltip = false;
           };
           "custom/right-arrow-light" = {
-            format = "";
+            format = "";
             tooltip = false;
           };
           "hyprland/workspaces" = {
@@ -160,16 +159,8 @@
             tooltip = false;
           };
           pulseaudio = {
-            format = "{icon} {volume}%";
-            format-bluetooth = "{icon} {volume}%";
+            format = "{volume}%";
             format-muted = "MUTE";
-            format-icons = {
-              headphones = "";
-              default = [
-                ""
-                ""
-              ];
-            };
             scroll-step = 5;
             on-click = "pamixer -t";
           };
