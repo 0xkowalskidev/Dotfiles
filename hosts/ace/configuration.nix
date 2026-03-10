@@ -27,7 +27,12 @@
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false; # Faster boot
   services.mullvad-vpn.enable = true;
+  # SSH
+  services.openssh.enable = true;
+  services.openssh.settings.PasswordAuthentication = false;
+
   networking.firewall.allowedTCPPorts = [
+    22
     25565
     27015
     28015
