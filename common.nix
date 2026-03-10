@@ -13,6 +13,7 @@
     "nix-command"
     "flakes"
   ];
+  nix.settings.trusted-users = [ "kowalski" ];
 
   time.timeZone = "Europe/London";
 
