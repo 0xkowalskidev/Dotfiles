@@ -8,5 +8,5 @@ if [ "$HOST" = "$(hostname)" ]; then
 else
   nixos-rebuild switch --flake ".#$HOST" \
     --target-host "kowalski@$HOST" \
-    --use-remote-sudo
+    --sudo
 fi
