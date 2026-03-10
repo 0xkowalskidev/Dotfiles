@@ -31,7 +31,7 @@
     username = "token";
     passwordFile = "/etc/nixos/ddns-token";
     zone = "0xkowalski.dev";
-    domains = [ "@" ];
+    domains = [ "0xkowalski.dev" ];
   };
 
   # User
