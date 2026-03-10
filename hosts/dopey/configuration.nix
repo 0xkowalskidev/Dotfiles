@@ -22,18 +22,6 @@
   # Remote rebuilds
   security.sudo.wheelNeedsPassword = false;
 
-  # Minecraft Server
-  users.groups.minecraft = { };
-  users.users.minecraft = {
-    extraGroups = [ "nfsusers" ];
-    isSystemUser = true;
-    group = "minecraft";
-  };
-
-  users.groups.nfsusers = {
-    gid = 1000;
-  };
-
   # Jellyfin
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
