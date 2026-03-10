@@ -3,6 +3,8 @@
 }:
 
 {
+  my.hyprland.enable = true;
+
   wayland.windowManager.hyprland.settings = {
     monitor = [
       "DP-1, 1920x1080@100hz, 0x0, 1"

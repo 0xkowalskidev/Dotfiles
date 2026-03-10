@@ -3,6 +3,8 @@
 {
   nixpkgs.config.allowUnfree = true;
 
+  my.hyprland.enable = true;
+
   # Fix rotation in hyprland
   wayland.windowManager.hyprland.settings.monitor = [ "DSI-1,preferred,auto,1,transform,3" ];
 
