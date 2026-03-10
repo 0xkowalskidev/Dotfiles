@@ -19,6 +19,9 @@
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
 
+  # Remote rebuilds
+  security.sudo.wheelNeedsPassword = false;
+
   # DDNS
   services.ddclient = {
     enable = true;

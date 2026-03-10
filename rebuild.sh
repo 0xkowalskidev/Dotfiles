@@ -1,4 +1,12 @@
 #!/bin/sh
-HOSTNAME=$(hostname)
-echo "Rebuilding $HOSTNAME"
-sudo nixos-rebuild switch --flake .#$HOSTNAME
+HOST="${1:-$(hostname)}"
+
+echo "Rebuilding $HOST"
+
+if [ "$HOST" = "$(hostname)" ]; then
+  sudo nixos-rebuild switch --flake ".#$HOST"
+else
+  nixos-rebuild switch --flake ".#$HOST" \
+    --target-host "kowalski@$HOST" \
+    --use-remote-sudo
+fi
