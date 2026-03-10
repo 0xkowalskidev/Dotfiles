@@ -9,7 +9,8 @@
   # Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [ "video=DSI-1:panel_orientation=right_side_up" ];
+  boot.kernelParams = [ "video=DSI-1:panel_orientation=right_side_up" "resume_offset=22530048" ];
+  boot.resumeDevice = "/dev/disk/by-uuid/3ea1f79f-1136-4d32-b865-c7acfdecf558";  # root partition
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Networking
@@ -23,6 +24,23 @@
     enable = true;
     powertop.enable = true;
   };
+
+  # Suspend-then-hibernate on lid close
+  # Suspends immediately, hibernates after timeout (zero power for long idle)
+  services.logind = {
+    lidSwitch = "suspend-then-hibernate";
+    lidSwitchExternalPower = "suspend-then-hibernate";
+  };
+
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=5min
+  '';
+
+  # Swap file for hibernate (must be >= RAM)
+  swapDevices = [{
+    device = "/swapfile";
+    size = 16 * 1024;  # 16GB in MB
+  }];
 
   # Bluetooth
   hardware.bluetooth.enable = true;
