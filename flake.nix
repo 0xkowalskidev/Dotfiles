@@ -19,6 +19,7 @@
     gameservers.url = "github:0xkowalskidev/gameservers";
 
     opencode.url = "github:anomalyco/opencode";
+    claude-code.url = "github:sadjow/claude-code-nix";
 
     nix-citizen.url = "github:LovingMelody/nix-citizen";
     nix-gaming.url = "github:fufexan/nix-gaming";

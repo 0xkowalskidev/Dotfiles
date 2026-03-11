@@ -79,7 +79,8 @@
     odin
 
     inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
-    claude-code
+    inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
+    playwright-mcp
 
     # Rust
     rustc
