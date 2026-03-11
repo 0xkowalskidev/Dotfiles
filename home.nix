@@ -21,6 +21,7 @@
     # Apps
     #jellyfin-media-player # Jellyfin client
     spotify
+    spotify-cli-linux
     qbittorrent
     mullvad-browser
     chromium
