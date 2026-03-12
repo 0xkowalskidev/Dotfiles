@@ -134,27 +134,9 @@
         "type": "github"
       }
     },
-    "gameserverquery": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "lastModified": 1751876920,
-        "narHash": "sha256-0u39eWnYREmJdI9X9LDqy/a6L0nJyqBwF7PSs9dywkQ=",
-        "owner": "0xkowalskidev",
-        "repo": "gameserverquery",
-        "rev": "50b81ef553e31650824b9174293216afa992d30d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "0xkowalskidev",
-        "repo": "gameserverquery",
-        "type": "github"
-      }
-    },
     "gameservers": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1772393102,
@@ -167,6 +149,24 @@
       "original": {
         "owner": "0xkowalskidev",
         "repo": "gameservers",
+        "type": "github"
+      }
+    },
+    "gsq": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1773345609,
+        "narHash": "sha256-VA/nOz/6Aoh8fz3TmfD/T9+MeFo6Zw0ptrTH3rerDMI=",
+        "owner": "0xkowalskidev",
+        "repo": "gsq",
+        "rev": "1fa4730dc17e9f00aa7d4364708ef5e570336cce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xkowalskidev",
+        "repo": "gsq",
         "type": "github"
       }
     },
@@ -423,11 +423,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1750506804,
-        "narHash": "sha256-VLFNc4egNjovYVxDGyBYTrvVCgDYgENp5bVi9fPTDYc=",
+        "lastModified": 1750365781,
+        "narHash": "sha256-XE/lFNhz5lsriMm/yjXkvSZz5DfvKJLUjsS6pP8EC50=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4206c4cb56751df534751b058295ea61357bbbaa",
+        "rev": "08f22084e6085d19bcfb4be30d1ca76ecb96fe54",
         "type": "github"
       },
       "original": {
@@ -439,16 +439,16 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1750365781,
-        "narHash": "sha256-XE/lFNhz5lsriMm/yjXkvSZz5DfvKJLUjsS6pP8EC50=",
+        "lastModified": 1773110118,
+        "narHash": "sha256-mPAG8phMbCReKSiKAijjjd3v7uVcJOQ75gSjGJjt/Rk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "08f22084e6085d19bcfb4be30d1ca76ecb96fe54",
+        "rev": "e607cb5360ff1234862ac9f8839522becb853bb9",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-unstable",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -593,8 +593,8 @@
       "inputs": {
         "chaotic": "chaotic",
         "claude-code": "claude-code",
-        "gameserverquery": "gameserverquery",
         "gameservers": "gameservers",
+        "gsq": "gsq",
         "home-manager": "home-manager_2",
         "minimal-tmux": "minimal-tmux",
         "nix-citizen": "nix-citizen",
