@@ -30,6 +30,7 @@
     slack
     stripe-cli
     satisfactorymodmanager
+    gh # Github cli
 
     nerd-fonts.fira-code # Font
 
