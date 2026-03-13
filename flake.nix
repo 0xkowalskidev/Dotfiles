@@ -16,7 +16,7 @@
 
     nopswd.url = "github:0xkowalskidev/nopswd";
     gsq.url = "github:0xkowalskidev/gsq";
-    gameservers.url = "github:0xkowalskidev/gameservers";
+    gamejanitor.url = "github:0xkowalskidev/GameJanitor";
 
     opencode.url = "github:anomalyco/opencode";
     claude-code.url = "github:sadjow/claude-code-nix";
