@@ -134,21 +134,21 @@
         "type": "github"
       }
     },
-    "gameservers": {
+    "gamejanitor": {
       "inputs": {
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1772393102,
-        "narHash": "sha256-w2onpqL5jN2xw8ZiCXyEVOBrT0aaU+eWOVh1tM5vlkA=",
+        "lastModified": 1773411636,
+        "narHash": "sha256-MBVA5n+LXT83uS6vXgLwenJGWyTYBInwof7bea+iNAQ=",
         "owner": "0xkowalskidev",
-        "repo": "gameservers",
-        "rev": "d0788757566dd68a2a8e6bd6e0002bcaa6e24893",
+        "repo": "GameJanitor",
+        "rev": "aa7c803c4dd7e139183a004c0a9c2794923dec6a",
         "type": "github"
       },
       "original": {
         "owner": "0xkowalskidev",
-        "repo": "gameservers",
+        "repo": "GameJanitor",
         "type": "github"
       }
     },
@@ -423,11 +423,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1750365781,
-        "narHash": "sha256-XE/lFNhz5lsriMm/yjXkvSZz5DfvKJLUjsS6pP8EC50=",
+        "lastModified": 1773122722,
+        "narHash": "sha256-FIqHByVqxCprNjor1NqF80F2QQoiiyqanNNefdlvOg4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "08f22084e6085d19bcfb4be30d1ca76ecb96fe54",
+        "rev": "62dc67aa6a52b4364dd75994ec00b51fbf474e50",
         "type": "github"
       },
       "original": {
@@ -593,7 +593,7 @@
       "inputs": {
         "chaotic": "chaotic",
         "claude-code": "claude-code",
-        "gameservers": "gameservers",
+        "gamejanitor": "gamejanitor",
         "gsq": "gsq",
         "home-manager": "home-manager_2",
         "minimal-tmux": "minimal-tmux",
