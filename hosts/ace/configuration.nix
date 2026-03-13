@@ -38,6 +38,7 @@
     28015
     28017
     7777
+    8080
   ];
   networking.firewall.allowedUDPPorts = [
     25565
@@ -51,7 +52,10 @@
   fileSystems."/data" = {
     device = "/dev/disk/by-uuid/0c83a41b-ebd6-4ad5-ae8f-f6007a671a93";
     fsType = "ext4";
-    options = [ "nofail" "x-systemd.device-timeout=5s" ];
+    options = [
+      "nofail"
+      "x-systemd.device-timeout=5s"
+    ];
   };
 
   # Graphics

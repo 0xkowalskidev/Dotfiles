@@ -76,6 +76,8 @@
     go
     # JS/Node
     (lib.hiPrio nodejs_24)
+    # Python
+    python3
     # Odin
     odin
 
