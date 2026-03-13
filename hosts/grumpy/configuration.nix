@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../common.nix
+    inputs.gamejanitor.nixosModules.default
   ];
 
   # Boot
@@ -22,72 +23,37 @@
   # Remote rebuilds
   security.sudo.wheelNeedsPassword = false;
 
-  # Gameservers
-  virtualisation.docker.enable = true;
+  # Gamejanitor
+  services.gamejanitor = {
+    enable = true;
+    port = 8080;
+  };
 
   networking.firewall = {
     allowedTCPPorts = [
-      3000 # Web UI
+      8080  # Gamejanitor Web UI
+      7777  # Terraria
       25565 # Minecraft
-      7777 # Terraria
-      27015 # Garry's Mod / Source games
+      25575 # Palworld RCON
+      27015 # CS2 / Garry's Mod RCON
+      27020 # ARK RCON
       28016 # Rust RCON
     ];
     allowedUDPPorts = [
-      2456
-      2457
-      2458 # Valheim
-      8211 # Palworld
-      27015 # Garry's Mod / Palworld query
-      28015 # Rust
+      2456  # Valheim game
+      2457  # Valheim query
+      7777  # ARK game
+      8211  # Palworld game
+      27015 # ARK query / CS2 / Garry's Mod
+      28015 # Rust game
+      28017 # Rust query
     ];
     allowedTCPPortRanges = [
-      {
-        from = 49152;
-        to = 65535;
-      }
+      { from = 49152; to = 65535; }
     ];
     allowedUDPPortRanges = [
-      {
-        from = 49152;
-        to = 65535;
-      }
+      { from = 49152; to = 65535; }
     ];
-  };
-
-  # Create systemd service
-  systemd.services.gameservers = {
-    description = "Gameserver Management Panel";
-    wantedBy = [ "multi-user.target" ];
-    after = [
-      "network.target"
-      "docker.service"
-    ];
-    requires = [ "docker.service" ];
-
-    environment = {
-      DEBUG = "";
-      GAMESERVER_HOST = "0.0.0.0";
-      GAMESERVER_PORT = "3000";
-      GAMESERVER_PUBLIC_ADDRESS = "0xkowalski.dev";
-      GAMESERVER_SHUTDOWN_TIMEOUT = "30s";
-      GAMESERVER_DATABASE_PATH = "/var/lib/gameservers/gameservers.db";
-      GAMESERVER_DOCKER_SOCKET = ""; # Uses default: /var/run/docker.sock
-      GAMESERVER_CONTAINER_NAMESPACE = "gameservers";
-      GAMESERVER_CONTAINER_STOP_TIMEOUT = "30s";
-      GAMESERVER_MAX_FILE_EDIT_SIZE = "10485760";
-      GAMESERVER_MAX_UPLOAD_SIZE = "104857600";
-
-    };
-
-    serviceConfig = {
-      ExecStart = "${inputs.gameservers.packages.${pkgs.stdenv.hostPlatform.system}.default}/bin/gameservers";
-      StateDirectory = "gameservers";
-      WorkingDirectory = "/var/lib/gameservers";
-      Restart = "on-failure";
-      DynamicUser = true;
-      SupplementaryGroups = [ "docker" ];
-    };
   };
 
   # User
