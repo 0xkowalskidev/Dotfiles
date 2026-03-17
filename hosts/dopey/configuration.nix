@@ -27,26 +27,26 @@
   services.jellyfin.openFirewall = true;
 
   # Container Registry
-  virtualisation.docker.enable = true;
-  services.dockerRegistry = {
-    enable = true;
-    port = 5000;
-    enableDelete = true;
-    enableGarbageCollect = true;
-  };
+  #virtualisation.docker.enable = true;
+  #services.dockerRegistry = {
+  #  enable = true;
+  #  port = 5000;
+  #  enableDelete = true;
+  #  enableGarbageCollect = true;
+  #};
 
   # HTTPS for Registry
-  networking.firewall.allowedTCPPorts = [
-    80
-    443
-  ];
+  #networking.firewall.allowedTCPPorts = [
+  #  80
+  #  443
+  #];
 
-  services.caddy = {
-    enable = true;
-    virtualHosts."registry.0xkowalski.dev".extraConfig = ''
-      reverse_proxy localhost:5000
-    '';
-  };
+  #services.caddy = {
+  #  enable = true;
+  #  virtualHosts."registry.0xkowalski.dev".extraConfig = ''
+  #    reverse_proxy localhost:5000
+  #  '';
+  #};
 
   # User
   users.users.kowalski = {
