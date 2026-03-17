@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../common.nix
+    inputs.gamejanitor.nixosModules.default
   ];
 
   # Boot
@@ -47,6 +48,20 @@
   #    reverse_proxy localhost:5000
   #  '';
   #};
+
+  # Gamejanitor
+  services.gamejanitor = {
+    enable = true;
+    role = "worker";
+    grpcPort = 9090;
+    controller = "192.168.1.102:9090";
+    workerTokenFile = "/etc/gamejanitor/worker-token";
+    portRange = {
+      start = 28000;
+      end = 28999;
+    };
+    openFirewall = true;
+  };
 
   # User
   users.users.kowalski = {

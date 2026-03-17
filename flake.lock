@@ -139,11 +139,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1773434327,
-        "narHash": "sha256-YI01KKvdTc9zpTPxdr062Tq+3skxpPqMrL0fTNEmRaI=",
+        "lastModified": 1773766877,
+        "narHash": "sha256-FP/Wl3e5V/2qqml+e/h8HT8P8Qd08mENZn55r30CxA4=",
         "owner": "0xkowalskidev",
         "repo": "GameJanitor",
-        "rev": "ed4db6652aa4956f72eb246f933787f2ed517045",
+        "rev": "b6eacd111b08ddfc2d6f4b18cad90ae85092e99b",
         "type": "github"
       },
       "original": {

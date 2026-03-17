@@ -26,34 +26,15 @@
   # Gamejanitor
   services.gamejanitor = {
     enable = true;
-    port = 8080;
-  };
-
-  networking.firewall = {
-    allowedTCPPorts = [
-      8080  # Gamejanitor Web UI
-      7777  # Terraria
-      25565 # Minecraft
-      25575 # Palworld RCON
-      27015 # CS2 / Garry's Mod RCON
-      27020 # ARK RCON
-      28016 # Rust RCON
-    ];
-    allowedUDPPorts = [
-      2456  # Valheim game
-      2457  # Valheim query
-      7777  # ARK game
-      8211  # Palworld game
-      27015 # ARK query / CS2 / Garry's Mod
-      28015 # Rust game
-      28017 # Rust query
-    ];
-    allowedTCPPortRanges = [
-      { from = 49152; to = 65535; }
-    ];
-    allowedUDPPortRanges = [
-      { from = 49152; to = 65535; }
-    ];
+    role = "worker";
+    grpcPort = 9090;
+    controller = "192.168.1.102:9090";
+    workerTokenFile = "/etc/gamejanitor/worker-token";
+    portRange = {
+      start = 27000;
+      end = 27999;
+    };
+    openFirewall = true;
   };
 
   # User

@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../common.nix
+    inputs.gamejanitor.nixosModules.default
   ];
 
   # Boot
@@ -32,6 +33,16 @@
     passwordFile = "/etc/nixos/ddns-token";
     zone = "0xkowalski.dev";
     domains = [ "0xkowalski.dev" ];
+  };
+
+  # Gamejanitor controller
+  services.gamejanitor = {
+    enable = true;
+    role = "controller";
+    port = 8080;
+    grpcPort = 9090;
+    sftpPort = 2022;
+    openFirewall = true;
   };
 
   # User
