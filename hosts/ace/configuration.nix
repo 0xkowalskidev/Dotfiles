@@ -5,6 +5,17 @@
   ...
 }:
 
+let
+  masscan-wrapped = pkgs.symlinkJoin {
+    name = "masscan-wrapped";
+    paths = [ pkgs.masscan ];
+    buildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/masscan \
+        --prefix LD_LIBRARY_PATH : "${pkgs.libpcap.lib}/lib"
+    '';
+  };
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -91,6 +102,19 @@
     "docker"
   ];
 
+  # Postgres
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_16;
+    ensureDatabases = [ "gamejanitor" ];
+    ensureUsers = [
+      { name = "kowalski"; }
+    ];
+    initialScript = pkgs.writeText "pg-init" ''
+      ALTER DATABASE gamejanitor OWNER TO kowalski;
+    '';
+  };
+
   # Ollama (Vulkan works better on Strix Point gfx1150)
   services.ollama = {
     enable = true;
@@ -144,7 +168,19 @@
 
     # Monero
     monero-gui
+
+    masscan-wrapped
+
   ];
+
+  # Grant masscan raw socket access without sudo
+  security.wrappers.masscan = {
+    source = "${masscan-wrapped}/bin/masscan";
+    capabilities = "cap_net_raw+ep";
+    owner = "root";
+    group = "root";
+  };
+
   ## Steam
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true;

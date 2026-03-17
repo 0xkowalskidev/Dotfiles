@@ -31,6 +31,8 @@
   services.dockerRegistry = {
     enable = true;
     port = 5000;
+    enableDelete = true;
+    enableGarbageCollect = true;
   };
 
   # HTTPS for Registry
@@ -38,6 +40,7 @@
     80
     443
   ];
+
   services.caddy = {
     enable = true;
     virtualHosts."registry.0xkowalski.dev".extraConfig = ''
