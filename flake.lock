@@ -139,11 +139,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1773411636,
-        "narHash": "sha256-MBVA5n+LXT83uS6vXgLwenJGWyTYBInwof7bea+iNAQ=",
+        "lastModified": 1773434327,
+        "narHash": "sha256-YI01KKvdTc9zpTPxdr062Tq+3skxpPqMrL0fTNEmRaI=",
         "owner": "0xkowalskidev",
         "repo": "GameJanitor",
-        "rev": "aa7c803c4dd7e139183a004c0a9c2794923dec6a",
+        "rev": "ed4db6652aa4956f72eb246f933787f2ed517045",
         "type": "github"
       },
       "original": {
@@ -152,21 +152,21 @@
         "type": "github"
       }
     },
-    "gsq": {
+    "gjq": {
       "inputs": {
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1773345609,
-        "narHash": "sha256-VA/nOz/6Aoh8fz3TmfD/T9+MeFo6Zw0ptrTH3rerDMI=",
+        "lastModified": 1773712407,
+        "narHash": "sha256-OH6KgCTmyQM7Rla3tag/zKqj+MmIJW++fcCJUlBUJkc=",
         "owner": "0xkowalskidev",
-        "repo": "gsq",
-        "rev": "1fa4730dc17e9f00aa7d4364708ef5e570336cce",
+        "repo": "gjq",
+        "rev": "5194a9540aa545c2f9a520d263f9cdc8aef462b2",
         "type": "github"
       },
       "original": {
         "owner": "0xkowalskidev",
-        "repo": "gsq",
+        "repo": "gjq",
         "type": "github"
       }
     },
@@ -594,7 +594,7 @@
         "chaotic": "chaotic",
         "claude-code": "claude-code",
         "gamejanitor": "gamejanitor",
-        "gsq": "gsq",
+        "gjq": "gjq",
         "home-manager": "home-manager_2",
         "minimal-tmux": "minimal-tmux",
         "nix-citizen": "nix-citizen",

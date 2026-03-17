@@ -66,7 +66,7 @@
     qemu # VMs
     quickemu # VM tools
     inputs.nopswd.packages.${pkgs.stdenv.hostPlatform.system}.default # Password manager
-    inputs.gsq.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.gjq.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Programming Languages, tools, etc
     reflex # Reload on change

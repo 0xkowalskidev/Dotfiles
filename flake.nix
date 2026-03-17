@@ -15,7 +15,7 @@
     };
 
     nopswd.url = "github:0xkowalskidev/nopswd";
-    gsq.url = "github:0xkowalskidev/gsq";
+    gjq.url = "github:0xkowalskidev/gjq";
     gamejanitor.url = "github:0xkowalskidev/GameJanitor";
 
     opencode.url = "github:anomalyco/opencode";
