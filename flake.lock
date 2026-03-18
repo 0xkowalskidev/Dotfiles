@@ -139,11 +139,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1773766877,
-        "narHash": "sha256-FP/Wl3e5V/2qqml+e/h8HT8P8Qd08mENZn55r30CxA4=",
+        "lastModified": 1773772762,
+        "narHash": "sha256-Mmmf3Mmp+REk7wnKZhyVC5UABaw1ORG7oZw72GV7iak=",
         "owner": "0xkowalskidev",
         "repo": "GameJanitor",
-        "rev": "b6eacd111b08ddfc2d6f4b18cad90ae85092e99b",
+        "rev": "b8313c7a768af9ef7447843ed127cf53a8d26e9e",
         "type": "github"
       },
       "original": {
@@ -157,11 +157,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1773712407,
-        "narHash": "sha256-OH6KgCTmyQM7Rla3tag/zKqj+MmIJW++fcCJUlBUJkc=",
+        "lastModified": 1773869852,
+        "narHash": "sha256-JjJ4apeT0CcenWh5lUVOL63cj27MkJVCmwuqtFrAt9o=",
         "owner": "0xkowalskidev",
         "repo": "gjq",
-        "rev": "5194a9540aa545c2f9a520d263f9cdc8aef462b2",
+        "rev": "8a11cb6eada0d6b6af3fb008f9514bd897130bd8",
         "type": "github"
       },
       "original": {

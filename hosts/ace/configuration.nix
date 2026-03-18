@@ -171,6 +171,7 @@ in
 
     masscan-wrapped
 
+    quickemu
   ];
 
   # Grant masscan raw socket access without sudo
