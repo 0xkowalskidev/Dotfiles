@@ -33,6 +33,8 @@ in
   hardware.firmware = [ pkgs.linux-firmware ];
   boot.initrd.kernelModules = [ "amdgpu" ];
 
+  fonts.packages = [ pkgs.noto-fonts-cjk-sans ];
+
   # Networking
   networking.hostName = "ace";
   networking.networkmanager.enable = true;
@@ -97,9 +99,11 @@ in
   # Virtualisation
   virtualisation.containerd.enable = true;
   virtualisation.docker.enable = true;
+  virtualisation.podman.enable = true;
   users.users.kowalski.extraGroups = [
     "wheel"
     "docker"
+    "podman"
   ];
 
   # Postgres

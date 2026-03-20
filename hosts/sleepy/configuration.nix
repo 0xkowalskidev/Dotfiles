@@ -45,6 +45,24 @@
     openFirewall = true;
   };
 
+  # SearXNG
+  services.searx = {
+    enable = true;
+    environmentFile = "/etc/nixos/searxng-secret";
+    settings = {
+      server = {
+        port = 8888;
+        bind_address = "0.0.0.0";
+        secret_key = "$SEARX_SECRET_KEY";
+      };
+      search = {
+        default_lang = "en";
+        formats = [ "html" "json" ];
+      };
+    };
+  };
+  networking.firewall.allowedTCPPorts = [ 8888 ];
+
   # User
   users.users.kowalski = {
     isNormalUser = true;

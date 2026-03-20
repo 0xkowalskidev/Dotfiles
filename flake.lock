@@ -157,11 +157,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1773869852,
-        "narHash": "sha256-JjJ4apeT0CcenWh5lUVOL63cj27MkJVCmwuqtFrAt9o=",
+        "lastModified": 1773938531,
+        "narHash": "sha256-DCqDu/QgHROFdkx0trJgK9HZ1A2HCwc1Tjimw3k9q/Y=",
         "owner": "0xkowalskidev",
         "repo": "gjq",
-        "rev": "8a11cb6eada0d6b6af3fb008f9514bd897130bd8",
+        "rev": "6f0e6a8e9920b8d266b0e70f05c920b5ea2ff0ae",
         "type": "github"
       },
       "original": {

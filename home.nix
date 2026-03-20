@@ -26,11 +26,13 @@
     mullvad-browser
     chromium
     signal-desktop
+    telegram-desktop
     discord
     slack
     stripe-cli
     satisfactorymodmanager
     gh # Github cli
+    lftp # sftp
 
     nerd-fonts.fira-code # Font
 
@@ -69,6 +71,7 @@
     inputs.gjq.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Programming Languages, tools, etc
+    sqlite
     reflex # Reload on change
     # Nix
     nixfmt # Extra formatter for nix, not included in nil_ls
