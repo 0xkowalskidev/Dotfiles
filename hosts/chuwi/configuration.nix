@@ -60,7 +60,7 @@
     settings = rec {
       initial_session = {
         command = "hyprland";
-        user = "kowalski";
+        user = "warsmite";
       };
       default_session = initial_session;
     };
@@ -80,13 +80,6 @@
           ];
         };
     };
-  };
-
-  # Temporary - remove after migration
-  users.users.kowalski = {
-    isNormalUser = true;
-    home = "/home/kowalski";
-    extraGroups = [ "wheel" ];
   };
 
   system.stateVersion = "25.05";
