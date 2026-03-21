@@ -13,7 +13,7 @@
     "nix-command"
     "flakes"
   ];
-  nix.settings.trusted-users = [ "kowalski" ];
+  nix.settings.trusted-users = [ "warsmite" ];
 
   time.timeZone = "Europe/London";
 
@@ -35,7 +35,7 @@
   };
 
   #Users
-  users.users.kowalski = {
+  users.users.warsmite = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
   };

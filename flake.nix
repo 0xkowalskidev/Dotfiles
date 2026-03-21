@@ -14,9 +14,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nopswd.url = "github:0xkowalskidev/nopswd";
-    gjq.url = "github:0xkowalskidev/gjq";
-    gamejanitor.url = "github:0xkowalskidev/GameJanitor";
+    nopswd.url = "github:warsmite/nopswd";
+    gjq.url = "github:warsmite/gjq";
+    gamejanitor.url = "github:warsmite/GameJanitor";
 
     opencode.url = "github:anomalyco/opencode";
     claude-code.url = "github:sadjow/claude-code-nix";

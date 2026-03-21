@@ -10,7 +10,7 @@ for HOST in "$@"; do
     sudo nixos-rebuild switch --flake ".#$HOST"
   else
     nixos-rebuild switch --flake ".#$HOST" \
-      --target-host "kowalski@$HOST" \
+      --target-host "warsmite@$HOST" \
       --sudo
   fi
 done

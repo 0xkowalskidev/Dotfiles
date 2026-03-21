@@ -71,7 +71,7 @@
     extraSpecialArgs = { inherit inputs; };
 
     users = {
-      "kowalski" =
+      "warsmite" =
         { ... }:
         {
           imports = [
@@ -80,6 +80,13 @@
           ];
         };
     };
+  };
+
+  # Temporary - remove after migration
+  users.users.kowalski = {
+    isNormalUser = true;
+    home = "/home/kowalski";
+    extraGroups = [ "wheel" ];
   };
 
   system.stateVersion = "25.05";

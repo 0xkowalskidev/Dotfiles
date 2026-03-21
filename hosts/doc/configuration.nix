@@ -43,9 +43,9 @@
   networking.firewall.allowedTCPPorts = [ 2049 ];
 
   # User
-  users.users.kowalski = {
+  users.users.warsmite = {
     isNormalUser = true;
-    home = "/home/kowalski";
+    home = "/home/warsmite";
     extraGroups = [ "wheel" ];
   };
 

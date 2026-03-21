@@ -31,19 +31,19 @@
     ssl = true;
     username = "token";
     passwordFile = "/etc/nixos/ddns-token";
-    zone = "0xkowalski.dev";
-    domains = [ "0xkowalski.dev" ];
+    zone = "warsmite.com";
+    domains = [ "warsmite.com" ];
   };
 
-  # Gamejanitor controller
-  services.gamejanitor = {
-    enable = true;
-    role = "controller";
-    port = 8080;
-    grpcPort = 9090;
-    sftpPort = 2022;
-    openFirewall = true;
-  };
+  # Gamejanitor controller (temporarily disabled - vendor issue)
+  #services.gamejanitor = {
+  #  enable = true;
+  #  role = "controller";
+  #  port = 8080;
+  #  grpcPort = 9090;
+  #  sftpPort = 2022;
+  #  openFirewall = true;
+  #};
 
   # SearXNG
   services.searx = {
@@ -64,9 +64,9 @@
   networking.firewall.allowedTCPPorts = [ 8888 ];
 
   # User
-  users.users.kowalski = {
+  users.users.warsmite = {
     isNormalUser = true;
-    home = "/home/kowalski";
+    home = "/home/warsmite";
     extraGroups = [ "wheel" ];
   };
 

@@ -44,6 +44,12 @@ in
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
 
+  # Prevent suspend so SSH stays reachable
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
+
   networking.firewall.allowedTCPPorts = [
     22
     25565
@@ -90,7 +96,7 @@ in
     settings = rec {
       initial_session = {
         command = "hyprland";
-        user = "kowalski";
+        user = "warsmite";
       };
       default_session = initial_session;
     };
@@ -100,7 +106,7 @@ in
   virtualisation.containerd.enable = true;
   virtualisation.docker.enable = true;
   virtualisation.podman.enable = true;
-  users.users.kowalski.extraGroups = [
+  users.users.warsmite.extraGroups = [
     "wheel"
     "docker"
     "podman"
@@ -112,10 +118,10 @@ in
     package = pkgs.postgresql_16;
     ensureDatabases = [ "gamejanitor" ];
     ensureUsers = [
-      { name = "kowalski"; }
+      { name = "warsmite"; }
     ];
     initialScript = pkgs.writeText "pg-init" ''
-      ALTER DATABASE gamejanitor OWNER TO kowalski;
+      ALTER DATABASE gamejanitor OWNER TO warsmite;
     '';
   };
 
@@ -169,6 +175,7 @@ in
     rocmPackages_6.rocm-smi
     rocmPackages_6.rocminfo
     pkgs-unstable.ollama
+    whisper-cpp-vulkan
 
     # Monero
     monero-gui
@@ -200,7 +207,7 @@ in
     extraSpecialArgs = { inherit inputs; };
 
     users = {
-      "kowalski" =
+      "warsmite" =
         { ... }:
         {
           imports = [

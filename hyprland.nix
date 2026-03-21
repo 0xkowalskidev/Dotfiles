@@ -354,8 +354,8 @@
       settings = {
         ipc = "on";
         splash = false;
-        wallpaper = [ ", ~/Dotfiles/background.jpg" ];
-        preload = [ "~/Dotfiles/background.jpg" ];
+        wallpaper = [ ", ~/Dotfiles/images/background.jpg" ];
+        preload = [ "~/Dotfiles/images/background.jpg" ];
       };
     };
 
@@ -368,7 +368,7 @@
           grace = 3;
         };
         background = {
-          path = "~/Dotfiles/background.jpg";
+          path = "~/Dotfiles/images/background.jpg";
           blur_passes = 2;
           blur_size = 4;
         };
@@ -392,7 +392,7 @@
             valign = "center";
           }
           {
-            text = "kowalski";
+            text = "warsmite";
             font_size = 16;
             font_family = "FiraCode Nerd Font Mono";
             color = "rgb(89b4fa)";

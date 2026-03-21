@@ -44,29 +44,29 @@
 
   #services.caddy = {
   #  enable = true;
-  #  virtualHosts."registry.0xkowalski.dev".extraConfig = ''
+  #  virtualHosts."registry.warsmite.com".extraConfig = ''
   #    reverse_proxy localhost:5000
   #  '';
   #};
 
-  # Gamejanitor
-  services.gamejanitor = {
-    enable = true;
-    role = "worker";
-    grpcPort = 9090;
-    controller = "192.168.1.102:9090";
-    workerTokenFile = "/etc/gamejanitor/worker-token";
-    portRange = {
-      start = 28000;
-      end = 28999;
-    };
-    openFirewall = true;
-  };
+  # Gamejanitor (temporarily disabled - vendor issue)
+  #services.gamejanitor = {
+  #  enable = true;
+  #  role = "worker";
+  #  grpcPort = 9090;
+  #  controller = "192.168.1.102:9090";
+  #  workerTokenFile = "/etc/gamejanitor/worker-token";
+  #  portRange = {
+  #    start = 28000;
+  #    end = 28999;
+  #  };
+  #  openFirewall = true;
+  #};
 
   # User
-  users.users.kowalski = {
+  users.users.warsmite = {
     isNormalUser = true;
-    home = "/home/kowalski";
+    home = "/home/warsmite";
     extraGroups = [ "wheel" ];
   };
 

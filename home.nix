@@ -13,8 +13,8 @@
 
   programs.home-manager.enable = true;
 
-  home.username = "kowalski";
-  home.homeDirectory = "/home/kowalski";
+  home.username = "warsmite";
+  home.homeDirectory = "/home/warsmite";
 
   # Packages
   home.packages = with pkgs; [
@@ -33,6 +33,7 @@
     satisfactorymodmanager
     gh # Github cli
     lftp # sftp
+    ffmpeg
 
     nerd-fonts.fira-code # Font
 
@@ -216,8 +217,8 @@
   # Git
   programs.git = {
     enable = true;
-    settings.user.name = "0xkowalskidev";
-    settings.user.email = "0xkowalskidev@gmail.com";
+    settings.user.name = "warsmite";
+    settings.user.email = "warsmite@warsmite.com";
   };
 
   # Bash

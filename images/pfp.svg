@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="shieldFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e1e2e"/>
+      <stop offset="100%" stop-color="#11111b"/>
+    </linearGradient>
+    <linearGradient id="shieldStroke" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b4befe"/>
+      <stop offset="100%" stop-color="#585b70"/>
+    </linearGradient>
+    <!-- Subtle glow behind the W -->
+    <radialGradient id="glow" cx="0.5" cy="0.45" r="0.35">
+      <stop offset="0%" stop-color="#89b4fa" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#89b4fa" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" fill="#11111b"/>
+
+  <!-- Shield shape - more angular heater shield -->
+  <path d="M200 55 L330 105 L330 210 Q330 310 200 370 Q70 310 70 210 L70 105 Z" fill="url(#shieldFill)" stroke="url(#shieldStroke)" stroke-width="6"/>
+
+  <!-- Heraldic division line - subtle chevron -->
+  <path d="M70 180 L200 250 L330 180" fill="none" stroke="#313244" stroke-width="2" opacity="0.5"/>
+
+  <!-- Glow -->
+  <rect width="400" height="400" fill="url(#glow)"/>
+
+  <!-- Angular W - custom path instead of font -->
+  <path d="M130 140 L155 280 L200 200 L245 280 L270 140"
+        fill="none" stroke="#89b4fa" stroke-width="14" stroke-linecap="square" stroke-linejoin="miter"/>
+
+  <!-- Top edge highlight -->
+  <path d="M200 55 L330 105" fill="none" stroke="#cdd6f4" stroke-width="1" opacity="0.3"/>
+  <path d="M200 55 L70 105" fill="none" stroke="#cdd6f4" stroke-width="1" opacity="0.3"/>
+</svg>
