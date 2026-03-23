@@ -109,7 +109,6 @@ in
   users.users.warsmite.extraGroups = [
     "wheel"
     "docker"
-    "podman"
   ];
 
   # Postgres
@@ -183,6 +182,7 @@ in
     masscan-wrapped
 
     quickemu
+    bubblewrap
   ];
 
   # Grant masscan raw socket access without sudo

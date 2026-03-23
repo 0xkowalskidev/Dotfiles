@@ -144,7 +144,7 @@
     extraConfig = ''
       # Pane borders (Catppuccin)
       set -g pane-border-style 'fg=#313244'
-      set -g pane-active-border-style 'fg=#313244'
+      set -g pane-active-border-style 'fg=#b4befe'
 
       # Clipboard (Wayland)
       set -g @yank_selection_mouse 'clipboard'
@@ -281,7 +281,7 @@
       shiftwidth = 2; # Set indentation width to 2 spaces
       expandtab = true; # Convert tabs to spaces
       autoindent = true; # Automatically indent new lines based on previous line
-      wrap = false; # Prevent text from wrapping to the next line
+      wrap = true; # Wrap text to the next line
       cursorline = true; # Highlight the line where the cursor is located
       ignorecase = true; # Make searches case-insensitive
       smartcase = true; # Override ignorecase if search contains uppercase letters

@@ -354,8 +354,8 @@
       settings = {
         ipc = "on";
         splash = false;
-        wallpaper = [ ", ~/Dotfiles/images/background.jpg" ];
-        preload = [ "~/Dotfiles/images/background.jpg" ];
+        wallpaper = [ ", ~/dotfiles/images/background.jpg" ];
+        preload = [ "~/dotfiles/images/background.jpg" ];
       };
     };
 
@@ -368,7 +368,7 @@
           grace = 3;
         };
         background = {
-          path = "~/Dotfiles/images/background.jpg";
+          path = "~/dotfiles/images/background.jpg";
           blur_passes = 2;
           blur_size = 4;
         };
