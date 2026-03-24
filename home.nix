@@ -34,6 +34,7 @@
     gh # Github cli
     lftp # sftp
     ffmpeg
+    openssl
 
     nerd-fonts.fira-code # Font
 
@@ -219,6 +220,8 @@
     enable = true;
     settings.user.name = "warsmite";
     settings.user.email = "warsmite@warsmite.com";
+    settings.push.autoSetupRemote = true;
+    settings.init.defaultBranch = "master";
   };
 
   # Bash
