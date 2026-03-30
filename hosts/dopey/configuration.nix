@@ -49,19 +49,21 @@
   #  '';
   #};
 
-  # Gamejanitor (temporarily disabled - vendor issue)
-  #services.gamejanitor = {
-  #  enable = true;
-  #  role = "worker";
-  #  grpcPort = 9090;
-  #  controller = "192.168.1.102:9090";
-  #  workerTokenFile = "/etc/gamejanitor/worker-token";
-  #  portRange = {
-  #    start = 28000;
-  #    end = 28999;
-  #  };
-  #  openFirewall = true;
-  #};
+  services.gamejanitor = {
+    enable = true;
+    controller = false;
+    worker = true;
+    bindAddress = "0.0.0.0";
+    containerRuntime = "docker";
+    grpcPort = 9090;
+    controllerAddress = "192.168.1.102:9090";
+    workerTokenFile = "/etc/gamejanitor/worker-token";
+    settings = {
+      port_range_start = 28000;
+      port_range_end = 28999;
+    };
+    openFirewall = true;
+  };
 
   # User
   users.users.warsmite = {

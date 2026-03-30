@@ -62,6 +62,7 @@
     btop
     acpi # Battery viewer
     cloc # Count lines of code
+    glow # Terminal markdown reader
     ncdu # Disk usage analysis
     tt # Typespeed test
     evince # pdf reader
@@ -116,6 +117,9 @@
           style = "regular";
         };
       };
+      scrolling = {
+        history = 10000;
+      };
     };
   };
 
@@ -131,7 +135,10 @@
       { plugin = inputs.minimal-tmux.packages.${pkgs.stdenv.hostPlatform.system}.default; }
       {
         plugin = pkgs.tmuxPlugins.resurrect;
-        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
+        extraConfig = ''
+          set -g @resurrect-strategy-nvim 'session'
+          set -g @resurrect-processes 'ssh ".claude-unwrapped"'
+        '';
       }
       {
         plugin = pkgs.tmuxPlugins.continuum;
@@ -140,17 +147,38 @@
         '';
       }
       { plugin = pkgs.tmuxPlugins.yank; }
+      {
+        plugin = pkgs.tmuxPlugins.extrakto;
+        extraConfig = ''
+          set -g @extrakto_clip_tool 'wl-copy'
+          set -g @extrakto_copy_key 'tab'
+          set -g @extrakto_insert_key 'enter'
+        '';
+      }
+      { plugin = pkgs.tmuxPlugins.open; }
     ];
 
     extraConfig = ''
+      # Terminal & color
+      set -g default-terminal "tmux-256color"
+      set -sa terminal-features ',xterm-256color:RGB'
+
+      # General
+      set -g focus-events on
+      set -g history-limit 50000
+      set -g renumber-windows on
+
       # Pane borders (Catppuccin)
       set -g pane-border-style 'fg=#313244'
       set -g pane-active-border-style 'fg=#b4befe'
 
+      # Copy mode highlight (Catppuccin)
+      set -g mode-style 'fg=#cdd6f4,bg=#45475a'
+
       # Clipboard (Wayland)
       set -g @yank_selection_mouse 'clipboard'
       set -g @override_copy_command 'wl-copy'
-      set -g set-clipboard on
+      bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "wl-copy"
 
       # M is ALT in this context
       # Manage Windows
@@ -185,6 +213,13 @@
       bind-key -n -r M-S-Right resize-pane -R 5
       bind-key -n -r M-S-Up resize-pane -U 5
       bind-key -n -r M-S-Down resize-pane -D 5
+
+      ## Swap panes
+      bind-key -n M-'{' swap-pane -U
+      bind-key -n M-'}' swap-pane -D
+
+      ## Zoom pane (toggle fullscreen)
+      bind-key -n M-z resize-pane -Z
     '';
   };
 
@@ -211,6 +246,12 @@
         hostname = "github.com";
         identitiesOnly = true;
       };
+      "localhost" = {
+        extraOptions = {
+          StrictHostKeyChecking = "no";
+          UserKnownHostsFile = "/dev/null";
+        };
+      };
     };
   };
   services.ssh-agent.enable = true;
@@ -227,12 +268,32 @@
   # Bash
   programs.bash = {
     enable = true;
+    shellAliases = {
+      gs = "git status";
+      gp = "git push";
+      gl = "git log --oneline";
+      sandbox = "ssh -t grumpy 'sudo machinectl shell warsmite@claude-sandbox'";
+    };
     initExtra = ''
       # Auto-start Tmux if not already in a session
       if [ -z "$TMUX" ]; then
         tmux attach -t default || tmux new -s default
       fi
     '';
+  };
+
+  # fzf (Ctrl-R for history, Ctrl-T for file finder)
+  programs.fzf = {
+    enable = true;
+    enableBashIntegration = true;
+    defaultCommand = "rg --files --hidden --glob '!.git'";
+    defaultOptions = [
+      "--height 40%"
+      "--border"
+      "--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8"
+      "--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc"
+      "--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+    ];
   };
 
   # Direnv
@@ -280,6 +341,7 @@
 
     opts = {
       number = true; # Show line numbers in the gutter
+      relativenumber = true; # Relative line numbers for easier motions
       tabstop = 2; # Set tab width to 2 spaces
       shiftwidth = 2; # Set indentation width to 2 spaces
       expandtab = true; # Convert tabs to spaces
@@ -288,6 +350,9 @@
       cursorline = true; # Highlight the line where the cursor is located
       ignorecase = true; # Make searches case-insensitive
       smartcase = true; # Override ignorecase if search contains uppercase letters
+      undofile = true; # Persistent undo across sessions
+      scrolloff = 8; # Keep 8 lines of context above/below cursor
+      signcolumn = "yes"; # Prevent gutter from jumping when diagnostics appear
     };
 
     # Clipboard
@@ -297,10 +362,26 @@
     # Colour Shceme
     colorschemes.catppuccin.enable = true;
 
+    # Auto-save/restore sessions per directory (needed for tmux-resurrect nvim strategy)
+    plugins.auto-session.enable = true;
+
     # Transparent
     plugins.transparent = {
       enable = true;
       autoLoad = true;
+    };
+
+    # Treesitter (syntax highlighting, indentation, text objects)
+    plugins.treesitter = {
+      enable = true;
+      settings.highlight.enable = true;
+      settings.indent.enable = true;
+    };
+
+    # Git signs in the gutter
+    plugins.gitsigns = {
+      enable = true;
+      settings.current_line_blame = false;
     };
 
     # LSPs

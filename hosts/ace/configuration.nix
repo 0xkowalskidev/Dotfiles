@@ -5,17 +5,6 @@
   ...
 }:
 
-let
-  masscan-wrapped = pkgs.symlinkJoin {
-    name = "masscan-wrapped";
-    paths = [ pkgs.masscan ];
-    buildInputs = [ pkgs.makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/masscan \
-        --prefix LD_LIBRARY_PATH : "${pkgs.libpcap.lib}/lib"
-    '';
-  };
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -27,6 +16,7 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [
     "amdgpu.cwsr_enable=0" # Workaround for MES hang on Strix Point
+    "amdgpu.mes_log_enable=1" # Enable MES logging for GPU crash diagnosis
     "mitigations=off" # Disable CPU security mitigations for performance
   ];
   boot.kernelPackages = pkgs.linuxPackages_cachyos; # CachyOS kernel for gaming
@@ -58,6 +48,7 @@ in
     28017
     7777
     8080
+    9898
   ];
   networking.firewall.allowedUDPPorts = [
     25565
@@ -162,7 +153,7 @@ in
     inputs.nix-citizen.packages.${pkgs.stdenv.hostPlatform.system}.rsi-launcher
 
     # Minecraft
-    openjdk21
+    openjdk25
     prismlauncher # Unofficial Minecraft Launcher
 
     amdgpu_top
@@ -179,19 +170,17 @@ in
     # Monero
     monero-gui
 
-    masscan-wrapped
-
     quickemu
     bubblewrap
+
+    # Gamejanitor CLI
+    inputs.gamejanitor.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
-  # Grant masscan raw socket access without sudo
-  security.wrappers.masscan = {
-    source = "${masscan-wrapped}/bin/masscan";
-    capabilities = "cap_net_raw+ep";
-    owner = "root";
-    group = "root";
-  };
+  # Extend sudo password cache to 1 hour
+  security.sudo.extraConfig = ''
+    Defaults timestamp_timeout=60
+  '';
 
   ## Steam
   programs.steam.enable = true;

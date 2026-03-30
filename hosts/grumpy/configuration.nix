@@ -1,4 +1,7 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -23,19 +26,21 @@
   # Remote rebuilds
   security.sudo.wheelNeedsPassword = false;
 
-  # Gamejanitor (temporarily disabled - vendor issue)
-  #services.gamejanitor = {
-  #  enable = true;
-  #  role = "worker";
-  #  grpcPort = 9090;
-  #  controller = "192.168.1.102:9090";
-  #  workerTokenFile = "/etc/gamejanitor/worker-token";
-  #  portRange = {
-  #    start = 27000;
-  #    end = 27999;
-  #  };
-  #  openFirewall = true;
-  #};
+  services.gamejanitor = {
+    enable = true;
+    controller = false;
+    worker = true;
+    bindAddress = "0.0.0.0";
+    containerRuntime = "docker";
+    grpcPort = 9090;
+    controllerAddress = "192.168.1.102:9090";
+    workerTokenFile = "/etc/gamejanitor/worker-token";
+    settings = {
+      port_range_start = 29000;
+      port_range_end = 29999;
+    };
+    openFirewall = true;
+  };
 
   # User
   users.users.warsmite = {

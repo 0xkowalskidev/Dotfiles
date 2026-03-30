@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
@@ -35,15 +35,25 @@
     domains = [ "warsmite.com" ];
   };
 
-  # Gamejanitor controller (temporarily disabled - vendor issue)
-  #services.gamejanitor = {
-  #  enable = true;
-  #  role = "controller";
-  #  port = 8080;
-  #  grpcPort = 9090;
-  #  sftpPort = 2022;
-  #  openFirewall = true;
-  #};
+  environment.systemPackages = [
+    inputs.gamejanitor.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
+
+  services.gamejanitor = {
+    enable = true;
+    controller = true;
+    worker = true;
+    containerRuntime = "docker";
+    bindAddress = "0.0.0.0";
+    port = 8080;
+    grpcPort = 9090;
+    sftpPort = 2022;
+    settings = {
+      port_range_start = 27000;
+      port_range_end = 27999;
+    };
+    openFirewall = true;
+  };
 
   # SearXNG
   services.searx = {

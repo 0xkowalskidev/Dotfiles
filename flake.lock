@@ -155,11 +155,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1774111768,
-        "narHash": "sha256-MoMLGee/dZI5t6hCOcxlGhVq41JQHoZ3roZ4dbeYsns=",
+        "lastModified": 1774765487,
+        "narHash": "sha256-+4cB7EchkrYBHm6xTm05Jtgn9KOBpeXhzitfJ2Fu+3E=",
         "owner": "warsmite",
         "repo": "GameJanitor",
-        "rev": "d0db37b5ed34a11a646c5363d2a83d5fe5c840a9",
+        "rev": "a121368983c1ad2ac0d1277ac1630a2edfad0a9c",
         "type": "github"
       },
       "original": {
@@ -218,11 +218,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1773938531,
-        "narHash": "sha256-DCqDu/QgHROFdkx0trJgK9HZ1A2HCwc1Tjimw3k9q/Y=",
+        "lastModified": 1774615831,
+        "narHash": "sha256-IKdRiJPmSCt0grnk4hU+Z1+qTTSy8XvlHnzCZFfeal8=",
         "owner": "warsmite",
         "repo": "gjq",
-        "rev": "6f0e6a8e9920b8d266b0e70f05c920b5ea2ff0ae",
+        "rev": "8e6b867750ccda2685f0613cd97ee3f3357f771a",
         "type": "github"
       },
       "original": {

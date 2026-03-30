@@ -341,9 +341,14 @@
         ];
 
         windowrulev2 = [
-          "tile,class:^(steam)$"
-          "tile,class:^(Steam)$"
+          "tile,class:^(steam)$,title:^(Steam)$"
+          "tile,class:^(Steam)$,title:^(Steam)$"
           "float,class:^(steam)$,title:^(Steam Settings)$"
+          "float,class:^(steam)$,title:^()$"
+          "float,class:^(Steam)$,title:^()$"
+          "workspace 4,class:^(steam_app_.*)$"
+          "workspace 4,class:^(rsi launcher\.exe)$"
+          "workspace 4,class:^(starcitizen\.exe)$"
         ];
       };
     };
