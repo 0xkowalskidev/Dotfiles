@@ -346,9 +346,9 @@
           "float,class:^(steam)$,title:^(Steam Settings)$"
           "float,class:^(steam)$,title:^()$"
           "float,class:^(Steam)$,title:^()$"
-          "workspace 4,class:^(steam_app_.*)$"
-          "workspace 4,class:^(rsi launcher\.exe)$"
-          "workspace 4,class:^(starcitizen\.exe)$"
+          "workspace 4 silent,class:^(steam_app_.*)$"
+          "workspace 4 silent,class:^(rsi launcher\.exe)$"
+          "workspace 4 silent,class:^(starcitizen\.exe)$"
         ];
       };
     };
