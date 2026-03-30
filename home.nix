@@ -260,7 +260,7 @@
   programs.git = {
     enable = true;
     settings.user.name = "warsmite";
-    settings.user.email = "warsmite@warsmite.com";
+    settings.user.email = "warsmite@proton.me";
     settings.push.autoSetupRemote = true;
     settings.init.defaultBranch = "master";
   };
