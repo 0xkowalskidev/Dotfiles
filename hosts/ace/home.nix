@@ -1,9 +1,42 @@
-{
-  ...
-}:
+{ lib, ... }:
 
 {
   my.hyprland.enable = true;
+
+  # GPU in waybar (ace has an AMD iGPU, chuwi doesn't expose gpu_busy_percent)
+  programs.waybar.settings.mainBar = {
+    modules-right = lib.mkForce [
+      "custom/left-arrow-dark"
+      "pulseaudio"
+      "custom/left-arrow-light"
+      "custom/left-arrow-dark"
+      "memory"
+      "custom/left-arrow-light"
+      "custom/left-arrow-dark"
+      "cpu"
+      "custom/left-arrow-light"
+      "custom/left-arrow-dark"
+      "custom/gpu"
+      "custom/left-arrow-light"
+      "custom/left-arrow-dark"
+      "disk"
+      "custom/left-arrow-light"
+      "custom/left-arrow-dark"
+      "tray"
+    ];
+    "custom/gpu" = {
+      interval = 5;
+      exec = "cat /sys/class/drm/card1/device/gpu_busy_percent";
+      format = "GPU {}%";
+    };
+  };
+  programs.waybar.style = lib.mkAfter ''
+    #custom-gpu {
+      background: #181825;
+      color: #f38ba8;
+      padding: 0 10px;
+    }
+  '';
 
   wayland.windowManager.hyprland.settings = {
     monitor = [
