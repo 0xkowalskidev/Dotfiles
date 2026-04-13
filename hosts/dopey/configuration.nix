@@ -4,7 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../common.nix
-    inputs.gamejanitor.nixosModules.default
+    #inputs.gamejanitor.nixosModules.default
   ];
 
   # Boot
@@ -15,6 +15,9 @@
   networking.hostName = "dopey";
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 9090 ];
+  networking.firewall.allowedTCPPortRanges = [{ from = 27000; to = 27999; }];
+  networking.firewall.allowedUDPPortRanges = [{ from = 27000; to = 27999; }];
 
   # SSH
   services.openssh.enable = true;
@@ -49,21 +52,21 @@
   #  '';
   #};
 
-  services.gamejanitor = {
-    enable = true;
-    controller = false;
-    worker = true;
-    bindAddress = "0.0.0.0";
-    containerRuntime = "docker";
-    grpcPort = 9090;
-    controllerAddress = "192.168.1.102:9090";
-    workerTokenFile = "/etc/gamejanitor/worker-token";
-    settings = {
-      port_range_start = 28000;
-      port_range_end = 28999;
-    };
-    openFirewall = true;
-  };
+  #services.gamejanitor = {
+  #  enable = true;
+  #  controller = false;
+  #  worker = true;
+  #  bindAddress = "0.0.0.0";
+  #  containerRuntime = "docker";
+  #  grpcPort = 9090;
+  #  controllerAddress = "192.168.1.102:9090";
+  #  workerTokenFile = "/etc/gamejanitor/worker-token";
+  #  settings = {
+  #    port_range_start = 28000;
+  #    port_range_end = 28999;
+  #  };
+  #  openFirewall = true;
+  #};
 
   # User
   users.users.warsmite = {
