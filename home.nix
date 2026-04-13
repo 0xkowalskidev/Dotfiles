@@ -87,7 +87,14 @@
     # Odin
     odin
 
-    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # Upstream nanocoder Nix package (1.24.1) ships only dist/ but dist/config/themes.js
+    # reads source/config/themes.json at runtime via a relative path, crashing before any
+    # output. Patch postInstall to also copy source/ until upstream fixes packaging.
+    (inputs.nanocoder.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
+      postInstall = (old.postInstall or "") + ''
+        cp -r source $out/lib/nanocoder/
+      '';
+    }))
     inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
     playwright-mcp
 

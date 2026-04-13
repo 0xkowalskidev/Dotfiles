@@ -18,7 +18,7 @@
     gjq.url = "github:warsmite/gjq";
     gamejanitor.url = "github:warsmite/GameJanitor";
 
-    opencode.url = "github:anomalyco/opencode";
+    nanocoder.url = "github:Nano-Collective/nanocoder";
     claude-code.url = "github:sadjow/claude-code-nix";
 
     nix-citizen.url = "github:LovingMelody/nix-citizen";
