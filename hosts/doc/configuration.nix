@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ../../common.nix ];
@@ -28,9 +28,8 @@
 
   users.groups.nfsusers = { gid = 1000; };
 
-  # Set permissions for /data and subdirectories
   systemd.tmpfiles.rules = [
-    "d /data 0770 nobody nfsusers - -" # Root /data directory
+    "d /data 0770 nobody nfsusers - -"
   ];
 
   services.nfs.server = {
@@ -40,7 +39,47 @@
     '';
   };
 
-  networking.firewall.allowedTCPPorts = [ 2049 ];
+  # Garage (S3-compatible object storage)
+  services.garage = {
+    enable = true;
+    package = pkgs.garage;
+    environmentFile = "/etc/garage/env";
+    settings = {
+      replication_factor = 1;
+      db_engine = "lmdb";
+      metadata_dir = "/var/lib/garage/meta";
+      data_dir = "/data/garage";
+      s3_api = {
+        s3_region = "garage";
+        api_bind_addr = "[::]:3900";
+        root_domain = ".s3.garage.localhost";
+      };
+      s3_web = {
+        bind_addr = "[::]:3902";
+        root_domain = ".web.garage.localhost";
+      };
+      admin = {
+        api_bind_addr = "[::]:3903";
+      };
+      rpc_bind_addr = "[::]:3901";
+    };
+  };
+
+  # Ensure /data/garage exists and garage can traverse /data after mount
+  systemd.services.garage-data-dir = {
+    description = "Create Garage data directory";
+    requiredBy = [ "garage.service" ];
+    before = [ "garage.service" ];
+    after = [ "data.mount" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.coreutils}/bin/mkdir -p /data/garage";
+      ExecStartPost = "${pkgs.coreutils}/bin/chmod o+x /data";
+      RemainAfterExit = true;
+    };
+  };
+
+  networking.firewall.allowedTCPPorts = [ 2049 3900 3903 ];
 
   # User
   users.users.warsmite = {
