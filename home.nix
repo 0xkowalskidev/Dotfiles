@@ -35,6 +35,7 @@
     lftp # sftp
     ffmpeg
     openssl
+    xxd
 
     nerd-fonts.fira-code # Font
 
@@ -44,6 +45,8 @@
     thc-hydra
 
     # Utils
+    wget
+    cdrkit
     ripgrep
     dnsutils # dig, nslookup
     whois
@@ -280,6 +283,7 @@
       gp = "git push";
       gl = "git log --oneline";
       sandbox = "ssh -t grumpy 'sudo machinectl shell warsmite@claude-sandbox'";
+      claude = "mullvad-exclude claude";
     };
     initExtra = ''
       # Auto-start Tmux if not already in a session
@@ -348,7 +352,7 @@
 
     opts = {
       number = true; # Show line numbers in the gutter
-      relativenumber = true; # Relative line numbers for easier motions
+      relativenumber = false;
       tabstop = 2; # Set tab width to 2 spaces
       shiftwidth = 2; # Set indentation width to 2 spaces
       expandtab = true; # Convert tabs to spaces
