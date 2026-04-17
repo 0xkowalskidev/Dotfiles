@@ -30,6 +30,10 @@
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = false; # Faster boot
   services.mullvad-vpn.enable = true;
+  networking.wg-quick.interfaces.gjb = {
+    configFile = "/etc/wireguard/gjb.conf";
+    autostart = true;
+  };
   # SSH
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
@@ -116,15 +120,35 @@
     '';
   };
 
-  # Ollama (Vulkan works better on Strix Point gfx1150)
-  services.ollama = {
-    enable = true;
-    package = pkgs-unstable.ollama-vulkan;
-    environmentVariables = {
-      OLLAMA_CONTEXT_LENGTH = "32768";
+  # llama.cpp server (Vulkan, OpenAI-compatible API on port 8081)
+  # Place GGUF files in /data/models/, symlink active model to default.gguf
+  systemd.services.llama-server = {
+    description = "llama.cpp inference server (Vulkan)";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+
+    environment = {
+      HOME = "/var/lib/llama-server"; # Vulkan shader cache needs a writable home
+    };
+
+    serviceConfig = {
+      Type = "simple";
+      Restart = "on-failure";
+      RestartSec = "10s";
+      DynamicUser = true;
+      StateDirectory = "llama-server";
+      ReadOnlyPaths = [ "/data/models" ];
+      ExecStart = ''
+        ${pkgs-unstable.llama-cpp-vulkan}/bin/llama-server \
+          --model /data/models/default.gguf \
+          --host 0.0.0.0 \
+          --port 8081 \
+          --gpu-layers 99 \
+          --ctx-size 32768 \
+          --flash-attn on
+      '';
     };
   };
-  #services.open-webui.enable = true;
 
   # Games
   ## Star Citizen
@@ -282,8 +306,27 @@
     rocmPackages_6.rocm-runtime
     rocmPackages_6.rocm-smi
     rocmPackages_6.rocminfo
-    pkgs-unstable.ollama
+    pkgs-unstable.llama-cpp-vulkan
     whisper-cpp-vulkan
+
+    (writeShellScriptBin "llama-switch" ''
+      set -euo pipefail
+      MODEL_DIR="/data/models"
+      if [ -z "''${1:-}" ]; then
+        echo "Available models:"
+        ls -1 "$MODEL_DIR"/*.gguf 2>/dev/null | xargs -I{} basename {}
+        echo ""
+        echo "Usage: llama-switch <model.gguf>"
+        exit 1
+      fi
+      if [ ! -f "$MODEL_DIR/$1" ]; then
+        echo "Error: $MODEL_DIR/$1 not found"
+        exit 1
+      fi
+      ln -sf "$MODEL_DIR/$1" "$MODEL_DIR/default.gguf"
+      sudo systemctl restart llama-server
+      echo "Switched to $1"
+    '')
 
     # Monero
     monero-gui

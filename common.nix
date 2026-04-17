@@ -63,5 +63,6 @@
 
   environment.systemPackages = with pkgs; [
     lm_sensors # Heat Sensors
+    wireguard-tools
   ];
 }
